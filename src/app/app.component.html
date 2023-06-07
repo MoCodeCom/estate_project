@@ -1,0 +1,94 @@
+
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-between">
+      <div class="bg-dark p-2">
+        <a class="d-flex text-decoration-none mt-1 align-items-center text-white" routerLink="not-found">
+          <span class="fs-4 d-none d-sm-inline">Company Name</span>
+        </a>
+        <ul class="nav nav-pills flex-column mt-4">
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="home">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/homeIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Home</span>
+            </a>
+          </li>
+
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="landlords">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/landlordIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Landlodrd</span>
+            </a>
+          </li>
+
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="tenants">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/tenantIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Tenant</span>
+            </a>
+          </li>
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="properties">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/propertyIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Property</span>
+            </a>
+          </li>
+
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="others">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/otherIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Other</span>
+            </a>
+          </li>
+
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="money">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/moneyIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Money</span>
+            </a>
+          </li>
+          <li class="nav-item py-2 py-sm-0">
+            <a href="#" class="nav-link text-white" routerLink="reports">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/reportIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Report</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown bg-dark p-3">
+        <ul class="nav nav-pills flex-column mt-4">
+          <li class="nav-item py-2 py-sm-0">
+            <a class="nav-link text-white" routerLink="profile">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/userIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Profile</span>
+            </a>
+          </li>
+
+          <li class="nav-item py-2 py-sm-0">
+            <a class="nav-link text-white" routerLink="auth">
+              <i class="fs-5 fa fa-table-list">
+                <img src="../assets/images/loginIcon.png" style="width: 25px;">
+              </i><span class="fs-6 ms-3 d-none d-sm-inline">Logout</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!--content-->
+    <div class="p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
