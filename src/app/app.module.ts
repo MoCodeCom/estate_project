@@ -18,6 +18,26 @@ import { NotFoundComponent } from './home/not-found/not-found.component';
 import { appRouteModule } from './home/home/modules/appRouteModule.module';
 
 
+//calendar
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { CalendarModule, DateAdapter } from 'angular-calendar';
+//import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+//import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './home/home/info/calendar/calendar.component';
+
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,13 +51,22 @@ import { appRouteModule } from './home/home/modules/appRouteModule.module';
     AuthComponent,
     ProfileComponent,
     ReportsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CalendarComponent
   ],
   imports: [
+    CommonModule,
+    FormsModule,
+    FlatpickrModule,
     BrowserModule,
     AppRoutingModule,
     appRouteModule,
     RouterModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
 
   ],
   providers: [],
