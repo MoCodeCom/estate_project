@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +39,7 @@ import { CalendarComponent } from './home/home/info/calendar/calendar.component'
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,11 +66,12 @@ import { CalendarComponent } from './home/home/info/calendar/calendar.component'
     BrowserAnimationsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory,
-    })
-
+      useFactory: adapterFactory
+    }),
+    AgmCoreModule.forRoot({apiKey:'AIzaSyBWDl4DyscEGeARJgm1MQmaxCj0WwB_cYM'})
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

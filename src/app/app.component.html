@@ -1,7 +1,9 @@
 
-<div class="container-lg">
+<div class="container-fluid">
   <div class="row flex-nowrap">
-    <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-between">
+    <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-between"
+         id="sidebar"
+    >
       <div class="bg-dark p-2">
         <a class="d-flex text-decoration-none mt-1 align-items-center text-white" routerLink="not-found">
           <span class="fs-4 d-none d-sm-inline">Company Name</span>
@@ -82,13 +84,16 @@
 
         </ul>
       </div>
+
     </div>
 
     <!--content-->
-    <div class="p-3">
-      <router-outlet></router-outlet>
-    </div>
+  <div class="p-3" id="content">
+    <router-outlet></router-outlet>
   </div>
+
+  </div>
+
 </div>
 
 

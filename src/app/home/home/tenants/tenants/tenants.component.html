@@ -1,1 +1,72 @@
-<p>tenants works!</p>
+<div>
+  <div class="container-sm">
+    <div class="row">
+      <div class="col-6">
+        <div id="pg_content">
+          <div>
+            <div id="card">
+              <div class="card">
+                <div class="card-header">
+                  Tenants
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Tenants Details</h5>
+                  <p class="card-text">This page has data, operations and views about Tenants.</p>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="landlords_add_btn">Add New Landlords</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6" id="map">
+
+        <agm-map [latitude]="lat"
+                 [longitude]="lng"
+                 (mapClick)="onMarker($event)"
+                 id="autoMap">
+          <agm-marker
+                  [latitude]="lat"
+                  [longitude]="lng"
+
+                  ></agm-marker>
+        </agm-map>
+      </div>
+      <div class="col-12" id="c3">
+        <table class="table table-success table-striped" id="pg_table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+              <th scope="col">Postcode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>B12 0YL</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>B28 0AF</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+              <td>NE28</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

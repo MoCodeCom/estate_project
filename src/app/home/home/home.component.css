@@ -1,8 +1,27 @@
 #container_1{
   display: flex;
-  justify-content:space-between;
+  justify-content:space-around;
+}
+
+#calender{
+  margin-top: 10px;
 }
 
 .container{
-  border:2px solid black;
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  #container_1{
+    display:block;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width:650px){
+  #calender{
+    display: none;
+  }
 }

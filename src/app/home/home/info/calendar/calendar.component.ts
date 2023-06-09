@@ -16,12 +16,5 @@ export class CalendarComponent implements OnInit{
   }
 
 
-  mouseover() {
-    document.getElementById("hov").style.color = "yellow";
-  }
-
-  mouseout() {
-    document.getElementById("hov").style.color = "white";
-  }
 
 }
