@@ -30,6 +30,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './home/home/info/calendar/calendar.component';
+import { filerPipe } from './home/home/pipes/filterPipe.pipe';
 
 
 
@@ -53,7 +54,8 @@ import { CalendarComponent } from './home/home/info/calendar/calendar.component'
     ProfileComponent,
     ReportsComponent,
     NotFoundComponent,
-    CalendarComponent
+    CalendarComponent,
+    filerPipe
   ],
   imports: [
     CommonModule,
