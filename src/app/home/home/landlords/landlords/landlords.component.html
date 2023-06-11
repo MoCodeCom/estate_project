@@ -1,4 +1,9 @@
 <div>
+  <app-add-landlord
+    *ngIf="addingLandlordAllowed"
+    [closeForm]="addingLandlordAllowed"
+    (close)="onReloadPg()"
+    ></app-add-landlord>
   <div class="container-sm">
     <div class="row">
       <!--content and add button-->
@@ -16,7 +21,10 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-primary" id="landlords_add_btn">Add New Landlords</button>
+            <button type="button"
+                    class="btn btn-primary"
+                    id="landlords_add_btn"
+                    (click)="add_landlord()">Add New Landlords</button>
 
         </div>
       </div>

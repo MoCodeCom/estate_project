@@ -1,0 +1,57 @@
+.dropback{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba( 0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.container{
+  position: fixed;
+  top: 20vh;
+  left: 30vw;
+  width: 40vw;
+  height:fit-content;
+  padding: 0px;
+  border-radius:10px;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.title_pg{
+  height: 50px;
+  width: 100%;
+  background-color: green;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content:space-between;
+}
+
+.title_pg a img{
+  cursor: pointer;
+}
+
+.input_block{
+  width: 100%;
+  padding: 10px;
+}
+
+.input-group{
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+.input_block button{
+  width: 100%;
+  margin-top: 10px;
+}
+

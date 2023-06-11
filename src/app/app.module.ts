@@ -23,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { CalendarModule, DateAdapter } from 'angular-calendar';
 //import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-//import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -31,14 +30,10 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './home/home/info/calendar/calendar.component';
 import { filerPipe } from './home/home/pipes/filterPipe.pipe';
-
-
-
-
-
-
-
-
+import { AddLandlordComponent } from './home/home/add_data/add-landlord/add-landlord.component';
+import { AddTenantComponent } from './home/home/add_data/add-tenant/add-tenant.component';
+import { AddPropertyComponent } from './home/home/add_data/add-property/add-property.component';
+import { AddOtherComponent } from './home/home/add_data/add-other/add-other.component';
 
 
 @NgModule({
@@ -55,7 +50,11 @@ import { filerPipe } from './home/home/pipes/filterPipe.pipe';
     ReportsComponent,
     NotFoundComponent,
     CalendarComponent,
-    filerPipe
+    filerPipe,
+    AddLandlordComponent,
+    AddTenantComponent,
+    AddPropertyComponent,
+    AddOtherComponent
   ],
   imports: [
     CommonModule,
