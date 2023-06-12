@@ -1,1 +1,164 @@
-<p>add-tenant works!</p>
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Title of add page -->
+      <div class="title_pg">
+        <p>Add tenant</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title add page -->
+
+      <!-- Form add page -->
+      <form
+            (ngSubmit)="onSubmit(f)"
+            #f = "ngForm">
+
+        <div class="input_block">
+
+          <div class="ContentDetails">
+            <p>Tenent details</p>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >First name</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="First name"
+                   name="firstname"
+                   ngModel
+                   id="firstname"
+                   pattern="[A-Za-z]{2,}"
+                   maxlength="20"
+                   required
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >Last name</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Last name"
+                   name="lastname"
+                   ngModel
+                   id="lastname"
+                   pattern="[A-Za-z]{2,}"
+                   maxlength="20"
+                   required
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text">Address</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Address"
+                   name="address"
+                   ngModel
+                   id="address"
+                   pattern="[A-Za-z0-9\w!@#$%?=*&.- ]{2,}"
+                   maxlength="50"
+                   required
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text">Postcode</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Postcode"
+                   name="postcode"
+                   ngModel
+                   id="postcode"
+                   pattern="[A-Za-z0-9- ]{2,}"
+                   maxlength="8"
+                   required
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >@</span>
+            <input type="email"
+                   class="form-control"
+                   placeholder="Email"
+                   name="email"
+                   ngModel
+                   id="email"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >Phone</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Phone"
+                   name="phone"
+                   ngModel
+                   id="phone"
+                   maxlength="11"
+                   required
+                   >
+          </div>
+
+          <!--  ----------------------------porperty details --------------->
+          <div class="ContentDetails">
+            <p>Property rented details</p>
+          </div>
+
+          <div>
+            <div class="input-group">
+              <span class="input-group-text">Owner</span>
+              <select >
+                <option value="option1" *ngFor="let i of landlordTableList">
+                  <span class="upperCaseName">{{i.firstName}} {{i.lastName}}</span>
+                </option>
+              </select>
+            </div>
+          </div>
+
+
+          <!--  ------------------------End porperty details --------------->
+
+
+          <div class="input-group">
+            <span class="input-group-text">Upload</span>
+            <input type="file"
+                   class="form-control"
+                   placeholder="Choose file"
+                   name="upload"
+                   ngModel
+                   id="upload"
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >Details</span>
+            <textarea type="textarea"
+                   class="form-control"
+                   placeholder="Other details"
+                   name="details"
+                   ngModel
+                   id="detals"
+                   ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!f.valid"
+            [ngStyle]="{'color':f.valid?'':'gray'}"
+            >Submit</button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Cancel</button>
+        </div>
+      </form>
+
+      <!-- End form add page -->
+    </div>
+  </div>
+</div>

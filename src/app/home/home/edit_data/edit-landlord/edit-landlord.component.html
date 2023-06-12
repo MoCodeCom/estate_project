@@ -4,7 +4,7 @@
     <div class="col">
       <!-- Title of add page -->
       <div class="title_pg">
-        <p>Add landlord</p>
+        <p>Edit landlord</p>
         <a (click)="onClose()">
           <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
         </a>
@@ -21,7 +21,7 @@
             <span class="input-group-text" >First name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.firstname}}
+                   placeholder={{selectedClient.firstName}}
                    name="firstname"
                    ngModel
                    id="firstname"
@@ -35,7 +35,7 @@
             <span class="input-group-text" >Last name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.lastname}}
+                   placeholder={{selectedClient.lastName}}
                    name="lastname"
                    ngModel
                    id="lastname"

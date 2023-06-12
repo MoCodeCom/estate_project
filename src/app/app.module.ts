@@ -40,6 +40,9 @@ import { EditLandlordComponent } from './home/home/edit_data/edit-landlord/edit-
 import { EditTenantComponent } from './home/home/edit_data/edit-tenant/edit-tenant.component';
 import { EditPorpertyComponent } from './home/home/edit_data/edit-porperty/edit-porperty.component';
 import { EditOtherComponent } from './home/home/edit_data/edit-other/edit-other.component';
+import { ViewTenantComponent } from './home/home/view_data/view-tenant/view-tenant.component';
+import { ViewPropertyComponent } from './home/home/view_data/view-property/view-property.component';
+import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.component';
 
 
 @NgModule({
@@ -66,7 +69,10 @@ import { EditOtherComponent } from './home/home/edit_data/edit-other/edit-other.
     EditLandlordComponent,
     EditTenantComponent,
     EditPorpertyComponent,
-    EditOtherComponent
+    EditOtherComponent,
+    ViewTenantComponent,
+    ViewPropertyComponent,
+    ViewOtherComponent
   ],
   imports: [
     CommonModule,

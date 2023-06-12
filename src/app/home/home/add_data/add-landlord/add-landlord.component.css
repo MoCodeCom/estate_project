@@ -59,6 +59,15 @@ input.ng-invalid.ng-touched{
 }
 /* ------------ End input --------------*/
 
+/* ------------ titles -------*/
+
+
+.ContentDetails p{
+  font-size: 11px;
+  color: rgb(161, 161, 161);
+}
+/* ------------- End titles ---*/
+
 /*------------ buttons -----------------*/
 
 .input_block button{

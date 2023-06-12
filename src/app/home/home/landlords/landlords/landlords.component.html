@@ -107,10 +107,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of landlordTableList | filter: filterString:'firstname':'lastname':'postcode':'phone'">
+              <tr *ngFor="let i of landlordTableList | filter: filterString:'firstName':'lastName':'postcode':'phone'">
                 <td scope="row">{{i.id}}</td>
-                <td>{{i.firstname |uppercase}}</td>
-                <td>{{i.lastname |uppercase}}</td>
+                <td>{{i.firstName |uppercase}}</td>
+                <td>{{i.lastName |uppercase}}</td>
                 <td>{{i.postcode}}</td>
                 <td>{{i.phone}}</td>
                 <td>

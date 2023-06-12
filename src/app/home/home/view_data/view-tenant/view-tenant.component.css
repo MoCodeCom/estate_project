@@ -1,4 +1,4 @@
-/*-----------back page ------*/
+/* ----------- back page ------*/
 .dropback{
   position: fixed;
   top: 0px;
@@ -9,7 +9,9 @@
   z-index: 50;
 }
 /* ----------- End back page ------*/
-/*------------ Container ------*/
+
+/* ---------- container -------*/
+
 .container{
   position: fixed;
   top: 20vh;
@@ -21,15 +23,16 @@
   z-index: 100;
   background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-/*------------ End container ------*/
 
-/* ----------- title --------------*/
+}
+/*---------- End container -------*/
+
+/*---------- Title ----------*/
 
 .title_pg{
   height: 50px;
   width: 100%;
-  background-color: #ffc107;
+  background-color: green;
   border-radius: 10px 10px 0px 0px;
   color: white;
   padding: 10px;
@@ -40,31 +43,26 @@
 .title_pg a img{
   cursor: pointer;
 }
-/* ------------ End title ----------*/
+/* --------- End title ---------*/
 
-
-/* ------------ input --------------*/
-.input_block{
+/* --------- content -----------*/
+.content_view{
   width: 100%;
   padding: 10px;
 }
+/* ---------- End content -----------*/
 
-.input-group{
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
 
-input.ng-invalid.ng-touched{
-  border: 1px solid red;
-}
-/* ------------ End input --------------*/
-
-/*------------ buttons -----------------*/
-
-.input_block button{
+/*  ---------- button ------------*/
+.button{
   width: 100%;
-  margin-top: 10px;
+  margin: 10px ;
+  text-align: center;
 }
 
-/* ----------- End buttons --------------*/
+.button button{
+  width: 80%;
+}
+/*  ---------- End button ------------*/
+
 

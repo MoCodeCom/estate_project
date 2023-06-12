@@ -1,41 +1,32 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-warning-msg',
-  templateUrl: './warning-msg.component.html',
-  styleUrls: ['./warning-msg.component.css']
+  selector: 'app-view-tenant',
+  templateUrl: './view-tenant.component.html',
+  styleUrls: ['./view-tenant.component.css']
 })
-export class WarningMsgComponent {
+export class ViewTenantComponent {
   @Input() closeForm:boolean;
   @Input() selectedClient:any;
   @Output() close = new EventEmitter<void>();
-  //client data
   ClientDetails:any;
 
   constructor(
     private elementRef: ElementRef
-    ){
-
-    }
+    ){}
 
 
   ngOnInit(): void {
     this.onSelectedClient();
   }
 
-  onSelectedClient(){
-    this.ClientDetails = this.selectedClient;
-  }
-
-
-
-
-
-
   onClose(){
     this.ngOnDestroy();
   }
 
+  onSelectedClient(){
+    this.ClientDetails = this.selectedClient;
+  }
 
   ngOnDestroy(): void {
     this.elementRef.nativeElement.remove();

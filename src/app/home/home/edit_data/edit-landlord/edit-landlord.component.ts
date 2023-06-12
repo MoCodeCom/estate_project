@@ -10,8 +10,8 @@ export class EditLandlordComponent implements OnDestroy {
   constructor(
     private elementRef: ElementRef
     ){}
-    @Input() closeForm:boolean;
-    @Input() selectedClient:any;
+    @Input() closeForm:boolean; //form landlord page true/false
+    @Input() selectedClient:any; //from landlord page object data
     @Output() close = new EventEmitter<void>();
     //client data
     ClientDetails:any;

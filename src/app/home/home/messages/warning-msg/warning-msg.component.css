@@ -64,3 +64,9 @@
   margin-top: 10px;
 }
 /*  ---------- End button ------------*/
+
+/**/
+.content_delete div span{
+  text-transform: uppercase;
+}
+/**/

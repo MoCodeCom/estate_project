@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { demo_data } from '../../services/demo_data.service';
 
 @Component({
   selector: 'app-tenants',
@@ -7,31 +9,60 @@ import { Component } from '@angular/core';
 })
 export class TenantsComponent {
 
+  constructor(
+    private dataService:demo_data,
+    private router:Router,
+    private elementRef:ElementRef
+    ){}
+  ngOnInit(): void {
+    this.onLandlordTableList();
+    this.elementRef.nativeElement;
+  }
 
-
+  /* props*/
   lat =52.483397249897365;
   lng =-1.8842605687335423;
-  autocomplete:any;
-
-/*
-
-  initialMap(){
-    this.autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('autoMap'),
-      {
-        types:['establishment'],
-        componentRestrictions:{'country':['UK']},
-        fields:['place_id', 'geometry', 'name']
-      }
-    )
-  }
-*/
+  TenantTableList = [];
+  filterString:string;
+  addingTenantAllowed:boolean=false;
+  viewTenantAllowed:boolean=false;
+  deleteTenantAllowed:boolean=false;
+  editTenantAllowed:boolean=false;
+  selectdClient:any;
+  /* end props */
 
   onMarker(event){
-
     this.lat = event.coords.lat;
     this.lng = event.coords.leg;
+  }
 
+  onLandlordTableList(){
+    this.TenantTableList = this.dataService.tenantData();
+  }
 
+  add_tenant(){
+    this.addingTenantAllowed = true;
+  }
+
+  on_edit(data:any){
+    this.editTenantAllowed = true;
+    this.selectdClient = data;
+  }
+
+  on_view(data:any){
+    this.viewTenantAllowed = true;
+    this.selectdClient = data;
+  }
+
+  on_delete(data:any){
+    this.deleteTenantAllowed = true;
+    this.selectdClient = data;
+  }
+
+  onReloadPg(){
+    this.addingTenantAllowed = false;
+    this.viewTenantAllowed = false;
+    this.deleteTenantAllowed = false;
+    this.editTenantAllowed = false;
   }
 }

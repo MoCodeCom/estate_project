@@ -20,7 +20,7 @@ export class filerPipe implements PipeTransform{
     for(const item of value){
 
       if(item[propfirstName] === filterString.toLowerCase() ||
-         item[proplastName] === filterString.toLocaleLowerCase() ||
+         item[proplastName] === filterString.toLowerCase() ||
          item[propAddress]=== filterString ||
          item[propPhone]=== filterString){
         resultArray.push(item);
