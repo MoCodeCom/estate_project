@@ -1,9 +1,40 @@
 <div>
+  <!-- Add page-->
   <app-add-landlord
     *ngIf="addingLandlordAllowed"
     [closeForm]="addingLandlordAllowed"
     (close)="onReloadPg()"
     ></app-add-landlord>
+    <!--End add page -->
+
+    <!-- View page -->
+  <app-view-landlord
+     *ngIf="viewLandlordAllowed"
+     [closeForm]="viewLandlordAllowed"
+     [selectedClient]="selectdClient"
+     (close)="onReloadPg()"
+  ></app-view-landlord>
+  <!-- End view page-->
+
+  <!-- Delete page -->
+  <app-warning-msg
+      *ngIf="deleteLandlordAllowed"
+      [closeForm]="deleteLandlordAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-warning-msg>
+
+  <!-- End delete page -->
+
+  <!-- Edit page -->
+  <app-edit-landlord
+       *ngIf="editLandlordAllowed"
+       [closeForm]="editLandlordAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-edit-landlord>
+  <!-- End edit page -->
+
   <div class="container-sm">
     <div class="row">
       <!--content and add button-->
@@ -69,21 +100,36 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">First name</th>
+                <th scope="col">Last name</th>
                 <th scope="col">Postcode</th>
                 <th scope="col">Phone</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of landlordTableList | filter: filterString:'name':'address':'phone'">
+              <tr *ngFor="let i of landlordTableList | filter: filterString:'firstname':'lastname':'postcode':'phone'">
                 <td scope="row">{{i.id}}</td>
-                <td>{{i.name |uppercase}}</td>
-                <td>{{i.address}}</td>
+                <td>{{i.firstname |uppercase}}</td>
+                <td>{{i.lastname |uppercase}}</td>
+                <td>{{i.postcode}}</td>
                 <td>{{i.phone}}</td>
                 <td>
-                  <button type="button" class="btn btn-success" id="view_btn">View</button>
-                  <button type="button" class="btn btn-danger" id="delete_btn">Delete</button>
-                  <button type="button" class="btn btn-warning" id="edit_btn">Edit</button>
+                  <button type="button"
+                          class="btn btn-success"
+                          id="view_btn"
+                          (click)="on_view(i)"
+
+                          >View</button>
+                  <button type="button"
+                          class="btn btn-danger"
+                          id="delete_btn"
+                          (click)="on_delete(i)"
+                          >Delete</button>
+                  <button type="button"
+                          class="btn btn-warning"
+                          id="edit_btn"
+                          (click)="on_edit(i)"
+                          >Edit</button>
                 </td>
               </tr>
 

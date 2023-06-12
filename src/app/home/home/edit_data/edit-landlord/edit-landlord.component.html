@@ -21,7 +21,7 @@
             <span class="input-group-text" >First name</span>
             <input type="text"
                    class="form-control"
-                   placeholder="First name"
+                   placeholder={{selectedClient.firstname}}
                    name="firstname"
                    ngModel
                    id="firstname"
@@ -35,7 +35,7 @@
             <span class="input-group-text" >Last name</span>
             <input type="text"
                    class="form-control"
-                   placeholder="Last name"
+                   placeholder={{selectedClient.lastname}}
                    name="lastname"
                    ngModel
                    id="lastname"
@@ -49,7 +49,7 @@
             <span class="input-group-text">Address</span>
             <input type="text"
                    class="form-control"
-                   placeholder="Address"
+                   placeholder={{selectedClient.address}}
                    name="address"
                    ngModel
                    id="address"
@@ -63,7 +63,7 @@
             <span class="input-group-text">Postcode</span>
             <input type="text"
                    class="form-control"
-                   placeholder="Postcode"
+                   placeholder={{selectedClient.postcode}}
                    name="postcode"
                    ngModel
                    id="postcode"
@@ -77,7 +77,7 @@
             <span class="input-group-text" >@</span>
             <input type="email"
                    class="form-control"
-                   placeholder="Email"
+                   placeholder={{selectedClient.email}}
                    name="email"
                    ngModel
                    id="email"
@@ -89,7 +89,7 @@
             <span class="input-group-text" >Phone</span>
             <input type="text"
                    class="form-control"
-                   placeholder="Phone"
+                   placeholder={{selectedClient.phone}}
                    name="phone"
                    ngModel
                    id="phone"
@@ -113,7 +113,7 @@
             <span class="input-group-text" >Details</span>
             <textarea type="textarea"
                    class="form-control"
-                   placeholder="Other details"
+                   placeholder={{selectedClient.details}}
                    name="details"
                    ngModel
                    id="detals"
@@ -125,7 +125,7 @@
             class="btn btn-outline-success"
             [disabled]="!f.valid"
             [ngStyle]="{'color':f.valid?'':'gray'}"
-            >Submit</button>
+            >Update</button>
           <button
             type="button"
             class="btn btn-outline-danger"

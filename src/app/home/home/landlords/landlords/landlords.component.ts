@@ -21,11 +21,17 @@ export class LandlordsComponent implements OnInit{
 
   }
 
+  /* props*/
   lat =52.483397249897365;
   lng =-1.8842605687335423;
   landlordTableList = [];
   filterString:string;
   addingLandlordAllowed:boolean=false;
+  viewLandlordAllowed:boolean=false;
+  deleteLandlordAllowed:boolean=false;
+  editLandlordAllowed:boolean=false;
+  selectdClient:any;
+  /* end props */
 
   onMarker(event){
     this.lat = event.coords.lat;
@@ -37,12 +43,31 @@ export class LandlordsComponent implements OnInit{
   }
 
   add_landlord(){
-    //this.roter.navigateByUrl('landlords/addlandlord');
     this.addingLandlordAllowed = true;
+  }
+
+  on_edit(data:any){
+    this.editLandlordAllowed = true;
+    this.selectdClient = data;
+  }
+
+  on_view(data:any){
+    this.viewLandlordAllowed = true;
+    this.selectdClient = data;
+  }
+
+  on_delete(data:any){
+    this.deleteLandlordAllowed = true;
+    this.selectdClient = data;
   }
 
   onReloadPg(){
     this.addingLandlordAllowed = false;
+    this.viewLandlordAllowed = false;
+    this.deleteLandlordAllowed = false;
+    this.editLandlordAllowed = false;
   }
+
+
 
 }

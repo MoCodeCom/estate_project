@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AddLandlordComponent implements OnDestroy{
   constructor(
-    private router:Router,
     private elementRef: ElementRef
     ){}
   @Input() closeForm:boolean;

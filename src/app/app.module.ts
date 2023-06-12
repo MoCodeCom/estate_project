@@ -34,6 +34,12 @@ import { AddLandlordComponent } from './home/home/add_data/add-landlord/add-land
 import { AddTenantComponent } from './home/home/add_data/add-tenant/add-tenant.component';
 import { AddPropertyComponent } from './home/home/add_data/add-property/add-property.component';
 import { AddOtherComponent } from './home/home/add_data/add-other/add-other.component';
+import { ViewLandlordComponent } from './home/home/view_data/view-landlord/view-landlord.component';
+import { WarningMsgComponent } from './home/home/messages/warning-msg/warning-msg.component';
+import { EditLandlordComponent } from './home/home/edit_data/edit-landlord/edit-landlord.component';
+import { EditTenantComponent } from './home/home/edit_data/edit-tenant/edit-tenant.component';
+import { EditPorpertyComponent } from './home/home/edit_data/edit-porperty/edit-porperty.component';
+import { EditOtherComponent } from './home/home/edit_data/edit-other/edit-other.component';
 
 
 @NgModule({
@@ -54,7 +60,13 @@ import { AddOtherComponent } from './home/home/add_data/add-other/add-other.comp
     AddLandlordComponent,
     AddTenantComponent,
     AddPropertyComponent,
-    AddOtherComponent
+    AddOtherComponent,
+    ViewLandlordComponent,
+    WarningMsgComponent,
+    EditLandlordComponent,
+    EditTenantComponent,
+    EditPorpertyComponent,
+    EditOtherComponent
   ],
   imports: [
     CommonModule,

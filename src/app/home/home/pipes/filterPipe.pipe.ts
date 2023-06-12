@@ -7,7 +7,8 @@ export class filerPipe implements PipeTransform{
   transform(
     value: any,
     filterString:string = '',
-    propName:string,
+    propfirstName:string,
+    proplastName:string,
     propAddress:string,
     propPhone:string
     ):any {
@@ -18,7 +19,10 @@ export class filerPipe implements PipeTransform{
 
     for(const item of value){
 
-      if(item[propName] === filterString.toLowerCase() || item[propAddress]=== filterString || item[propPhone]=== filterString){
+      if(item[propfirstName] === filterString.toLowerCase() ||
+         item[proplastName] === filterString.toLocaleLowerCase() ||
+         item[propAddress]=== filterString ||
+         item[propPhone]=== filterString){
         resultArray.push(item);
       }
 

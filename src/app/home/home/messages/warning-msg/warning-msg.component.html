@@ -1,0 +1,40 @@
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- title of view page-->
+      <div class="title_pg">
+        <p>Delete Client</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title page -->
+
+
+      <!-- Delete warning page content -->
+      <div class="content_delete">
+        <div>
+          Are you sure to delete data for {{ClientDetails.firstname}} {{ClientDetails.lastname}}?
+        </div>
+      </div>
+      <!-- End delete warning page content -->
+
+
+      <!-- button -->
+      <div class="button">
+        <button type="button" class="btn btn-outline-success">Yes, Delete</button>
+        <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="onClose()">Close</button>
+      </div>
+
+      <!-- End button -->
+
+    </div>
+  </div>
+</div>
+
+
+
