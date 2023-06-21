@@ -1,1 +1,136 @@
-<p>money works!</p>
+<div>
+  <!-- Add page-->
+  <app-add-voucher
+    *ngIf="addingVoucherAllowed"
+    [closeForm]="addingVoucherAllowed"
+    (close)="onReloadPg()"
+    ></app-add-voucher>
+    <!--End add page -->
+
+    <!-- View page -->
+  <app-view-other
+     *ngIf="viewVoucherAllowed"
+     [closeForm]="viewVoucherAllowed"
+     [selectedClient]="selectdClient"
+     (close)="onReloadPg()"
+  ></app-view-other>
+  <!-- End view page-->
+
+  <!-- Delete page -->
+  <app-warning-msg
+      *ngIf="deleteVoucherAllowed"
+      [closeForm]="deleteVoucherAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-warning-msg>
+  <!-- End delete page -->
+
+  <!-- Edit page -->
+  <app-edit-other
+       *ngIf="editVoucherAllowed"
+       [closeForm]="editVoucherAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-edit-other>
+  <!-- End edit page -->
+
+  <div class="container-sm">
+    <div class="row">
+      <!--content and add button-->
+      <div class="col-6" id="card_add_content">
+        <div id="pg_content">
+
+            <div id="card">
+              <div class="card">
+                <div class="card-header">
+                  Money
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Money Details</h5>
+                  <p class="card-text">This page has data, operations and views about money.</p>
+                </div>
+              </div>
+            </div>
+            <button type="button"
+                    class="btn btn-primary"
+                    id="landlords_add_btn"
+                    (click)="add_landlord()">Add New Voucher</button>
+
+        </div>
+      </div>
+       <!--end content and add button-->
+
+
+
+
+      <div class="col-12" id="c3">
+        <!--search input-->
+        <div class="input-group mb-3" id="searchInput">
+          <button class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon1">Search</button>
+          <input type="text"
+                 class="form-control"
+                 placeholder="search ..."
+                 aria-label="Example text with button addon"
+                 aria-describedby="button-addon1"
+                 [(ngModel)]="filterString"
+                 >
+        </div>
+        <!--end search input-->
+
+        <!--table-->
+        <div id="table_scroll">
+          <table class="table table-success table-striped" id="pg_table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Date</th>
+                <th scope="col">About</th>
+                <th scope="col">Payment Type</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of VoucherTableList | filter: filterString:'name':'sector':'services':'phone'">
+                <td scope="row">{{i.id}}</td>
+                <td>{{i.name |uppercase}}</td>
+                <td>{{i.position |uppercase}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.about}}</td>
+                <td>{{i.paymentType}}</td>
+                <td>{{i.totalAmount | currancy}}</td>
+                <td>
+                  <button type="button"
+                          class="btn btn-success"
+                          id="view_btn"
+                          (click)="on_view(i)"
+
+                          >View</button>
+                  <button type="button"
+                          class="btn btn-danger"
+                          id="delete_btn"
+                          (click)="on_delete(i)"
+                          >Delete</button>
+                  <button type="button"
+                          class="btn btn-warning"
+                          id="edit_btn"
+                          (click)="on_edit(i)"
+                          >Edit</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+        <!--end table-->
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -17,6 +17,11 @@
             #f = "ngForm">
 
         <div class="input_block">
+          <div class="ContentDetails">
+            <p >Tenant details</p>
+          </div>
+
+
           <div class="input-group">
             <span class="input-group-text" >First name</span>
             <input type="text"
@@ -28,7 +33,9 @@
                    pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
+                   #firstname
                    >
+              <div *ngIf="!firstname.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
@@ -42,35 +49,41 @@
                    pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
+                   #lastname
                    >
+              <div *ngIf="!lastname.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
-            <span class="input-group-text">Address</span>
+            <span class="input-group-text">Previous Address</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.currentAddress}}
+                   placeholder={{selectedClient.previousAddress}}
                    name="address"
                    ngModel
                    id="address"
                    pattern="[A-Za-z0-9\w!@#$%?=*&.- ]{2,}"
                    maxlength="50"
                    required
+                   #preaddress
                    >
+              <div *ngIf="!preaddress.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
-            <span class="input-group-text">Postcode</span>
+            <span class="input-group-text">Previous Postcode</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.currentPostcode}}
+                   placeholder={{selectedClient.previousPostcode}}
                    name="postcode"
                    ngModel
                    id="postcode"
                    pattern="[A-Za-z0-9- ]{2,}"
                    maxlength="8"
                    required
+                   #prepostcode
                    >
+              <div *ngIf="!prepostcode.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
@@ -82,22 +95,70 @@
                    ngModel
                    id="email"
                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   #email
                    >
+              <div *ngIf="!email.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
             <span class="input-group-text" >Phone</span>
             <input type="text"
-                   class="form-control"
                    placeholder={{selectedClient.phone}}
+                   class="form-control"
                    name="phone"
                    ngModel
                    id="phone"
                    maxlength="11"
                    required
+                   #phone
                    >
+              <div *ngIf="!phone.value" class="required-warning"><p>*Required</p></div>
           </div>
 
+          <!--  ----------------------------porperty details --------------->
+          <div class="ContentDetails">
+            <p >Property rented details</p>
+          </div>
+
+          <div>
+            <div class="input-group">
+              <span class="input-group-text">Current Postcode</span>
+              <select class="comboBoxList"
+                      #curpostcode
+                      required
+                      name="curpostcode"
+                      ngModel
+                      id="curpostcode"
+                      (change)="onSelected(curpostcode.value)"
+
+              >
+                <option default>{{selectedClient.currentPostcode}}</option>
+                <option *ngFor="let i of propertyTableList"
+                        >{{i.Postcode}}
+                </option>
+              </select>
+              <div *ngIf="!curpostcode.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">Current Address</span>
+              <select class="comboBoxList"
+                            required
+                            name="curaddress"
+                            ngModel
+                            id="curaddress"
+                            #curaddress
+              >
+                <option *ngIf="showDefault" default>{{selectedClient.currentAddress}}</option>
+                <option *ngFor="let i of addressList">{{i}}</option>
+              </select>
+
+              <div *ngIf="!curaddress.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <!--------------------------- end property details ---------------------------->
+
+                    </div>
           <div class="input-group">
             <span class="input-group-text">Upload</span>
             <input type="file"
@@ -119,6 +180,14 @@
                    id="detals"
                    ></textarea>
           </div>
+
+
+
+
+
+
+          <!--  ------------------------End porperty details --------------->
+
 
           <button
             type="submit"

@@ -10,7 +10,9 @@ export class filerPipe implements PipeTransform{
     propfirstName:string,
     proplastName:string,
     propAddress:string,
-    propPhone:string
+    propPhone:string,
+    propOwner?:string,
+    propPostcode?:string
     ):any {
     if(value.length === 0 || filterString === '' ){
       return value;
@@ -21,8 +23,11 @@ export class filerPipe implements PipeTransform{
 
       if(item[propfirstName] === filterString.toLowerCase() ||
          item[proplastName] === filterString.toLowerCase() ||
-         item[propAddress]=== filterString ||
-         item[propPhone]=== filterString){
+         item[propPostcode] === filterString.toLowerCase() ||
+         item[propAddress]=== filterString||
+         item[propPhone]=== filterString||
+         item[propOwner]=== filterString.toLowerCase()
+         ){
         resultArray.push(item);
       }
 

@@ -1,16 +1,19 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { demo_data } from '../../services/demo_data.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-tenant',
-  templateUrl: './add-tenant.component.html',
-  styleUrls: ['./add-tenant.component.css']
+  selector: 'app-add-voucher',
+  templateUrl: './add-voucher.component.html',
+  styleUrls: ['./add-voucher.component.css']
 })
-export class AddTenantComponent implements OnDestroy, OnInit{
+export class AddVoucherComponent implements OnDestroy, OnInit{
   @Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
   propertyTableList = [];
+  landlordList = [];
+  tenantsList = [];
+  otherList = [];
   addressList = [];
 
 
@@ -19,10 +22,14 @@ export class AddTenantComponent implements OnDestroy, OnInit{
     private elementRef: ElementRef,
     private dataService: demo_data
     ){
-      this.propertyTableList = this.dataService.propertyData();
+
     }
 
   ngOnInit(): void {
+    this.propertyTableList = this.dataService.moneyData();
+    this.landlordList = this.dataService.landlordData();
+    this.tenantsList = this.dataService.tenantData();
+    this.otherList = this.dataService.tenantData();
     this.addressList;
   }
 

@@ -33,7 +33,9 @@
                    pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
+                   #firstname
                    >
+              <div *ngIf="!firstname.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
@@ -47,35 +49,41 @@
                    pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
+                   #lastname
                    >
+              <div *ngIf="!lastname.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
-            <span class="input-group-text">Address</span>
+            <span class="input-group-text">Previous Address</span>
             <input type="text"
                    class="form-control"
                    placeholder="Address"
-                   name="address"
+                   name="previousAddress"
                    ngModel
-                   id="address"
+                   id="previousAddress"
                    pattern="[A-Za-z0-9\w!@#$%?=*&.- ]{2,}"
                    maxlength="50"
                    required
+                   #preaddress
                    >
+              <div *ngIf="!preaddress.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
-            <span class="input-group-text">Postcode</span>
+            <span class="input-group-text">Previous Postcode</span>
             <input type="text"
                    class="form-control"
                    placeholder="Postcode"
-                   name="postcode"
+                   name="previousPostcode"
                    ngModel
-                   id="postcode"
+                   id="previousPostcode"
                    pattern="[A-Za-z0-9- ]{2,}"
                    maxlength="8"
                    required
+                   #prepostcode
                    >
+              <div *ngIf="!prepostcode.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
@@ -86,8 +94,11 @@
                    name="email"
                    ngModel
                    id="email"
+                   required
                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   #email
                    >
+              <div *ngIf="!email.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <div class="input-group">
@@ -100,24 +111,52 @@
                    id="phone"
                    maxlength="11"
                    required
+                   #phone
                    >
+              <div *ngIf="!phone.value" class="required-warning"><p>*Required</p></div>
           </div>
 
           <!--  ----------------------------porperty details --------------->
+          <hr>
           <div class="ContentDetails">
-            <p>Property rented details</p>
+            <p >Property rented details</p>
           </div>
 
           <div>
             <div class="input-group">
-              <span class="input-group-text">Owner</span>
-              <select >
-                <option value="option1" *ngFor="let i of landlordTableList">
-                  <span class="upperCaseName">{{i.firstName}} {{i.lastName}}</span>
+              <span class="input-group-text">Current Postcode</span>
+              <select class="comboBoxList"
+                      #postcode
+                      (change)="onSelected(postcode.value)"
+                      name="currentPostcode"
+                      id="currentPostcode"
+                      ngModel
+                      required
+                      #curpostcode
+              >
+                <option *ngFor="let i of propertyTableList"
+                        >{{i.Postcode}}
                 </option>
               </select>
+              <div *ngIf="!curpostcode.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text">Current Address</span>
+              <select class="comboBoxList"
+                      name="currentAddress"
+                      id="currentAddress"
+                      ngModel
+                      required
+                      #curaddress
+                >
+                <option default>Select postcode ... </option>
+                <option *ngFor="let i of addressList">{{i}}</option>
+              </select>
+              <div *ngIf="!curaddress.value" class="required-warning"><p>*Required</p></div>
             </div>
           </div>
+          <hr>
 
 
           <!--  ------------------------End porperty details --------------->

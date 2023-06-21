@@ -15,11 +15,23 @@
       <div class="content_view">
         <label class="input-group-text" >First name: {{ClientDetails.firstName}}</label><br>
         <label class="input-group-text" >Last name: {{ClientDetails.lastName}}</label><br>
-        <label class="input-group-text" >Email: {{ClientDetails.email}}</label><br>
-        <label class="input-group-text" >Postcode: {{ClientDetails.currentPostcode}}</label><br>
-        <label class="input-group-text" >Address: {{ClientDetails.currentAddress}}</label><br>
+        <label class="input-group-text" >Email: {{ClientDetails.email}}</label>
+        <hr>
+        <div class="ContentDetails">
+          <p >Property previously occupied details</p>
+        </div>
+        <label class="input-group-text" >Previous Postcode: {{ClientDetails.previousPostcode}}</label><br>
+        <label class="input-group-text" >Previous Address: {{ClientDetails.previousAddress}}</label>
+        <hr>
+        <div class="ContentDetails">
+          <p >Property rented details</p>
+        </div>
+        <label class="input-group-text" >Current Postcode: {{ClientDetails.currentPostcode}}</label><br>
+        <label class="input-group-text" >Current Address: {{ClientDetails.currentAddress}}</label>
+        <hr>
         <label class="input-group-text" >Phone: {{ClientDetails.phone}}</label><br>
-        <label class="input-group-text" >Details: {{ClientDetails.details}}</label><br>
+        <textarea  wrap="hard"
+                   readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
       </div>
       <!-- End view page content -->
 

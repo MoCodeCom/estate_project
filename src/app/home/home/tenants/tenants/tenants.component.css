@@ -35,15 +35,22 @@ agm-map{
 }
 
 #searchInput{
-
   margin: 10px auto auto auto;
 }
 
 #table_scroll{
   width: 100%;
-  max-height: 325px;
+  max-height: 250px;
   overflow: auto;
   display:inline-block;
+}
+
+thead{
+  font-size: 12px;
+}
+
+tbody{
+  font-size: 13px;
 }
 
 /* ------------- btns table -----------------*/

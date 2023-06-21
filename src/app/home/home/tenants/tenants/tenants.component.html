@@ -107,11 +107,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of TenantTableList | filter: filterString:'firstName':'lastName':'postcode':'phone'">
+              <tr *ngFor="let i of TenantTableList | filter: filterString:'firstName':'lastName':'currentPostcode':'phone'">
                 <td scope="row">{{i.id}}</td>
                 <td>{{i.firstName |uppercase}}</td>
                 <td>{{i.lastName |uppercase}}</td>
-                <td>{{i.currentPostcode}}</td>
+                <td>{{i.currentPostcode |uppercase}}</td>
                 <td>{{i.phone}}</td>
                 <td>
                   <button type="button"

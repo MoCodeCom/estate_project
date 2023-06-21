@@ -1,1 +1,190 @@
-<p>add-property works!</p>
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Title of add page -->
+      <div class="title_pg">
+        <p>Add Property</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title add page -->
+
+      <!-- Form add page -->
+      <form
+            (ngSubmit)="onSubmit(f)"
+            #f = "ngForm">
+        <div class="input_block">
+
+          <div class="ContentDetails">
+            <p>Property details</p>
+          </div>
+          <!-- Owner name input-->
+
+          <div class="input-group">
+            <span class="input-group-text">Property Owner</span>
+            <select class="comboBoxList"
+                    ngModel
+                    required
+                    id="propertyOwner"
+                    name="propertyOwner"
+                    #comboBoxList
+                    >
+            <option *ngFor="let land of landlordList">{{land.firstName}} {{land.lastName}}</option>
+            </select>
+            <div *ngIf="!comboBoxList.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!--End owner name input-->
+
+          <!-- Address input -->
+          <div class="input-group">
+            <span class="input-group-text">Address</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Address"
+                   name="address"
+                   ngModel
+                   id="address"
+                   pattern="[A-Za-z0-9- ]{2,}"
+                   maxlength="50"
+                   required
+                   #address
+                   >
+              <div *ngIf="!address.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!--End Address input -->
+
+          <!--City input -->
+          <div class="input-group">
+            <span class="input-group-text">City</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="City"
+                   name="city"
+                   ngModel
+                   id="city"
+                   pattern="[A-Za-z]{2,}"
+                   maxlength="50"
+                   required
+                   #city
+                   >
+              <div *ngIf="!city.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!--End city input -->
+
+          <!-- Postcode input -->
+          <div class="input-group">
+            <span class="input-group-text">Postcode</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Postcode"
+                   name="postcode"
+                   ngModel
+                   id="postcode"
+                   pattern="[A-Za-z0-9- ]{2,}"
+                   maxlength="8"
+                   required
+                   #postcode
+                   >
+              <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!-- End postcode input -->
+
+          <!--  ----------------------------financial details --------------->
+          <hr>
+          <!--Title  -->
+          <div class="ContentDetails">
+            <p >Financial property details</p>
+            <p >All details accourding to monthly baises</p>
+          </div>
+          <!--End title  -->
+
+          <!--Rent input -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Rent £</span>
+            <span class="input-group-text">0.00</span>
+            <input type="number"
+                   class="form-control"
+                   placeholder="Rent value"
+                   name="rent"
+                   id="rent"
+                   ngModel
+                   required
+                   aria-label="BPound amount (with dot and two decimal places)"
+                   #rent
+                   >
+              <div *ngIf="!rent.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!--End rent input -->
+
+          <!-- Service charge input-->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Basic service charge £</span>
+            <span class="input-group-text">0.00</span>
+            <input type="number"
+                   class="form-control"
+                   placeholder="Service charge value"
+                   name="serviceCharge"
+                   id="serviceCharge"
+                   ngModel
+                   required
+                   aria-label="BPound amount (with dot and two decimal places)"
+                   #charge
+                   >
+              <div *ngIf="!charge.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!-- End service charge input-->
+          <hr>
+
+
+          <!--  ------------------------End financial details --------------->
+
+          <!-- Upload input-->
+          <div class="input-group">
+            <span class="input-group-text">Upload</span>
+            <input type="file"
+                   class="form-control"
+                   placeholder="Choose file"
+                   name="upload"
+                   ngModel
+                   id="upload"
+                   >
+          </div>
+          <!-- End upload input-->
+
+          <!-- Details input-->
+          <div class="input-group">
+            <span class="input-group-text" >Details</span>
+            <textarea type="textarea"
+                   class="form-control"
+                   placeholder="Other details"
+                   name="details"
+                   ngModel
+                   id="detals"
+                   ></textarea>
+          </div>
+          <!-- Details input-->
+
+          <!-- Submit button-->
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!f.valid"
+            [ngStyle]="{'color':f.valid?'':'gray'}"
+            >Submit</button>
+            <!-- End submit button-->
+
+            <!-- Cancel button-->
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Cancel</button>
+            <!-- End cancel button-->
+        </div>
+      </form>
+
+      <!-- End form add page -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,218 @@
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Title of add page -->
+      <div class="title_pg">
+        <p>Add voucher</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title add page -->
+
+      <!-- Form add page -->
+      <form
+            (ngSubmit)="onSubmit(f)"
+            #f = "ngForm">
+
+        <div class="input_block">
+          <div class="ContentDetails">
+            <p >Voucher details</p>
+          </div>
+
+          <!-- Voucher detail -->
+
+          <div class="v-line-1">
+            <div class="input-group">
+              <span class="input-group-text">Position</span>
+              <select class="form-select" aria-label="Default select example"
+                      name="position"
+                      id="position"
+                      ngModel
+                      required
+                      #position
+              >
+                <option default></option>
+                <option>Landlord</option>
+                <option>Other</option>
+                <option>Tenant</option>
+              </select>
+              <div *ngIf="!position.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text" >Date</span>
+              <input type="date"
+                     class="form-control"
+                     placeholder="Date"
+                     name="date"
+                     ngModel
+                     id="date"
+                     required
+                     #date
+                     >
+                <div *ngIf="!date.value" class="required-warning"><p>*Required</p></div>
+            </div>
+          </div>
+
+          <div class="v-line-1">
+            <div class="input-group" *ngIf="position.value != ''">
+              <span class="input-group-text">Name</span>
+              <!-- Landlord name -->
+              <select class="form-select" aria-label="Default select example"
+                      name="name"
+                      id="name"
+                      ngModel
+                      required
+                      *ngIf="position.value === 'Landlord'"
+                      #nameLandlord
+              >
+
+                <option
+                        *ngFor="let iLandlord of landlordList"
+                        >{{iLandlord.firstName | uppercase}} {{iLandlord.lastName | uppercase}}</option>
+              </select>
+              <!-- End landlord name -->
+
+              <!-- Tenant name -->
+              <select class="form-select" aria-label="Default select example"
+                      name="name"
+                      id="name"
+                      ngModel
+                      required
+                      *ngIf="position.value === 'Tenant'"
+                      #nameTenant
+              >
+
+                <option
+                        *ngFor="let iTenant of tenantsList"
+                        >{{iTenant.firstName | uppercase}} {{iTenant.lastName | uppercase}}</option>
+              </select>
+
+              <!-- End tenant name-->
+
+              <!-- Other name -->
+              <select class="form-select" aria-label="Default select example"
+                      name="name"
+                      id="name"
+                      ngModel
+                      required
+                      *ngIf="position.value === 'Other'"
+                      #nameOther
+              >
+
+                <option
+                        *ngFor="let iOther of otherList"
+                        >{{iOther.firstName | uppercase}} {{iOther.lastName | uppercase}}</option>
+              </select>
+
+              <!-- End other name-->
+            </div>
+
+
+            <!-- Any name-->
+            <div class="input-group" *ngIf="position.value == ''">
+              <span class="input-group-text" >Name</span>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Name"
+                     name="name"
+                     ngModel
+                     id="name"
+                     required
+                     #name
+                     >
+                <div *ngIf="!name.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <!-- End any name-->
+
+            <!-- About input -->
+            <div class="input-group">
+              <span class="input-group-text">About</span>
+               <select class="form-select" aria-label="Default select example"
+                        name="about"
+                        id="about"
+                        ngModel
+                        required
+                        #about
+                >
+
+                  <option>Adjustment</option>
+                  <option>Receive Rent</option>
+                  <option>Pay Rent</option>
+                  <option>Services</option>
+                  <option >Other</option>
+                </select>
+              <div *ngIf="!about.value" class="required-warning"><p>*Required</p></div>
+            </div>
+            <!-- End about input -->
+          </div>
+
+          <div class="v-line-1">
+
+            <!-- Total input-->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Total amount £</span>
+            <span class="input-group-text">0.00</span>
+            <input type="number"
+                   class="form-control"
+                   placeholder="Total amount"
+                   name="totalAmount"
+                   id="totalAmount"
+                   ngModel
+                   required
+                   aria-label="BPound amount (with dot and two decimal places)"
+                   #totalAmount
+                   >
+              <div *ngIf="!totalAmount.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!-- End total input-->
+
+
+            <!-- Type of payment input -->
+            <div class="input-group">
+              <span class="input-group-text">Type of payment</span>
+               <select class="form-select" aria-label="Default select example"
+                        type="text"
+                        name="typeOfPayment"
+                        id="typeOfPayment"
+                        ngModel
+                        required
+                        #typeOfPayment
+                >
+                  <option>Cash</option>
+                  <option>Bank</option>
+                </select>
+              <div *ngIf="!typeOfPayment.value" class="required-warning"><p>*Required</p></div>
+            </div>
+            <!-- End type of payment input -->
+          </div>
+
+
+          <!-- End voucher detail -->
+
+
+          <!--  ------------------------End porperty details --------------->
+
+
+
+
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!f.valid"
+            [ngStyle]="{'color':f.valid?'':'gray'}"
+            >Submit</button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Cancel</button>
+        </div>
+      </form>
+
+      <!-- End form add page -->
+    </div>
+  </div>
+</div>

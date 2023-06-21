@@ -1,1 +1,49 @@
-<p>view-property works!</p>
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- title of view page-->
+      <div class="title_pg">
+        <p>View property</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title page -->
+
+      <!-- View page content -->
+      <div class="content_view">
+        <div class="ContentDetails">
+          <p >Property details</p>
+        </div>
+        <label class="input-group-text" >Owner: {{ClientDetails.Owner | uppercase}}</label><br>
+        <label class="input-group-text" >Address: {{ClientDetails.Address}}</label><br>
+        <label class="input-group-text" >City: {{ClientDetails.City}}</label><br>
+        <label class="input-group-text" >Postcode: {{ClientDetails.Postcode | uppercase}}</label>
+        <hr>
+        <div class="ContentDetails">
+          <p >Financial details</p>
+        </div>
+        <label class="input-group-text" >Rent: {{ClientDetails.Rent}}</label><br>
+        <label class="input-group-text" >Service Charge: {{ClientDetails.ServiceCharge}}</label>
+        <hr>
+        <div class="ContentDetails">
+          <p >details</p>
+        </div>
+        <textarea  wrap="hard"
+                   readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
+      </div>
+      <!-- End view page content -->
+
+      <!-- button -->
+      <div class="button">
+        <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Close</button>
+      </div>
+      <!-- End button -->
+
+    </div>
+  </div>
+</div>

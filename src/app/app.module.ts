@@ -30,6 +30,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './home/home/info/calendar/calendar.component';
 import { filerPipe } from './home/home/pipes/filterPipe.pipe';
+import { shortenPipe } from './home/home/pipes/shortenPipe.pipe';
 import { AddLandlordComponent } from './home/home/add_data/add-landlord/add-landlord.component';
 import { AddTenantComponent } from './home/home/add_data/add-tenant/add-tenant.component';
 import { AddPropertyComponent } from './home/home/add_data/add-property/add-property.component';
@@ -43,6 +44,8 @@ import { EditOtherComponent } from './home/home/edit_data/edit-other/edit-other.
 import { ViewTenantComponent } from './home/home/view_data/view-tenant/view-tenant.component';
 import { ViewPropertyComponent } from './home/home/view_data/view-property/view-property.component';
 import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.component';
+import { currancyPipe } from './home/home/pipes/currancyPipe.pipe';
+import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-voucher.component';
 
 
 @NgModule({
@@ -60,6 +63,8 @@ import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.
     NotFoundComponent,
     CalendarComponent,
     filerPipe,
+    shortenPipe,
+    currancyPipe,
     AddLandlordComponent,
     AddTenantComponent,
     AddPropertyComponent,
@@ -72,7 +77,8 @@ import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.
     EditOtherComponent,
     ViewTenantComponent,
     ViewPropertyComponent,
-    ViewOtherComponent
+    ViewOtherComponent,
+    AddVoucherComponent
   ],
   imports: [
     CommonModule,

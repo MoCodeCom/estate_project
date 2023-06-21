@@ -12,7 +12,7 @@
 /*------------ Container ------*/
 .container{
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 30vw;
   width: 40vw;
   height:fit-content;
@@ -68,3 +68,8 @@ input.ng-invalid.ng-touched{
 
 /* ----------- End buttons --------------*/
 
+.required-warning{
+  color: red;
+  font-size: 0.7rem;
+  padding-inline: 0.7vw;
+}

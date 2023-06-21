@@ -12,9 +12,9 @@
 /*------------ Container ------*/
 .container{
   position: fixed;
-  top: 10vh;
-  left: 30vw;
-  width: 40vw;
+  top: 5vh;
+  left: 17vw;
+  width: 70vw;
   height:fit-content;
   padding: 0px;
   border-radius:10px;
@@ -29,7 +29,7 @@
 .title_pg{
   height: 50px;
   width: 100%;
-  background-color: #ffc107;
+  background-color: green;
   border-radius: 10px 10px 0px 0px;
   color: white;
   padding: 10px;
@@ -52,12 +52,14 @@
 .input-group{
   margin-top: 7px;
   margin-bottom: 7px;
+  margin-left: 3vw;
 }
 
 input.ng-invalid.ng-touched{
   border: 1px solid red;
 }
 /* ------------ End input --------------*/
+
 /* ------------ titles -------*/
 
 
@@ -76,14 +78,18 @@ input.ng-invalid.ng-touched{
 
 /* ----------- End buttons --------------*/
 
+.upperCaseName{
+  text-transform:uppercase;
+}
+
 /* ------------ Combo box ---------------*/
 
-   .comboBoxList{
-    border: 1px solid #dadada;
-        font-size: 15px;
-        background-color: #ffffff;
-        border-radius: 5px;
-   }
+.comboBoxList{
+  border: 1px solid #dadada;
+      font-size: 15px;
+      background-color: #ffffff;
+      border-radius: 5px;
+ }
 
 /*------------- End combo box -----------*/
 
@@ -92,3 +98,10 @@ input.ng-invalid.ng-touched{
   font-size: 0.7rem;
   padding-inline: 0.7vw;
 }
+
+/* ----------- Voucher line 1 -----------*/
+.v-line-1{
+  display: flex;
+  justify-content: space-around;
+}
+/* ----------- End voucher line 1 ------ */

@@ -1,0 +1,74 @@
+/* ----------- back page ------*/
+.dropback{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba( 0, 0, 0, 0.75);
+  z-index: 50;
+}
+/* ----------- End back page ------*/
+
+/* ---------- container -------*/
+
+.container{
+  position: fixed;
+  top: 10vh;
+  left: 30vw;
+  width: 40vw;
+  height:fit-content;
+  padding: 0px;
+  border-radius:10px;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+}
+/*---------- End container -------*/
+
+/*---------- Title ----------*/
+
+.title_pg{
+  height: 50px;
+  width: 100%;
+  background-color: green;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content:space-between;
+}
+
+.title_pg a img{
+  cursor: pointer;
+}
+/* --------- End title ---------*/
+
+/* --------- content -----------*/
+.content_view{
+  width: 100%;
+  padding: 10px;
+}
+/* ---------- End content -----------*/
+
+
+/*  ---------- button ------------*/
+.button{
+  width: 100%;
+  margin: 10px ;
+  text-align: center;
+}
+
+.button button{
+  width: 80%;
+}
+/*  ---------- End button ------------*/
+
+
+/* ------------ textarea -------*/
+textarea{
+  width: 100%;
+
+}
+/* ------------ End textarea -------*/

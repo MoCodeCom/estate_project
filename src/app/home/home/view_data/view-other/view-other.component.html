@@ -1,1 +1,40 @@
-<p>view-other works!</p>
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- title of view page-->
+      <div class="title_pg">
+        <p>View landlord</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title page -->
+
+      <!-- View page content -->
+      <div class="content_view">
+        <label class="input-group-text" >Name: {{ClientDetails.name}}</label><br>
+        <label class="input-group-text" >Sector: {{ClientDetails.sector}}</label><br>
+        <label class="input-group-text" >Services: {{ClientDetails.services}}</label><br>
+        <label class="input-group-text" >Phone: {{ClientDetails.phone}}</label><br>
+        <label class="input-group-text" >Email: {{ClientDetails.email}}</label><br>
+        <label class="input-group-text" >Address: {{ClientDetails.address}}</label><br>
+        <label class="input-group-text" >Postcode: {{ClientDetails.postcode}}</label><br>
+        <hr>
+        <textarea  wrap="hard"
+                   readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
+      </div>
+      <!-- End view page content -->
+
+      <!-- button -->
+      <div class="button">
+        <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Close</button>
+      </div>
+      <!-- End button -->
+
+    </div>
+  </div>
+</div>

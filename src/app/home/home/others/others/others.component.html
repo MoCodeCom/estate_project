@@ -1,9 +1,45 @@
 <div>
+  <!-- Add page-->
+  <app-add-other
+    *ngIf="addingOtherAllowed"
+    [closeForm]="addingOtherAllowed"
+    (close)="onReloadPg()"
+    ></app-add-other>
+    <!--End add page -->
+
+    <!-- View page -->
+  <app-view-other
+     *ngIf="viewOtherAllowed"
+     [closeForm]="viewOtherAllowed"
+     [selectedClient]="selectdClient"
+     (close)="onReloadPg()"
+  ></app-view-other>
+  <!-- End view page-->
+
+  <!-- Delete page -->
+  <app-warning-msg
+      *ngIf="deleteOtherAllowed"
+      [closeForm]="deleteOtherAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-warning-msg>
+  <!-- End delete page -->
+
+  <!-- Edit page -->
+  <app-edit-other
+       *ngIf="editOtherAllowed"
+       [closeForm]="editOtherAllowed"
+      [selectedClient]="selectdClient"
+      (close)="onReloadPg()"
+  ></app-edit-other>
+  <!-- End edit page -->
+
   <div class="container-sm">
     <div class="row">
-      <div class="col-6">
+      <!--content and add button-->
+      <div class="col-6" id="card_add_content">
         <div id="pg_content">
-          <div>
+
             <div id="card">
               <div class="card">
                 <div class="card-header">
@@ -11,16 +47,20 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Others Details</h5>
-                  <p class="card-text">This page has data, operations and views about Others.</p>
+                  <p class="card-text">This page has data, operations and views about others.</p>
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-primary" id="landlords_add_btn">Add New Landlords</button>
-          </div>
+            <button type="button"
+                    class="btn btn-primary"
+                    id="landlords_add_btn"
+                    (click)="add_landlord()">Add New Other</button>
+
         </div>
       </div>
+       <!--end content and add button-->
       <div class="col-6 col-sm-6" id="map">
-
+        <!--map-->
         <agm-map [latitude]="lat"
                  [longitude]="lng"
                  (mapClick)="onMarker($event)"
@@ -31,42 +71,75 @@
 
                   ></agm-marker>
         </agm-map>
+        <!--end map-->
       </div>
+
+
+
       <div class="col-12" id="c3">
-        <table class="table table-success table-striped" id="pg_table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-              <th scope="col">Postcode</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>B12 0YL</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>B28 0AF</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-              <td>NE28</td>
-            </tr>
-          </tbody>
-        </table>
+        <!--search input-->
+        <div class="input-group mb-3" id="searchInput">
+          <button class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon1">Search</button>
+          <input type="text"
+                 class="form-control"
+                 placeholder="search ..."
+                 aria-label="Example text with button addon"
+                 aria-describedby="button-addon1"
+                 [(ngModel)]="filterString"
+                 >
+        </div>
+        <!--end search input-->
+
+        <!--table-->
+        <div id="table_scroll">
+          <table class="table table-success table-striped" id="pg_table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Sector</th>
+                <th scope="col">Services</th>
+                <th scope="col">Phone</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of otherTableList | filter: filterString:'name':'sector':'services':'phone'">
+                <td scope="row">{{i.id}}</td>
+                <td>{{i.name |uppercase}}</td>
+                <td>{{i.sector |uppercase}}</td>
+                <td>{{i.services | shorten:10}}</td>
+                <td>{{i.phone}}</td>
+                <td>
+                  <button type="button"
+                          class="btn btn-success"
+                          id="view_btn"
+                          (click)="on_view(i)"
+
+                          >View</button>
+                  <button type="button"
+                          class="btn btn-danger"
+                          id="delete_btn"
+                          (click)="on_delete(i)"
+                          >Delete</button>
+                  <button type="button"
+                          class="btn btn-warning"
+                          id="edit_btn"
+                          (click)="on_edit(i)"
+                          >Edit</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+        <!--end table-->
       </div>
+
     </div>
   </div>
 </div>

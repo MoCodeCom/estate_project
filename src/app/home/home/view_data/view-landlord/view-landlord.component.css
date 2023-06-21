@@ -14,7 +14,7 @@
 
 .container{
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 30vw;
   width: 40vw;
   height:fit-content;
@@ -66,3 +66,9 @@
 /*  ---------- End button ------------*/
 
 
+/* ------------ textarea -------*/
+textarea{
+  width: 100%;
+
+}
+/* ------------ End textarea -------*/

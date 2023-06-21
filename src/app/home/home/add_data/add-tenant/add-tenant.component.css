@@ -81,3 +81,19 @@ input.ng-invalid.ng-touched{
   text-transform:uppercase;
 }
 
+/* ------------ Combo box ---------------*/
+
+.comboBoxList{
+  border: 1px solid #dadada;
+      font-size: 15px;
+      background-color: #ffffff;
+      border-radius: 5px;
+ }
+
+/*------------- End combo box -----------*/
+
+.required-warning{
+  color: red;
+  font-size: 0.7rem;
+  padding-inline: 0.7vw;
+}

@@ -1,0 +1,74 @@
+/* ------------------ content --------------*/
+#pg_content{
+  height: 100%;
+}
+
+#card_add_content{
+  position: relative;
+}
+/*-------------------- map ------------------*/
+
+#map{
+  border: .5px solid rgb(0, 181, 42);
+  height: 400px;
+}
+
+agm-map{
+  height:400px;
+}
+
+/* ------------------- add button ------------*/
+
+#landlords_add_btn{
+
+  width: 100%;
+  margin-top: 30%;
+}
+
+/*--------------- table --------------------*/
+
+#pg_table{
+  width: 100%;
+  max-height: 300px;
+}
+
+#searchInput{
+  margin: 10px auto auto auto;
+}
+
+#table_scroll{
+  width: 100%;
+  max-height: 250px;
+  overflow: auto;
+  display:inline-block;
+}
+
+thead{
+  font-size: 12px;
+}
+
+tbody{
+  font-size: 13px;
+}
+
+/* ------------- btns table -----------------*/
+#view_btn{
+  margin: auto 1% auto 1%;
+  font-size: 11px;
+}
+
+#delete_btn{
+  margin: auto 1% auto 1%;
+  font-size: 11px;
+}
+
+#edit_btn{
+  margin: auto 1% auto 1%;
+  font-size: 11px;
+}
+
+/*-------------- responsive -----------------*/
+
+@media only screen and (max-width: 1500px) {
+
+}

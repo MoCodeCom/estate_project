@@ -1,1 +1,193 @@
-<p>edit-porperty works!</p>
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Title of add page -->
+      <div class="title_pg">
+        <p>Edit property</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title add page -->
+
+      <!-- Form add page -->
+      <form
+            (ngSubmit)="onSubmit(f)"
+            #f = "ngForm">
+
+        <div class="input_block">
+          <div class="ContentDetails">
+            <p >Property details</p>
+          </div>
+
+          <div>
+            <div class="input-group">
+              <span class="input-group-text">Owner</span>
+              <select class="comboBoxList"
+                      required
+                      name="owner"
+                      id="owner"
+                      ngModel
+                      #owner
+              >
+                <option *ngFor="let i of ownerList"
+                        >{{i.Owner | uppercase}}
+                </option>
+              </select>
+              <div *ngIf="!owner.value" class="required-warning"><p>*Required</p></div>
+            </div>
+          </div>
+
+
+          <div class="input-group">
+            <span class="input-group-text" >Address</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder={{selectedClient.Address}}
+                   name="address"
+                   ngModel
+                   id="address"
+                   pattern="[A-Za-z]{2,}"
+                   maxlength="20"
+                   required
+                   #address
+                   >
+              <div *ngIf="!address.value" class="required-warning"><p>*Required</p></div>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >City</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder={{selectedClient.City}}
+                   name="city"
+                   ngModel
+                   id="city"
+                   pattern="[A-Za-z]{2,}"
+                   maxlength="20"
+                   required
+                   #lastname
+                   >
+              <div *ngIf="!lastname.value" class="required-warning"><p>*Required</p></div>
+          </div>
+
+
+          <div class="input-group">
+            <span class="input-group-text" >Postcode</span>
+            <input type="text"
+                   class="form-control"
+                   placeholder={{selectedClient.Postcode}}
+                   name="postcode"
+                   ngModel
+                   id="postcode"
+                   maxlength="7"
+                   required
+                   #postcode
+                   >
+              <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
+          </div>
+
+
+
+          <!--  ----------------------------porperty details --------------->
+          <hr>
+          <!--Title  -->
+          <div class="ContentDetails">
+            <p >Financial property details</p>
+            <p >All details accourding to monthly baises</p>
+          </div>
+          <!--End title  -->
+
+          <!--Rent input -->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Rent £</span>
+            <span class="input-group-text">0.00</span>
+            <input type="number"
+                   class="form-control"
+                   placeholder={{selectedClient.Rent}}
+                   name="rent"
+                   id="rent"
+                   ngModel
+                   required
+                   aria-label="BPound amount (with dot and two decimal places)"
+                   #rent
+                   >
+              <div *ngIf="!rent.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!--End rent input -->
+
+          <!-- Service charge input-->
+          <div class="input-group mb-3">
+            <span class="input-group-text">Basic service charge £</span>
+            <span class="input-group-text">0.00</span>
+            <input type="number"
+                   class="form-control"
+                   placeholder={{selectedClient.ServiceCharge}}
+                   name="serviceCharge"
+                   id="serviceCharge"
+                   ngModel
+                   required
+                   aria-label="BPound amount (with dot and two decimal places)"
+                   #charge
+                   >
+              <div *ngIf="!charge.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!-- End service charge input-->
+          <hr>
+
+
+
+
+
+
+            <!--------------------------- end property details ---------------------------->
+
+
+          <div class="input-group">
+            <span class="input-group-text">Upload</span>
+            <input type="file"
+                   class="form-control"
+                   placeholder="Choose file"
+                   name="upload"
+                   ngModel
+                   id="upload"
+                   >
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text" >Details</span>
+            <textarea type="textarea"
+                   class="form-control"
+                   placeholder={{selectedClient.details}}
+                   name="details"
+                   ngModel
+                   id="detals"
+                   ></textarea>
+          </div>
+
+
+
+
+
+
+          <!--  ------------------------End porperty details --------------->
+
+
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            [disabled]="!f.valid"
+            [ngStyle]="{'color':f.valid?'':'gray'}"
+            >Update</button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onClose()">Cancel</button>
+        </div>
+      </form>
+
+      <!-- End form add page -->
+    </div>
+  </div>
+</div>

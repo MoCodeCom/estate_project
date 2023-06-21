@@ -12,7 +12,7 @@
 /*------------ Container ------*/
 .container{
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 30vw;
   width: 40vw;
   height:fit-content;
@@ -58,6 +58,14 @@ input.ng-invalid.ng-touched{
   border: 1px solid red;
 }
 /* ------------ End input --------------*/
+/* ------------ titles -------*/
+
+
+.ContentDetails p{
+  font-size: 11px;
+  color: rgb(161, 161, 161);
+}
+/* ------------- End titles ---*/
 
 /*------------ buttons -----------------*/
 
@@ -68,3 +76,19 @@ input.ng-invalid.ng-touched{
 
 /* ----------- End buttons --------------*/
 
+/* ------------ Combo box ---------------*/
+
+   .comboBoxList{
+    border: 1px solid #dadada;
+        font-size: 15px;
+        background-color: #ffffff;
+        border-radius: 5px;
+   }
+
+/*------------- End combo box -----------*/
+
+.required-warning{
+  color: red;
+  font-size: 0.7rem;
+  padding-inline: 0.7vw;
+}
