@@ -4,7 +4,7 @@
     <div class="col">
       <!-- title of view page-->
       <div class="title_pg">
-        <p>View Landlord</p>
+        <p>View Invoice</p>
         <a (click)="onClose()">
           <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
         </a>
@@ -13,9 +13,9 @@
 
       <!-- View page content -->
       <div class="content_view">
-        <label class="input-group-text" >First name: {{ClientDetails.firstName}}</label><br>
-        <label class="input-group-text" >Last name: {{ClientDetails.lastName}}</label><br>
-        <label class="input-group-text" >Email: {{ClientDetails.email}}</label><br>
+        <label class="input-group-text" >To: {{ClientDetails.name}}</label><br>
+        <label class="input-group-text" >About: {{ClientDetails.about}}</label><br>
+        <label class="input-group-text" >Date: {{ClientDetails.date}}</label><br>
         <label class="input-group-text" >Postcode: {{ClientDetails.postcode}}</label><br>
         <label class="input-group-text" >Address: {{ClientDetails.address}}</label><br>
         <label class="input-group-text" >Phone: {{ClientDetails.phone}}</label><br>

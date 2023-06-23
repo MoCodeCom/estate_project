@@ -58,6 +58,8 @@
 input.ng-invalid.ng-touched{
   border: 1px solid red;
 }
+
+
 /* ------------ End input --------------*/
 
 /* ------------ titles -------*/
@@ -71,9 +73,21 @@ input.ng-invalid.ng-touched{
 
 /*------------ buttons -----------------*/
 
+.btns{
+  width: 30vw;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btns:hover::after{
+
+}
+
 .input_block button{
   width: 100%;
   margin-top: 10px;
+
 }
 
 /* ----------- End buttons --------------*/
@@ -103,5 +117,39 @@ input.ng-invalid.ng-touched{
 .v-line-1{
   display: flex;
   justify-content: space-around;
+  padding:0rem;
+  height: 3 vh;
 }
+
+.v-line-1 .input-group{
+  align-items:center;
+}
+
+.input-group p{
+  align-items:center;
+}
+
+
 /* ----------- End voucher line 1 ------ */
+
+/* ----------- Add transaction button -------*/
+#addTransactionbtn{
+  width: 15vw;
+  margin-bottom: 1rem;
+}
+/* -------- End add transaction button ------*/
+
+/* -------- Transaction table ---------------*/
+.table{
+  font-size: 0.9rem;
+  width: 50vw;
+}
+
+#table_scroll{
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  display:flex;
+  justify-content: center;
+}
+/* -------- End transaction table -----------*/

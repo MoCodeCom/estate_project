@@ -8,12 +8,12 @@
     <!--End add page -->
 
     <!-- View page -->
-  <app-view-other
+  <app-view-money
      *ngIf="viewVoucherAllowed"
      [closeForm]="viewVoucherAllowed"
      [selectedClient]="selectdClient"
      (close)="onReloadPg()"
-  ></app-view-other>
+  ></app-view-money>
   <!-- End view page-->
 
   <!-- Delete page -->

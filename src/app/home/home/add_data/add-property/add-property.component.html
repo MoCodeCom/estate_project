@@ -31,7 +31,7 @@
                     name="propertyOwner"
                     #comboBoxList
                     >
-            <option *ngFor="let land of landlordList">{{land.firstName}} {{land.lastName}}</option>
+            <option *ngFor="let land of landlordList">{{land.firstName | uppercase}} {{land.lastName | uppercase}}</option>
             </select>
             <div *ngIf="!comboBoxList.value" class="required-warning"><p>*Required</p></div>
           </div>
@@ -166,21 +166,23 @@
           </div>
           <!-- Details input-->
 
-          <!-- Submit button-->
+          <div class="btns">
+            <!-- Submit button-->
           <button
-            type="submit"
-            class="btn btn-outline-success"
-            [disabled]="!f.valid"
-            [ngStyle]="{'color':f.valid?'':'gray'}"
-            >Submit</button>
-            <!-- End submit button-->
+          type="submit"
+          class="btn btn-outline-success"
+          [disabled]="!f.valid"
+          [ngStyle]="{'color':f.valid?'':'gray'}"
+          >Submit</button>
+          <!-- End submit button-->
 
-            <!-- Cancel button-->
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            (click)="onClose()">Cancel</button>
-            <!-- End cancel button-->
+          <!-- Cancel button-->
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          (click)="onClose()">Cancel</button>
+          <!-- End cancel button-->
+          </div>
         </div>
       </form>
 

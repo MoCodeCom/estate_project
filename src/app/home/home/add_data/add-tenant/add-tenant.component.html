@@ -184,7 +184,8 @@
                    ></textarea>
           </div>
 
-          <button
+          <div class="btns">
+            <button
             type="submit"
             class="btn btn-outline-success"
             [disabled]="!f.valid"
@@ -194,6 +195,7 @@
             type="button"
             class="btn btn-outline-danger"
             (click)="onClose()">Cancel</button>
+          </div>
         </div>
       </form>
 

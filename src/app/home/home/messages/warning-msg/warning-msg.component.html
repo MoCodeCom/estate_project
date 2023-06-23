@@ -14,8 +14,11 @@
 
       <!-- Delete warning page content -->
       <div class="content_delete">
-        <div>
+        <div *ngIf="ClientDetails.position == null">
           Are you sure to delete data for <span>{{ClientDetails.firstName}} {{ClientDetails.lastName}} {{ClientDetails.Owner}} {{ClientDetails.name}}</span>?
+        </div>
+        <div *ngIf="ClientDetails.position != null">
+          <p>Are you sure to delete invoce to <span>{{ClientDetails.name}}</span></p>
         </div>
       </div>
       <!-- End delete warning page content -->

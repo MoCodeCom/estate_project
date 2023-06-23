@@ -418,7 +418,15 @@ export class demo_data{
         name: "John Smith",
         about: "Rent Payment",
         totalAmount: 1200,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"1200"
+          }
+        ]
+
       },
       {
         id:"0002",
@@ -427,7 +435,14 @@ export class demo_data{
         name: "Sarah Johnson",
         about: "Rent Adjustment",
         totalAmount: 300,
-        paymentType: "Cash"
+        paymentType: "Cash",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"300"
+          }
+        ]
       },
       {
         id:"0003",
@@ -436,7 +451,24 @@ export class demo_data{
         name: "ABC Cleaning Services",
         about: "Cleaning Services",
         totalAmount: 150,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"80"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"220"
+          },
+          {
+            type:"pay",
+            description:"fix pumbler",
+            amount:"10"
+          }
+        ]
       },
       {
         id:"0004",
@@ -445,7 +477,14 @@ export class demo_data{
         name: "Emily Thompson",
         about: "Rent Payment",
         totalAmount: 800,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"800"
+          }
+        ]
       },
       {
         id:"0005",
@@ -454,7 +493,24 @@ export class demo_data{
         name: "Michael Anderson",
         about: "Rent Adjustment",
         totalAmount: 200,
-        paymentType: "Cash"
+        paymentType: "Cash",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"25"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"150"
+          },
+          {
+            type:"pay",
+            description:"fix pumbler",
+            amount:"75"
+          }
+        ]
       },
       {
         id:"0006",
@@ -463,7 +519,24 @@ export class demo_data{
         name: "Jessica Lee",
         about: "Services (Plumbing)",
         totalAmount: 500,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"750"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"30"
+          },
+          {
+            type:"pay",
+            description:"fix pumbler",
+            amount:"10.50"
+          }
+        ]
       },
       {
         id:"0007",
@@ -471,8 +544,25 @@ export class demo_data{
         date: "July 15, 2023",
         name: "XYZ Construction",
         about: "Repair Services",
-        totalAmount: 1000,
-        paymentType: "Cash"
+        totalAmount: 790.50,
+        paymentType: "Cash",
+        transaction:[
+          {
+            type:"pay",
+            description:"for rent",
+            amount:"750"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"30"
+          },
+          {
+            type:"pay",
+            description:"fix pumbler",
+            amount:"10.50"
+          }
+        ]
       },
       {
         id:"0008",
@@ -481,7 +571,14 @@ export class demo_data{
         name: "Thomas Collins",
         about: "Rent Adjustment",
         totalAmount: 150,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"pay",
+            description:"rent for property",
+            amount:"150"
+          }
+        ]
       },
       {
         id:"0009",
@@ -490,7 +587,24 @@ export class demo_data{
         name: "Olivia Martinez",
         about: "Rent Payment",
         totalAmount: 1500,
-        paymentType: "Bank Transfer"
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"750"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"30"
+          },
+          {
+            type:"pay",
+            description:"fix pumbler",
+            amount:"10.50"
+          }
+        ]
       },
       {
         id:"0010",
@@ -499,7 +613,19 @@ export class demo_data{
         name: "Green Thumb Landscapes",
         about: "Garden Maintenance Services",
         totalAmount: 200,
-        paymentType: "Cash"
+        paymentType: "Cash",
+        transaction:[
+          {
+            type:"receive",
+            description:"painting",
+            amount:"250"
+          },
+          {
+            type:"pay",
+            description:"adjustment",
+            amount:"50"
+          }
+        ]
       }
     ];
 

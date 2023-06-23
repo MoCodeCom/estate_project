@@ -25,7 +25,7 @@
 
           <div class="v-line-1">
             <div class="input-group">
-              <span class="input-group-text">Position</span>
+              <span class="input-group-text">To</span>
               <select class="form-select" aria-label="Default select example"
                       name="position"
                       id="position"
@@ -68,7 +68,6 @@
                       *ngIf="position.value === 'Landlord'"
                       #nameLandlord
               >
-
                 <option
                         *ngFor="let iLandlord of landlordList"
                         >{{iLandlord.firstName | uppercase}} {{iLandlord.lastName | uppercase}}</option>
@@ -153,28 +152,30 @@
           <div class="v-line-1">
 
             <!-- Total input-->
-          <div class="input-group mb-3">
-            <span class="input-group-text">Total amount £</span>
-            <span class="input-group-text">0.00</span>
-            <input type="number"
-                   class="form-control"
-                   placeholder="Total amount"
-                   name="totalAmount"
-                   id="totalAmount"
-                   ngModel
-                   required
-                   aria-label="BPound amount (with dot and two decimal places)"
-                   #totalAmount
-                   >
-              <div *ngIf="!totalAmount.value" class="required-warning"><p>*Required</p></div>
-          </div>
-          <!-- End total input-->
+            <div class="input-group">
+              <span class="input-group-text" >Total amount £</span>
+              <span class="input-group-text" >0.00</span>
+              <input type="number"
+                     class="form-control"
+                     aria-label="Default select example"
+                     name="totalAmount"
+                     id="totalAmount"
+                     ngModel
+                     #totalAmount
+                     readonly
+                     value={{totalAmountValue}}
+                     >
+            </div>
+
+
+            <!-- End total input-->
 
 
             <!-- Type of payment input -->
             <div class="input-group">
-              <span class="input-group-text">Type of payment</span>
-               <select class="form-select" aria-label="Default select example"
+              <span class="input-group-text" >Type of payment</span>
+               <select class="form-select"
+                        aria-label="Default select example"
                         type="text"
                         name="typeOfPayment"
                         id="typeOfPayment"
@@ -191,15 +192,104 @@
           </div>
 
 
-          <!-- End voucher detail -->
+
+          <!-- Transaction details -->
+          <div>
+            <hr>
+            <div class="ContentDetails">
+              <p >Transactions</p>
+            </div>
+            <form (ngSubmit)="onSubmitTransaction(t)"
+                  #t = "ngForm">
+                  <div class="btns">
+                    <!-- Add transaction -->
+                    <button class="btn btn-outline-primary"
+                    id="addTransactionbtn"
+                    (click)="onAddTransaction()"
+                    [disabled]="!t.valid"
+                    >Add transaction</button>
+                    <!-- End add transaction -->
+                </div>
+
+              <div class="v-line-1">
+              <div class="input-group">
+               <span class="input-group-text">Type</span>
+               <select class="form-select" aria-label="Default select example"
+                        name="typeOfTransaction"
+                        id="typeOfTransaction"
+                        ngModel
+                        required
+                        #typeOfTransaction
+                      >
+                  <option>Pay</option>
+                  <option>Receive</option>
+                </select>
+                <div *ngIf="!typeOfTransaction.value" class="required-warning"><p>*Required</p></div>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text">Description</span>
+                <input type="text"
+                class="form-control"
+                placeholder="Description"
+                name="description"
+                ngModel
+                id="description"
+                required
+                #description
+                >
+                <div *ngIf="!description.value" class="required-warning"><p>*Required</p></div>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text">Amount</span>
+                <input type="number"
+                class="form-control"
+                placeholder="Amount"
+                name="amount"
+                ngModel
+                id="amount"
+                required
+                #amount
+                >
+                <div *ngIf="!amount.value" class="required-warning"><p>*Required</p></div>
+              </div>
+            </div>
+            </form>
+
+          </div>
+          <!-- End transaction details -->
+
+
+        <!-- End voucher detail -->
+
+          <!-- Transaction table -->
+          <hr>
+          <div id="table_scroll" >
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Type of transaction</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Amount £</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr *ngFor="let i of transactionList">
+                  <td>{{i.typeOfTransaction}}</td>
+                  <td>{{i.description}}</td>
+                  <td>{{i.amount | currancy}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End transection table -->
 
 
           <!--  ------------------------End porperty details --------------->
-
-
-
-
-          <button
+          <hr>
+          <div class="btns">
+            <button
             type="submit"
             class="btn btn-outline-success"
             [disabled]="!f.valid"
@@ -209,9 +299,10 @@
             type="button"
             class="btn btn-outline-danger"
             (click)="onClose()">Cancel</button>
+          </div>
+
         </div>
       </form>
-
       <!-- End form add page -->
     </div>
   </div>

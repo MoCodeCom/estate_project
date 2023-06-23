@@ -4,8 +4,14 @@ import { Pipe, PipeTransform } from "@angular/core";
   name:'currancy'
 })
 export class currancyPipe implements PipeTransform{
-  transform( value: string):any {
-    return '£ '+value+'.00';
+  transform( value: any):any {
+    const formatter = new Intl.NumberFormat("en-GB",{
+      style: "currency",
+      currency:"GBP",
+      minimumFractionDigits: 2
+    });
+
+    return formatter.format(value);
   }
 
 }

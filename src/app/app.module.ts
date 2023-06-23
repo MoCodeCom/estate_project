@@ -46,6 +46,8 @@ import { ViewPropertyComponent } from './home/home/view_data/view-property/view-
 import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.component';
 import { currancyPipe } from './home/home/pipes/currancyPipe.pipe';
 import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-voucher.component';
+import { AddTransactionComponent } from './home/home/add_data/add-transaction/add-transaction.component';
+import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.component';
 
 
 @NgModule({
@@ -78,7 +80,9 @@ import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-vouche
     ViewTenantComponent,
     ViewPropertyComponent,
     ViewOtherComponent,
-    AddVoucherComponent
+    AddVoucherComponent,
+    AddTransactionComponent,
+    ViewMoneyComponent
   ],
   imports: [
     CommonModule,
