@@ -4,7 +4,7 @@
     <div class="col">
       <!-- Title of add page -->
       <div class="title_pg">
-        <p>Add voucher</p>
+        <p>Edit Invoice</p>
         <a (click)="onClose()">
           <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
         </a>
@@ -12,16 +12,15 @@
       <!-- End title add page -->
 
       <!-- Form add page -->
-      <form
+      <div class="input_block">
+        <form
             (ngSubmit)="onSubmit(f)"
             #f = "ngForm">
 
-        <div class="input_block">
-          <div class="ContentDetails">
-            <p >Voucher details</p>
-          </div>
 
-          <!-- Voucher detail -->
+          <div class="ContentDetails">
+            <p >Invoice details</p>
+          </div>
 
           <div class="v-line-1">
             <div class="input-group">
@@ -30,7 +29,6 @@
                       name="position"
                       id="position"
                       ngModel
-                      required
                       #position
               >
                 <option default></option>
@@ -38,7 +36,7 @@
                 <option>Other</option>
                 <option>Tenant</option>
               </select>
-              <div *ngIf="!position.value" class="required-warning"><p>*Required</p></div>
+
             </div>
 
             <div class="input-group">
@@ -192,8 +190,6 @@
           </div>
 
 
-
-          <!-- Transaction details -->
           <div>
             <hr>
             <div class="ContentDetails">
@@ -260,51 +256,23 @@
           </div>
           <!-- End transaction details -->
 
-
-        <!-- End voucher detail -->
-
-          <!-- Transaction table -->
-          <hr>
-          <div id="table_scroll" >
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Type of transaction</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Amount £</th>
-                </tr>
-              </thead>
-              <tbody class="table-group-divider">
-                <tr *ngFor="let i of transactionList">
-                  <td>{{i.typeOfTransaction}}</td>
-                  <td>{{i.description}}</td>
-                  <td>{{i.amount | currancy}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- End transection table -->
-
-
-          <!--  ------------------------End porperty details --------------->
-          <hr>
-          <div class="btns">
-            <button
+          <button
             type="submit"
             class="btn btn-outline-success"
             [disabled]="!f.valid"
             [ngStyle]="{'color':f.valid?'':'gray'}"
-            (click)="onSubmit(f)"
-            >Submit</button>
+            >Update</button>
           <button
             type="button"
             class="btn btn-outline-danger"
             (click)="onClose()">Cancel</button>
-          </div>
 
-        </div>
       </form>
+
       <!-- End form add page -->
+
+      </div>
+
     </div>
   </div>
 </div>

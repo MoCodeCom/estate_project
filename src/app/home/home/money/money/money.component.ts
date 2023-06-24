@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { demo_data } from '../../services/demo_data.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class MoneyComponent implements OnInit{
     private router:Router,
     private elementRef:ElementRef
     ){}
+
+  @Input() selectedClient:any; //from tenant page object data
   ngOnInit(): void {
     this.onLandlordTableList();
     this.elementRef.nativeElement;

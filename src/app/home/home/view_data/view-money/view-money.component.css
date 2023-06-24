@@ -14,7 +14,7 @@
 
 .container{
   position: fixed;
-  top: 10vh;
+  top: 0.9vh;
   left: 30vw;
   width: 40vw;
   height:fit-content;
@@ -23,6 +23,7 @@
   z-index: 100;
   background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  font-size: 0.8rem;
 
 }
 /*---------- End container -------*/
@@ -49,6 +50,20 @@
 .content_view{
   width: 100%;
   padding: 10px;
+
+}
+
+.content_view table,th{
+  width: 100%;
+  border: solid 1px black;
+}
+
+.content_view table td{
+  border-right: solid 1px black;
+}
+
+.totalTable{
+  border-top: solid 1px black ;
 }
 /* ---------- End content -----------*/
 
@@ -61,6 +76,7 @@
 }
 
 .button button{
+  margin-top: .70rem;
   width: 80%;
 }
 /*  ---------- End button ------------*/
@@ -72,3 +88,39 @@ textarea{
 
 }
 /* ------------ End textarea -------*/
+
+/* ------------ Invoice logo -------*/
+.invoice-logo{
+  margin: auto;
+  height: 4vh;
+  display: flex;
+  text-align:center;
+}
+.invoice-logo p{
+  margin: 0.1rem auto 0.1rem auto;
+
+}
+
+/* ------------ End invoice logo ---*/
+
+/* ------------ Invoice title ------*/
+.invoice-title p{
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* ------------ End invoice title ----*/
+
+/*------------- Invoice date and No --*/
+.invoice-title-info{
+  margin:auto .75rem;
+  display: flex;
+  justify-content:space-between;
+}
+/*------------- End invoice date and No --*/
+
+/* ----------- Address ----------*/
+.invoice-company-address{
+  margin:auto .75rem;
+}
+/* ----------- End address -----*/

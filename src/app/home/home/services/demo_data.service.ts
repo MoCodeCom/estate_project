@@ -413,6 +413,7 @@ export class demo_data{
     let voucherData = [
       {
         id:"0001",
+        invoice:"7023CP",
         position: "Tenant",
         date: "March 15, 2022",
         name: "John Smith",
@@ -430,6 +431,7 @@ export class demo_data{
       },
       {
         id:"0002",
+        invoice:"7033CP",
         position: "Landlord",
         date: "June 1, 2022",
         name: "Sarah Johnson",
@@ -446,6 +448,7 @@ export class demo_data{
       },
       {
         id:"0003",
+        invoice:"7055CP",
         position: "Others",
         date: "October 10, 2022",
         name: "ABC Cleaning Services",
@@ -472,6 +475,7 @@ export class demo_data{
       },
       {
         id:"0004",
+        invoice:"7003CP",
         position: "Tenant",
         date: "January 5, 2023",
         name: "Emily Thompson",
@@ -488,6 +492,7 @@ export class demo_data{
       },
       {
         id:"0005",
+        invoice:"5023CP",
         position: "Landlord",
         date: "February 20, 2023",
         name: "Michael Anderson",
@@ -514,6 +519,7 @@ export class demo_data{
       },
       {
         id:"0006",
+        invoice:"7084CP",
         position: "Tenant",
         date: "April 10, 2023",
         name: "Jessica Lee",
@@ -540,6 +546,7 @@ export class demo_data{
       },
       {
         id:"0007",
+        invoice:"7983CP",
         position: "Others",
         date: "July 15, 2023",
         name: "XYZ Construction",
@@ -566,6 +573,7 @@ export class demo_data{
       },
       {
         id:"0008",
+        invoice:"8723CP",
         position: "Landlord",
         date: "August 5, 2023",
         name: "Thomas Collins",
@@ -582,6 +590,7 @@ export class demo_data{
       },
       {
         id:"0009",
+        invoice:"7080CP",
         position: "Tenant",
         date: "November 1, 2023",
         name: "Olivia Martinez",
@@ -608,6 +617,7 @@ export class demo_data{
       },
       {
         id:"0010",
+        invoice:"7998CP",
         position: "Others",
         date: "December 20, 2023",
         name: "Green Thumb Landscapes",

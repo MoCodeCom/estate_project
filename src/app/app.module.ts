@@ -48,6 +48,7 @@ import { currancyPipe } from './home/home/pipes/currancyPipe.pipe';
 import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-voucher.component';
 import { AddTransactionComponent } from './home/home/add_data/add-transaction/add-transaction.component';
 import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.component';
+import { EditVoucherComponent } from './home/home/edit_data/edit-voucher/edit-voucher.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.
     ViewOtherComponent,
     AddVoucherComponent,
     AddTransactionComponent,
-    ViewMoneyComponent
+    ViewMoneyComponent,
+    EditVoucherComponent
   ],
   imports: [
     CommonModule,

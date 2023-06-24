@@ -10,10 +10,7 @@ import { NgForm } from '@angular/forms';
 export class AddVoucherComponent implements OnDestroy, OnInit{
   @Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
-  @ViewChild('name',{static:false}) clientName:ElementRef;
-  @ViewChild('nameLandlord',{static:false}) clientName1:ElementRef;
-  @ViewChild('nameTenant',{static:false}) clientName2:ElementRef;
-  @ViewChild('nameOther',{static:false}) clientName3:ElementRef;
+
 
   //transaction details
   @ViewChild('amount', {static:false}) transactionAmount:ElementRef;
@@ -68,9 +65,11 @@ export class AddVoucherComponent implements OnDestroy, OnInit{
   }
 
   onSubmit(form: NgForm){
+    this.generateInvoiceNo();
     console.log(form.value);
     console.log(this.transactionList);
     console.log(this.totalAmountValue);
+    console.log(this.invoiceNo);
     this.onClose();
   }
 
@@ -91,11 +90,6 @@ export class AddVoucherComponent implements OnDestroy, OnInit{
 
   generateInvoiceNo(){
     let yNo = new Date();
-    let nNo = this.clientName.nativeElement.value.slice(0,2)+
-              this.clientName1.nativeElement.value.slice(0,2)+
-              this.clientName2.nativeElement.value.slice(0,2)+
-              this.clientName3.nativeElement.value.slice(0,2);
-    let NoInvoice = yNo.getSeconds() * yNo.getMinutes() + yNo.getFullYear()+nNo+yNo.getFullYear();
-    console.log(NoInvoice);
+    this.invoiceNo = yNo.getSeconds() + yNo.getMinutes() + yNo.getFullYear()+yNo.getFullYear()+'CP';
   }
 }

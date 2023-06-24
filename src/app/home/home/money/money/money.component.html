@@ -26,12 +26,12 @@
   <!-- End delete page -->
 
   <!-- Edit page -->
-  <app-edit-other
+  <app-edit-voucher
        *ngIf="editVoucherAllowed"
        [closeForm]="editVoucherAllowed"
-      [selectedClient]="selectdClient"
+       [selectedClient]="selectdClient"
       (close)="onReloadPg()"
-  ></app-edit-other>
+  ></app-edit-voucher>
   <!-- End edit page -->
 
   <div class="container-sm">

@@ -11,22 +11,79 @@
       </div>
       <!-- End title page -->
 
-      <!-- View page content -->
-      <div class="content_view">
-        <label class="input-group-text" >To: {{ClientDetails.name}}</label><br>
-        <label class="input-group-text" >About: {{ClientDetails.about}}</label><br>
-        <label class="input-group-text" >Date: {{ClientDetails.date}}</label><br>
-        <label class="input-group-text" >Postcode: {{ClientDetails.postcode}}</label><br>
-        <label class="input-group-text" >Address: {{ClientDetails.address}}</label><br>
-        <label class="input-group-text" >Phone: {{ClientDetails.phone}}</label><br>
-        <hr>
-        <textarea  wrap="hard"
-                   readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
+
+
+      <div id="InvoicePrint">
+          <!-- View page content -->
+        <!--invoice title-->
+        <div class="invoice-logo">
+          <p>Company Name</p>
+        </div>
+        <div class="invoice-title">
+          <p>INVOICE</p>
+        </div>
+       <!-- End invoice title --->
+
+        <!-- Invoice date and No --->
+        <div class="invoice-title-info">
+          <p>Date: {{ClientDetails.date |date}}</p>
+          <p>Invoice No: {{ClientDetails.invoice}}</p>
+        </div>
+        <!-- End invoice date and No --->
+
+        <!-- Invoice to -->
+        <div class="invoice-title-info">
+          <p>To : {{ClientDetails.name}}</p>
+          <p>{{ClientDetails.position}}</p>
+
+        </div>
+        <!-- End invoice to -->
+
+        <!-- Company details -->
+
+        <div class="invoice-company-address">
+          <hr>
+          <span>From: Company Name</span><br>
+          <span>Address: Street Name,</span><br>
+          <span>Postcode: B00 0XX</span>
+        </div>
+        <!-- End company details-->
+
+        <div class="content_view">
+          <table>
+            <tr>
+              <th style="width: 10%;">Item</th>
+              <th>Description</th>
+              <th style="width: 30%;">£Amount</th>
+            </tr>
+            <tr *ngFor="let i of ClientDetails.transaction, let count=index">
+              <td>{{count+1}}</td>
+              <td>{{i.description}}</td>
+              <td *ngIf="i.type == 'pay'">( {{i.amount}} )</td>
+              <td *ngIf="i.type == 'receive'">{{i.amount}}</td>
+            </tr>
+            <tr class="totalTable">
+              <td></td>
+              <td>Total amount</td>
+              <td>{{totalAmount | currancy}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="content_view">
+          <p>Description: {{ClientDetails.about}}</p>
+        </div>
       </div>
       <!-- End view page content -->
 
       <!-- button -->
+
       <div class="button">
+        <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="onPrint('InvoicePrint')"
+        >Print</button>
         <button
             type="button"
             class="btn btn-outline-danger"
