@@ -1,0 +1,32 @@
+.report-pg{
+  display: flex;
+  justify-content: space-between;
+  width: 200%;
+
+}
+
+.reports-list{
+  display: block;
+  width:100%;
+  text-align: center;
+}
+
+.reports-list button{
+  margin: .8rem .2rem .8rem  .2rem;
+  width: 100%;
+}
+
+.report-detail{
+  width: 100%;
+
+}
+
+.content-detail{
+  margin: 4rem 4rem 3rem 4rem;
+}
+
+.content-detail h5{
+  text-decoration: underline;
+}
+
+

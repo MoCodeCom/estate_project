@@ -1,1 +1,65 @@
-<p>reports works!</p>
+<div class="container-sm">
+  <div class="row">
+    <!--content and add button-->
+    <div class="col-6" id="card_add_content">
+      <div id="card">
+        <!-- Title card -->
+        <div class="card">
+          <div class="card-header">
+            Reports
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Reports Details</h5>
+            <p class="card-text">This page has number of reports</p>
+          </div>
+        </div>
+
+        <!-- End title card -->
+        <div class="report-pg">
+          <div class="reports-list">
+            <hr>
+            <button class="btn btn-outline-success"
+              (mouseover)="overFinanceLandlord()"
+              (mouseleave)="leaveFinanceLandlord()"
+            >Finance Report - landlord</button>
+            <button class="btn btn-outline-success"
+              (mouseover)="overLandlordList()"
+              (mouseleave)="leaveLandlordList()"
+            >Landlord List</button>
+            <hr>
+            <button class="btn btn-outline-success"
+              (mouseover)="overFinanceTenant()"
+              (mouseleave)="leaveFinanceTenant()"
+            >Finance Report - tenant</button>
+            <button class="btn btn-outline-success"
+              (mouseover)="overTenantList()"
+              (mouseleave)="leaveTenantList()"
+            >Tenant List</button>
+            <hr>
+            <button class="btn btn-outline-success"
+
+            >Property Status</button>
+            <button class="btn btn-outline-success">Property List</button>
+            <hr>
+            <button class="btn btn-outline-success">Income Statement</button>
+            <button class="btn btn-outline-success">Other Expenses</button>
+          </div>
+
+          <div class="report-detail">
+            <div class="content-detail">
+              <h5>Report About: </h5>
+              <p *ngIf="landlordListDetail">A report display presenting a list of landlords organized by either name, date, or property postcode. </p>
+              <p *ngIf="landlordFinanceDetail">A report showcasing financial transactions with landlords, organized based on their name, date, or property postcode. </p>
+              <p *ngIf="tenantListDetail">A report display presenting a list of tenants organized by either name, date, or property postcode. </p>
+              <p *ngIf="tenantFinanceDetail">A report showcasing financial transactions with tenants, organized based on their name, date, or property postcode. </p>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

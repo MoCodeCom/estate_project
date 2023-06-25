@@ -49,6 +49,7 @@ import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-vouche
 import { AddTransactionComponent } from './home/home/add_data/add-transaction/add-transaction.component';
 import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.component';
 import { EditVoucherComponent } from './home/home/edit_data/edit-voucher/edit-voucher.component';
+import { HoverEleDirective } from './home/home/dirctive/hover-ele.directive';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { EditVoucherComponent } from './home/home/edit_data/edit-voucher/edit-vo
     AddVoucherComponent,
     AddTransactionComponent,
     ViewMoneyComponent,
-    EditVoucherComponent
+    EditVoucherComponent,
+    HoverEleDirective
   ],
   imports: [
     CommonModule,
