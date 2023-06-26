@@ -13,7 +13,10 @@ export class ReportsComponent implements
   landlordFinanceDetail:boolean = false;
   tenantListDetail:boolean = false;
   tenantFinanceDetail:boolean = false;
-
+  propertyListDetail:boolean = false;
+  propertyDetail:boolean = false;
+  incomeStatement:boolean = false;
+  expensesStatement:boolean = false;
 
 
 
@@ -51,6 +54,39 @@ export class ReportsComponent implements
 
   overTenantList(){
     this.tenantFinanceDetail = true;
+  }
+
+
+  leavePropertyStatus(){
+    this.propertyDetail = false;
+  }
+
+  overPropertyStatus(){
+    this.propertyDetail = true;
+  }
+
+  leavePropertyList(){
+    this.propertyListDetail = false;
+  }
+
+  overPropertyList(){
+    this.propertyListDetail = true;
+  }
+
+  leaveIncomeStatement(){
+    this.incomeStatement = false;
+  }
+
+  overIncomeStatement(){
+    this.incomeStatement = true;
+  }
+
+  leaveExpensesStatement(){
+    this.expensesStatement = false;
+  }
+
+  overExpensesStatement(){
+    this.expensesStatement = true;
   }
 
 

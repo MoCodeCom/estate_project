@@ -60,22 +60,13 @@
         </div>
       </div>
        <!--end content and add button-->
-      <div class="col-6 col-sm-6" id="map">
-        <!--map-->
-        <agm-map [latitude]="lat"
-                 [longitude]="lng"
-                 (mapClick)="onMarker($event)"
-                 id="autoMap">
-          <agm-marker
-                  [latitude]="lat"
-                  [longitude]="lng"
 
-                  ></agm-marker>
-        </agm-map>
-        <!--end map-->
+       <!--map-->
+      <div class="col-6 col-sm-6" id="map" markers="markers" center="osloCenter">
       </div>
 
 
+      <!--end map-->
 
       <div class="col-12" id="c3">
         <!--search input-->
@@ -88,9 +79,9 @@
                  placeholder="search ..."
                  aria-label="Example text with button addon"
                  aria-describedby="button-addon1"
-                 [(ngModel)]="filterString"
-                 >
+                 [(ngModel)]="filterString">
         </div>
+        <img src="assets/images/locationIcon.gif">
         <!--end search input-->
 
         <!--table-->

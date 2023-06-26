@@ -71,6 +71,14 @@ tbody{
 
 /*-------------- responsive -----------------*/
 
+/*------------- Map test--------------*/
+
+#map{
+  height: 300px;
+  z-index: 0;
+}
+/*----------- End map test --------*/
+
 @media only screen and (max-width: 1500px) {
 
 }

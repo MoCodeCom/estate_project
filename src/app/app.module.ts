@@ -51,6 +51,10 @@ import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.
 import { EditVoucherComponent } from './home/home/edit_data/edit-voucher/edit-voucher.component';
 import { HoverEleDirective } from './home/home/dirctive/hover-ele.directive';
 
+/*leaflet map*/
+
+
+
 
 @NgModule({
   declarations: [
@@ -97,10 +101,12 @@ import { HoverEleDirective } from './home/home/dirctive/hover-ele.directive';
     appRouteModule,
     RouterModule,
     BrowserAnimationsModule,
+
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
+
     AgmCoreModule.forRoot({apiKey:'AIzaSyBWDl4DyscEGeARJgm1MQmaxCj0WwB_cYM'})
   ],
   providers: [],
