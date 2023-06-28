@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { demo_data } from '../../services/demo_data.service';
+import { maping } from '../../services/maping.service';
 
 @Component({
   selector: 'app-add-tenant',
@@ -10,6 +11,8 @@ import { demo_data } from '../../services/demo_data.service';
 export class AddTenantComponent implements OnDestroy, OnInit{
   @Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
+  @ViewChild('prepostcode') postcodeRef:ElementRef;
+  postcodeNotExist:boolean = false;
   propertyTableList = [];
   addressList = [];
 
@@ -17,7 +20,8 @@ export class AddTenantComponent implements OnDestroy, OnInit{
 
   constructor(
     private elementRef: ElementRef,
-    private dataService: demo_data
+    private dataService: demo_data,
+    private mapingService: maping
     ){
       this.propertyTableList = this.dataService.propertyData();
     }
@@ -44,8 +48,18 @@ export class AddTenantComponent implements OnDestroy, OnInit{
     this.close.emit()
   }
 
-  onSubmit(form: NgForm){
-    console.log(form.value);
-    this.onClose();
+  async onSubmit(form: NgForm){
+    this.postcodeNotExist= false;
+    let boolPostcode = await this.mapingService.checkPostcode(this.postcodeRef.nativeElement.value);
+
+    // to check postcode if it is undefind not accepted
+    if(boolPostcode === undefined){
+      console.log('this is undefined value');
+      this.postcodeRef.nativeElement.value = '';
+      this.postcodeNotExist = true;
+    }else{
+      console.log(boolPostcode);
+      this.onClose();
   }
+ }
 }

@@ -85,6 +85,8 @@
                    >
               <div *ngIf="!prepostcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
+
 
           <div class="input-group">
             <span class="input-group-text" >@</span>
@@ -140,6 +142,7 @@
               </select>
               <div *ngIf="!curpostcode.value" class="required-warning"><p>*Required</p></div>
             </div>
+
 
             <div class="input-group">
               <span class="input-group-text">Current Address</span>

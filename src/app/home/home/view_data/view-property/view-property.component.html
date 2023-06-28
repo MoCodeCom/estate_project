@@ -12,26 +12,35 @@
       <!-- End title page -->
 
       <!-- View page content -->
-      <div class="content_view">
-        <div class="ContentDetails">
-          <p >Property details</p>
+
+      <div class="content_data">
+        <div class="content_view">
+          <div class="ContentDetails">
+            <p >Property details</p>
+          </div>
+          <label class="input-group-text" >Owner: {{ClientDetails.Owner | uppercase}}</label><br>
+          <label class="input-group-text" >Address: {{ClientDetails.Address}}</label><br>
+          <label class="input-group-text" >City: {{ClientDetails.City}}</label><br>
+          <label class="input-group-text" >Postcode: {{ClientDetails.Postcode | uppercase}}</label>
+          <hr>
+          <div class="ContentDetails">
+            <p >Financial details</p>
+          </div>
+          <label class="input-group-text" >Rent: {{ClientDetails.Rent}}</label><br>
+          <label class="input-group-text" >Service Charge: {{ClientDetails.ServiceCharge}}</label>
+          <hr>
+          <div class="ContentDetails">
+            <p >details</p>
+          </div>
+          <textarea  wrap="hard"
+                     readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
         </div>
-        <label class="input-group-text" >Owner: {{ClientDetails.Owner | uppercase}}</label><br>
-        <label class="input-group-text" >Address: {{ClientDetails.Address}}</label><br>
-        <label class="input-group-text" >City: {{ClientDetails.City}}</label><br>
-        <label class="input-group-text" >Postcode: {{ClientDetails.Postcode | uppercase}}</label>
-        <hr>
-        <div class="ContentDetails">
-          <p >Financial details</p>
+        <div class="content_map">
+          <!--map-->
+          <div class="col-6 col-sm-6" id="map" markers="markers" center="osloCenter">
+          </div>
+          <!--end map-->
         </div>
-        <label class="input-group-text" >Rent: {{ClientDetails.Rent}}</label><br>
-        <label class="input-group-text" >Service Charge: {{ClientDetails.ServiceCharge}}</label>
-        <hr>
-        <div class="ContentDetails">
-          <p >details</p>
-        </div>
-        <textarea  wrap="hard"
-                   readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
       </div>
       <!-- End view page content -->
 

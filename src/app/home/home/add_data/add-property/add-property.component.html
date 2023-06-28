@@ -75,6 +75,7 @@
 
           <!-- Postcode input -->
           <div class="input-group">
+
             <span class="input-group-text">Postcode</span>
             <input type="text"
                    class="form-control"
@@ -89,6 +90,7 @@
                    >
               <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
           <!-- End postcode input -->
 
           <!--  ----------------------------financial details --------------->
@@ -173,6 +175,8 @@
           class="btn btn-outline-success"
           [disabled]="!f.valid"
           [ngStyle]="{'color':f.valid?'':'gray'}"
+          id="submitBtn"
+          #submitBtn
           >Submit</button>
           <!-- End submit button-->
 

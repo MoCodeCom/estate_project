@@ -15,8 +15,8 @@
 .container{
   position: fixed;
   top: 10vh;
-  left: 30vw;
-  width: 40vw;
+  left: 15vw;
+  width: 70vw;
   height:fit-content;
   padding: 0px;
   border-radius:10px;
@@ -79,5 +79,20 @@ textarea{
 
 }
 /* ------------ End textarea -------*/
+
+/* ------------- content_1 ------------------*/
+.content_data{
+  display: flex;
+}
+/* ------------- End content_1 --------------*/
+/*------------- Map test--------------*/
+
+#map{
+  border: .5px solid rgb(0, 181, 42);
+  width: 35vw;
+  height: 50vh;
+  z-index: 0;
+}
+/*----------- End map test --------*/
 
 

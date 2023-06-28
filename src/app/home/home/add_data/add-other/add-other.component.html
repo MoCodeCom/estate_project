@@ -132,6 +132,8 @@
                    >
               <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
+
 
 
           <div class="input-group">
