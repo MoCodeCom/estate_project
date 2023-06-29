@@ -9,6 +9,7 @@ import { AfterViewChecked, Component, OnInit } from '@angular/core';
 export class ReportsComponent implements
   OnInit{
   constructor(){}
+  /* ------- Description report properties ----------------*/
   landlordListDetail:boolean = false;
   landlordFinanceDetail:boolean = false;
   tenantListDetail:boolean = false;
@@ -17,12 +18,20 @@ export class ReportsComponent implements
   propertyDetail:boolean = false;
   incomeStatement:boolean = false;
   expensesStatement:boolean = false;
+  /* ------- End description reprot properties ------------*/
+
+  /* ------- Allowing show pages ----------------------*/
+  frlandlordAllow:boolean = false;
+
+  /* ------- End allowing show pages ----------------------*/
 
 
 
   ngOnInit(): void {
 
   }
+
+  /* ----- hover btns report ------*/
 
   leaveLandlordList(){
     this.landlordListDetail = false;
@@ -56,7 +65,6 @@ export class ReportsComponent implements
     this.tenantFinanceDetail = true;
   }
 
-
   leavePropertyStatus(){
     this.propertyDetail = false;
   }
@@ -87,6 +95,16 @@ export class ReportsComponent implements
 
   overExpensesStatement(){
     this.expensesStatement = true;
+  }
+
+  /* ----------End hover btns report -------*/
+
+  openFrlandlord(){
+    this.frlandlordAllow = true;
+  }
+
+  onReloadPg(){
+    this.frlandlordAllow = false;
   }
 
 

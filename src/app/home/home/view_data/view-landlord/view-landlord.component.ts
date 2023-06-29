@@ -6,7 +6,7 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output }
   styleUrls: ['./view-landlord.component.css']
 })
 export class ViewLandlordComponent implements OnInit, OnDestroy{
-  @Input() closeForm:boolean;
+  //@Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
   @Input() selectedClient:any;
   ClientDetails:any;

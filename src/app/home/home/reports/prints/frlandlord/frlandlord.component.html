@@ -1,0 +1,148 @@
+<div>
+  <div class="dropback" (click)="onClose()"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- title of view page-->
+        <div class="title_pg">
+          <p>FINANCIAL REPORT FOR LANDLORD</p>
+          <a (click)="onClose()">
+            <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+          </a>
+        </div>
+        <!-- End title page -->
+
+        <div id="ReportPrint">
+          <!-- View page content -->
+
+         <!-- Filter report ------->
+
+         <div class="filter">
+          <div class="v-line-1">
+            <!-- date-->
+            <div class="input-group">
+              <span class="input-group-text" >From Date</span>
+              <input type="date"
+                     class="form-control"
+                     placeholder="Date"
+                     name="fromDate"
+                     [(ngModel)]="fromDATE"
+                     id="fromDate"
+                     required
+                     #fromDate
+                     [disabled]="fromDATE"
+                     >
+                     <div *ngIf="!fromDate.value" class="required-warning"><p>*Required</p></div>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-text" >To Date</span>
+              <input type="date"
+                     class="form-control"
+                     placeholder="Date"
+                     name="toDate"
+                     [(ngModel)]="toDATE"
+                     id="toDate"
+                     min={{fromDATE}}
+                     required
+                     #toDate
+                     [disabled]="!fromDATE"
+                     >
+                     <div *ngIf="!toDate.value" class="required-warning"><p>*Required</p></div>
+            </div>
+            <!--End date-->
+         </div>
+
+
+         <div class="v-line-1">
+          <!-- Landlord name -->
+          <div class="input-group">
+            <span class="input-group-text">Landlord name</span>
+            <select class="form-select" aria-label="Default select example"
+                    name="name"
+                    id="name"
+                    [(ngModel)]="name"
+                    #nameLandlord
+            >
+              <option>* All Landlords</option>
+              <option *ngFor="let i of landlordName">{{i | uppercase}}</option>
+            </select>
+          </div>
+          <div *ngIf="!nameLandlord.value" class="required-warning"><p>*Required</p></div>
+          <!-- End landlord name -->
+         </div>
+
+         <!-- End firlter report -->
+
+
+
+          <!-- Company details -->
+          <hr>
+
+          <div class="scroll-report" id="scroll-report">
+            <!--report title-->
+              <div class="report-logo">
+                <p>Company Name</p>
+              </div>
+              <div class="report-title">
+                <p>FINANCIAL REPORT FOR LANDLORD</p>
+              </div>
+            <!-- End report title --->
+            <!-- report content -->
+              <div class="report-company-address">
+
+                <span>From: Company Name</span><br>
+                <span>Address: Street Name,</span><br>
+                <span>Postcode: B00 0XX</span>
+              </div>
+            <!-- End company details-->
+
+              <div class="content_view">
+                <table>
+                  <tr>
+                    <th style="width: 10%;">Item</th>
+                    <th>Description</th>
+                    <th style="width: 30%;">£Amount</th>
+                  </tr>
+
+                  <tr class="totalTable">
+                    <td></td>
+                    <td>Total amount</td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="content_view">
+                <p>Description: </p>
+              </div>
+            <!-- End report content -->
+          </div>
+        </div>
+        <!-- End view page content -->
+
+        <!-- button -->
+
+        <div class="button">
+          <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="onPrint('scroll-report')">Print</button>
+          <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="resetReport()">Reset</button>
+          <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="onClose()">Close</button>
+
+
+        </div>
+        <!-- End button -->
+
+      </div>
+    </div>
+  </div>
+</div>
+

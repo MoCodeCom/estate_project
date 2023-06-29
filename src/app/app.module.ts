@@ -48,6 +48,14 @@ import { AddTransactionComponent } from './home/home/add_data/add-transaction/ad
 import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.component';
 import { EditVoucherComponent } from './home/home/edit_data/edit-voucher/edit-voucher.component';
 import { HoverEleDirective } from './home/home/dirctive/hover-ele.directive';
+import { FrlandlordComponent } from './home/home/reports/prints/frlandlord/frlandlord.component';
+import { FrtenantComponent } from './home/home/reports/prints/frtenant/frtenant.component';
+import { FrpropertyComponent } from './home/home/reports/prints/frproperty/frproperty.component';
+import { LandlordlstComponent } from './home/home/reports/prints/landlordlst/landlordlst.component';
+import { TenantlstComponent } from './home/home/reports/prints/tenantlst/tenantlst.component';
+import { PropertylstComponent } from './home/home/reports/prints/propertylst/propertylst.component';
+import { IncomestatementComponent } from './home/home/reports/prints/incomestatement/incomestatement.component';
+import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-exps.component';
 
 /*leaflet map*/
 
@@ -88,7 +96,15 @@ import { HoverEleDirective } from './home/home/dirctive/hover-ele.directive';
     AddTransactionComponent,
     ViewMoneyComponent,
     EditVoucherComponent,
-    HoverEleDirective
+    HoverEleDirective,
+    FrlandlordComponent,
+    FrtenantComponent,
+    FrpropertyComponent,
+    LandlordlstComponent,
+    TenantlstComponent,
+    PropertylstComponent,
+    IncomestatementComponent,
+    OtherExpsComponent
   ],
   imports: [
     CommonModule,

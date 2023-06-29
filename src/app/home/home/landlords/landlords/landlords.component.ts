@@ -17,11 +17,9 @@ export class LandlordsComponent implements OnInit{
   ngOnInit(): void {
     this.onLandlordTableList();
     this.elementRef.nativeElement;
-
-
   }
 
-  /* props*/
+  /* -------- props ---------*/
   lat =52.483397249897365;
   lng =-1.8842605687335423;
   landlordTableList = [];
@@ -31,7 +29,7 @@ export class LandlordsComponent implements OnInit{
   deleteLandlordAllowed:boolean=false;
   editLandlordAllowed:boolean=false;
   selectdClient:any;
-  /* end props */
+  /* ------- end props ------- */
 
   onMarker(event){
     this.lat = event.coords.lat;

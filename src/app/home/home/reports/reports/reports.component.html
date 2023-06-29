@@ -1,3 +1,11 @@
+<!-- Finance report - landlord -->
+<app-frlandlord
+        *ngIf="frlandlordAllow"
+        (close)="onReloadPg()"
+        ></app-frlandlord>
+<!-- End finance report - landlord -->
+
+
 <div class="container-sm">
   <div class="row">
     <!--content and add button-->
@@ -21,6 +29,7 @@
             <button class="btn btn-outline-success"
               (mouseover)="overFinanceLandlord()"
               (mouseleave)="leaveFinanceLandlord()"
+              (click)="openFrlandlord()"
             >Finance Report - landlord</button>
             <button class="btn btn-outline-success"
               (mouseover)="overLandlordList()"
