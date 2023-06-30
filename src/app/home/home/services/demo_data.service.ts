@@ -415,8 +415,8 @@ export class demo_data{
         id:"0001",
         invoice:"7023CP",
         position: "Tenant",
-        date: "March 15, 2022",
-        name: "John Smith",
+        date: "15/3/2022",
+        name: "john smith",
         about: "Rent Payment",
         totalAmount: 1200,
         paymentType: "Bank Transfer",
@@ -433,8 +433,8 @@ export class demo_data{
         id:"0002",
         invoice:"7033CP",
         position: "Landlord",
-        date: "June 1, 2022",
-        name: "Sarah Johnson",
+        date: "1/6/2022",
+        name: "sarah johnson",
         about: "Rent Adjustment",
         totalAmount: 300,
         paymentType: "Cash",
@@ -450,10 +450,10 @@ export class demo_data{
         id:"0003",
         invoice:"7055CP",
         position: "Others",
-        date: "October 10, 2022",
-        name: "ABC Cleaning Services",
+        date: "10/10/2022",
+        name: "abc cleaning services",
         about: "Cleaning Services",
-        totalAmount: 150,
+        totalAmount: -150,
         paymentType: "Bank Transfer",
         transaction:[
           {
@@ -464,12 +464,12 @@ export class demo_data{
           {
             type:"pay",
             description:"adjustment",
-            amount:"220"
+            amount:"-220"
           },
           {
             type:"pay",
             description:"fix pumbler",
-            amount:"10"
+            amount:"-10"
           }
         ]
       },
@@ -477,7 +477,7 @@ export class demo_data{
         id:"0004",
         invoice:"7003CP",
         position: "Tenant",
-        date: "January 5, 2023",
+        date: "5/1/2023",
         name: "Emily Thompson",
         about: "Rent Payment",
         totalAmount: 800,
@@ -494,10 +494,10 @@ export class demo_data{
         id:"0005",
         invoice:"5023CP",
         position: "Landlord",
-        date: "February 20, 2023",
-        name: "Michael Anderson",
+        date: "20/2/2023",
+        name: "michael anderson",
         about: "Rent Adjustment",
-        totalAmount: 200,
+        totalAmount: -200,
         paymentType: "Cash",
         transaction:[
           {
@@ -508,12 +508,12 @@ export class demo_data{
           {
             type:"pay",
             description:"adjustment",
-            amount:"150"
+            amount:"-150"
           },
           {
             type:"pay",
             description:"fix pumbler",
-            amount:"75"
+            amount:"-75"
           }
         ]
       },
@@ -521,8 +521,8 @@ export class demo_data{
         id:"0006",
         invoice:"7084CP",
         position: "Tenant",
-        date: "April 10, 2023",
-        name: "Jessica Lee",
+        date: "10/4/2023",
+        name: "jessica lee",
         about: "Services (Plumbing)",
         totalAmount: 500,
         paymentType: "Bank Transfer",
@@ -535,12 +535,12 @@ export class demo_data{
           {
             type:"pay",
             description:"adjustment",
-            amount:"30"
+            amount:"-30"
           },
           {
             type:"pay",
             description:"fix pumbler",
-            amount:"10.50"
+            amount:"-10.50"
           }
         ]
       },
@@ -548,26 +548,26 @@ export class demo_data{
         id:"0007",
         invoice:"7983CP",
         position: "Others",
-        date: "July 15, 2023",
-        name: "XYZ Construction",
+        date: "15/7/2023",
+        name: "xyz construction",
         about: "Repair Services",
-        totalAmount: 790.50,
+        totalAmount: -790.50,
         paymentType: "Cash",
         transaction:[
           {
             type:"pay",
             description:"for rent",
-            amount:"750"
+            amount:"-750"
           },
           {
             type:"pay",
             description:"adjustment",
-            amount:"30"
+            amount:"-30"
           },
           {
             type:"pay",
             description:"fix pumbler",
-            amount:"10.50"
+            amount:"-10.50"
           }
         ]
       },
@@ -575,16 +575,16 @@ export class demo_data{
         id:"0008",
         invoice:"8723CP",
         position: "Landlord",
-        date: "August 5, 2023",
-        name: "Thomas Collins",
+        date: "5/8/2023",
+        name: "thomas collins",
         about: "Rent Adjustment",
-        totalAmount: 150,
+        totalAmount: -150,
         paymentType: "Bank Transfer",
         transaction:[
           {
             type:"pay",
             description:"rent for property",
-            amount:"150"
+            amount:"-150"
           }
         ]
       },
@@ -592,8 +592,8 @@ export class demo_data{
         id:"0009",
         invoice:"7080CP",
         position: "Tenant",
-        date: "November 1, 2023",
-        name: "Olivia Martinez",
+        date: "1/11/2023",
+        name: "olivia martinez",
         about: "Rent Payment",
         totalAmount: 1500,
         paymentType: "Bank Transfer",
@@ -606,12 +606,12 @@ export class demo_data{
           {
             type:"pay",
             description:"adjustment",
-            amount:"30"
+            amount:"-30"
           },
           {
             type:"pay",
             description:"fix pumbler",
-            amount:"10.50"
+            amount:"-10.50"
           }
         ]
       },
@@ -619,8 +619,8 @@ export class demo_data{
         id:"0010",
         invoice:"7998CP",
         position: "Others",
-        date: "December 20, 2023",
-        name: "Green Thumb Landscapes",
+        date: "20/12/2023",
+        name: "green thumb landscapes",
         about: "Garden Maintenance Services",
         totalAmount: 200,
         paymentType: "Cash",
@@ -633,9 +633,27 @@ export class demo_data{
           {
             type:"pay",
             description:"adjustment",
-            amount:"50"
+            amount:"-50"
           }
         ]
+      },
+      {
+        id:"0011",
+        invoice:"7443CP",
+        position: "Tenant",
+        date: "16/3/2023",
+        name: "john smith",
+        about: "Rent Payment",
+        totalAmount: 1400,
+        paymentType: "Bank Transfer",
+        transaction:[
+          {
+            type:"receive",
+            description:"for rent",
+            amount:"1400"
+          }
+        ]
+
       }
     ];
 

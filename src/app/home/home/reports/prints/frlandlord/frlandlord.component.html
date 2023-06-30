@@ -18,112 +18,64 @@
          <!-- Filter report ------->
 
          <div class="filter">
-          <div class="v-line-1">
-            <!-- date-->
+          <div class="report_filter">
+            <div class="v-line-2">
+              <!-- date-->
+              <div class="input-group">
+                <span class="input-group-text" >From Date</span>
+                <input type="date"
+                       class="form-control"
+                       placeholder="Date"
+                       name="fromDate"
+                       [(ngModel)]="fromDATE"
+                       id="fromDate"
+                       required
+                       #fromDate
+                       [disabled]="fromDATE"
+                       >
+                       <div *ngIf="!fromDate.value" class="required-warning"><p>*Required</p></div>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text" >To Date</span>
+                <input type="date"
+                       class="form-control"
+                       placeholder="Date"
+                       name="toDate"
+                       [(ngModel)]="toDATE"
+                       id="toDate"
+                       min={{fromDATE}}
+                       required
+                       #toDate
+                       [disabled]="!fromDATE"
+                       >
+                       <div *ngIf="!toDate.value" class="required-warning"><p>*Required</p></div>
+              </div>
+              <!--End date-->
+           </div>
+
+
+           <div class="v-line-1">
+            <!-- Landlord name -->
             <div class="input-group">
-              <span class="input-group-text" >From Date</span>
-              <input type="date"
-                     class="form-control"
-                     placeholder="Date"
-                     name="fromDate"
-                     [(ngModel)]="fromDATE"
-                     id="fromDate"
-                     required
-                     #fromDate
-                     [disabled]="fromDATE"
-                     >
-                     <div *ngIf="!fromDate.value" class="required-warning"><p>*Required</p></div>
+              <span class="input-group-text">Landlord name</span>
+              <select class="form-select" aria-label="Default select example"
+                      name="name"
+                      id="name"
+                      [(ngModel)]="name"
+                      #nameLandlord
+              >
+                <option>* All Landlords</option>
+                <option *ngFor="let i of landlordName">{{i | uppercase}}</option>
+              </select>
             </div>
+            <div *ngIf="!nameLandlord.value" class="required-warning"><p>*Required</p></div>
+            <!-- End landlord name -->
+           </div>
 
-            <div class="input-group">
-              <span class="input-group-text" >To Date</span>
-              <input type="date"
-                     class="form-control"
-                     placeholder="Date"
-                     name="toDate"
-                     [(ngModel)]="toDATE"
-                     id="toDate"
-                     min={{fromDATE}}
-                     required
-                     #toDate
-                     [disabled]="!fromDATE"
-                     >
-                     <div *ngIf="!toDate.value" class="required-warning"><p>*Required</p></div>
-            </div>
-            <!--End date-->
-         </div>
+                   <!-- button -->
 
-
-         <div class="v-line-1">
-          <!-- Landlord name -->
-          <div class="input-group">
-            <span class="input-group-text">Landlord name</span>
-            <select class="form-select" aria-label="Default select example"
-                    name="name"
-                    id="name"
-                    [(ngModel)]="name"
-                    #nameLandlord
-            >
-              <option>* All Landlords</option>
-              <option *ngFor="let i of landlordName">{{i | uppercase}}</option>
-            </select>
-          </div>
-          <div *ngIf="!nameLandlord.value" class="required-warning"><p>*Required</p></div>
-          <!-- End landlord name -->
-         </div>
-
-         <!-- End firlter report -->
-
-
-
-          <!-- Company details -->
-          <hr>
-
-          <div class="scroll-report" id="scroll-report">
-            <!--report title-->
-              <div class="report-logo">
-                <p>Company Name</p>
-              </div>
-              <div class="report-title">
-                <p>FINANCIAL REPORT FOR LANDLORD</p>
-              </div>
-            <!-- End report title --->
-            <!-- report content -->
-              <div class="report-company-address">
-
-                <span>From: Company Name</span><br>
-                <span>Address: Street Name,</span><br>
-                <span>Postcode: B00 0XX</span>
-              </div>
-            <!-- End company details-->
-
-              <div class="content_view">
-                <table>
-                  <tr>
-                    <th style="width: 10%;">Item</th>
-                    <th>Description</th>
-                    <th style="width: 30%;">£Amount</th>
-                  </tr>
-
-                  <tr class="totalTable">
-                    <td></td>
-                    <td>Total amount</td>
-                    <td></td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class="content_view">
-                <p>Description: </p>
-              </div>
-            <!-- End report content -->
-          </div>
-        </div>
-        <!-- End view page content -->
-
-        <!-- button -->
-
-        <div class="button">
+          <div class="button">
           <button
               type="button"
               class="btn btn-outline-secondary"
@@ -138,8 +90,78 @@
               (click)="onClose()">Close</button>
 
 
+          </div>
+          <!-- End button -->
         </div>
-        <!-- End button -->
+
+
+         <!-- End firlter report -->
+
+
+
+          <!-- Company details -->
+
+          <div class="scroll-report" id="scroll-report">
+            <!--report title-->
+              <div class="report-logo">
+                <p>Company Name</p>
+              </div>
+              <div class="report-title">
+                <p>FINANCIAL REPORT FOR LANDLORD</p>
+              </div>
+            <!-- End report title --->
+            <!-- report content -->
+              <div class="report-company-address">
+                <div class="v-line-1">
+                  <p>From Date:{{fromDATE}}</p>
+                  <p>To Date: {{toDATE}}</p>
+                  <span>To:{{name}}</span>
+                </div>
+
+
+              </div>
+            <!-- End company details-->
+
+              <div class="content_view"
+                   *ngFor="let i of landlordData | filterFRPipe:'john smith'"
+                   >
+                <table>
+                  <tr>
+                    <th style="width: 10%">Id</th>
+                    <th style="width: 15%">Invoice No.</th>
+                    <th style="width: 15%">Date</th>
+                    <th style="width: 20%">To</th>
+                    <th style="width: 15%">About</th>
+                    <th>Payment type</th>
+                  </tr>
+                  <tr class="totalTable">
+                    <td>{{i.id}}</td>
+                    <td>{{i.invoice}}</td>
+                    <td>{{i.date}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.about}}</td>
+                    <td>{{i.paymentType}}</td>
+                  </tr>
+                </table>
+                <p style="margin: .2rem;">Transaction</p>
+                <div *ngFor="let t of i.transaction">
+                  <p >Type: {{t.type}} <span style="margin-left: 8rem;"></span>
+                      Description: {{t.description}} <span style="margin-left: 8rem;"></span>
+                      Amount: {{t.amount | currancy }}</p>
+                </div>
+
+
+                <hr>
+                <p style="margin-left: 70%; text-decoration: underline;">Total amount: <span>{{i.totalAmount | currancy}}</span></p>
+              </div>
+
+
+            <!-- End report content -->
+          </div>
+        </div>
+        <!-- End view page content -->
+
+
 
       </div>
     </div>

@@ -15,9 +15,10 @@
 .container{
   position: fixed;
   top: 0.9vh;
-  left: 15vw;
-  width: 65vw;
-  height:fit-content;
+  left: 14vw;
+  width: 70vw;
+  overflow:scroll ;
+  height: 90%;
   padding: 0px;
   border-radius:10px;
   z-index: 100;
@@ -53,17 +54,17 @@
 
 }
 
-.content_view table,th{
+.content_view table ,th{
   width: 100%;
   border: solid 1px black;
 }
 
 .content_view table td{
-  border-right: solid 1px black;
+  /*border-right: solid 1px black;*/
 }
 
 .totalTable{
-  border-top: solid 1px black ;
+  /*border-top: solid 1px black ;*/
 }
 /* ---------- End content -----------*/
 
@@ -132,10 +133,24 @@ textarea{
 }
 
 .filter{
-  margin: 2rem;
+  display: grid;
+  grid-template-columns: 35% auto;
 }
 
-/* ----------- Voucher line 1 -----------*/
+.report_filter{
+  width: 100%;
+  margin: 0rem;
+  border-right: solid .1rem gray;
+}
+
+#scroll-report{
+
+
+}
+
+
+
+/* -----------  line 1 -----------*/
 .v-line-1{
   display: flex;
   justify-content: space-around;
@@ -153,7 +168,56 @@ textarea{
   align-items:center;
 }
 
+.v-line-2{
+  display: block;
+  margin: .7rem .5rem;
+  padding:0rem;
+  height: 3 vh;
+}
 
-/* ----------- End voucher line 1 ------ */
+.v-line-2 .input-group{
+  margin-top: .5rem;
+}
+
+.v-line-1 .input-group select{
+  width: .9vw;
+}
+
+
+
+/* ----------- End  line 1 ------ */
+
+@media only screen and (max-width: 1600px) {
+  .filter{
+    font-size: .6rem;
+  }
+
+  .v-line-2 .input-group input{
+    font-size: 10px;
+  }
+
+  .v-line-2 .input-group span{
+    font-size: 10px;
+  }
+
+  .v-line-1 .input-group select{
+    font-size: 10px;
+  }
+
+  .v-line-1 .input-group span{
+    font-size: 10px;
+  }
+
+  .container{
+    width: 100%;
+    left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .v-line-1 .input-group{
+    margin: 0.2rem;
+  }
+}
 
 

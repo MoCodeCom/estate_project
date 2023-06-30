@@ -43,6 +43,7 @@ import { ViewTenantComponent } from './home/home/view_data/view-tenant/view-tena
 import { ViewPropertyComponent } from './home/home/view_data/view-property/view-property.component';
 import { ViewOtherComponent } from './home/home/view_data/view-other/view-other.component';
 import { currancyPipe } from './home/home/pipes/currancyPipe.pipe';
+import { filterFRPipe } from './home/home/pipes/filterFRPipe.pipe';
 import { AddVoucherComponent } from './home/home/add_data/add-voucher/add-voucher.component';
 import { AddTransactionComponent } from './home/home/add_data/add-transaction/add-transaction.component';
 import { ViewMoneyComponent } from './home/home/view_data/view-money/view-money.component';
@@ -79,6 +80,7 @@ import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-
     filerPipe,
     shortenPipe,
     currancyPipe,
+    filterFRPipe,
     AddLandlordComponent,
     AddTenantComponent,
     AddPropertyComponent,

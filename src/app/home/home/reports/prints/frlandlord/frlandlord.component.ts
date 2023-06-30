@@ -22,9 +22,11 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
   toDATE:any;
   name:any;
   landlordName=[];
+  landlordData=[];
 
   ngOnInit(): void {
-    this.getLandlordName();
+    this.getLandlordData();
+    console.log(this.landlordData);
   }
 
   onClose(){
@@ -45,15 +47,22 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
     this.name = null;
   }
 
-  getLandlordName(){
-    let landlord = this.dataService.landlordData();
-    for(let i of landlord){
-      let name = i.firstName +' '+ i.lastName;
-      this.landlordName.push(name)
+
+
+  getLandlordData(){
+    this.landlordData = this.dataService.moneyData();
+    for(let i of this.landlordData){
+      if(this.landlordName.includes(i.name)){
+        return;
+      }else{
+        this.landlordName.push(i.name);
+      }
     }
   }
   ngOnDestroy(): void {
     this.elementRef.nativeElement.remove();
     this.close.emit()
   }
+
+
 }

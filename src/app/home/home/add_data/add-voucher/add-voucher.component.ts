@@ -74,16 +74,20 @@ export class AddVoucherComponent implements OnDestroy, OnInit{
   }
 
   onSubmitTransaction(form:NgForm){
-    this.transactionList.push(form.value);
-    let a:any = form.value.amount;
-    if(form.value.typeOfTransaction === 'Pay'){
-      let result = this.totalAmountValue - a;
+
+    let formData = form.value;
+
+    if(formData.typeOfTransaction==='Pay'){
+      formData.amount = formData.amount * -1;
+    }
+    this.transactionList.push(formData);
+    let a:any = formData.amount;
+    if(formData.typeOfTransaction === 'Pay'){
+      let result = this.totalAmountValue + a;
       this.totalAmountValue = result.toFixed(2);
     }else{
-
       let result = parseInt(this.totalAmountValue) + a;
       this.totalAmountValue = result;
-
     }
     form.reset();
   }
