@@ -1,0 +1,238 @@
+/* ----------- back page ------*/
+.dropback{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba( 0, 0, 0, 0.75);
+  z-index: 50;
+}
+/* ----------- End back page ------*/
+
+/* ---------- container -------*/
+
+.container{
+  position: fixed;
+  top: 0.9vh;
+  left: 14vw;
+  width: 70vw;
+  overflow:scroll ;
+  height: 90%;
+  padding: 0px;
+  border-radius:10px;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  font-size: 0.8rem;
+
+}
+/*---------- End container -------*/
+
+/*---------- Title ----------*/
+
+.title_pg{
+  height: 50px;
+  width: 100%;
+  background-color: green;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content:space-between;
+}
+
+.title_pg a img{
+  cursor: pointer;
+}
+/* --------- End title ---------*/
+
+/* --------- content -----------*/
+.content_view{
+  width: 100%;
+  padding: 10px;
+
+}
+
+.content_view table ,th{
+  width: 100%;
+  border: solid 1px black;
+}
+
+.content_view table td{
+  /*border-right: solid 1px black;*/
+}
+
+.totalTable{
+  /*border-top: solid 1px black ;*/
+}
+/* ---------- End content -----------*/
+
+
+/*  ---------- button ------------*/
+.button{
+  width: 100%;
+  margin: 10px ;
+  text-align: center;
+}
+
+.button button{
+  margin-top: .70rem;
+  width: 80%;
+}
+/*  ---------- End button ------------*/
+
+
+/* ------------ textarea -------*/
+textarea{
+  width: 100%;
+
+}
+/* ------------ End textarea -------*/
+
+/* ------------ report logo -------*/
+.report-logo{
+  margin: auto;
+  height: 4vh;
+  display: flex;
+  text-align:center;
+}
+.report-logo p{
+  margin: 0.1rem auto 0.1rem auto;
+
+}
+
+/* ------------ End report logo ---*/
+
+/* ------------ report title ------*/
+.report-title p{
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* ------------ End report title ----*/
+
+/*------------- report date and No --*/
+.scroll-report .report-title-info{
+  margin:auto .75rem;
+  display: flex;
+  justify-content:space-between;
+}
+/*------------- End report date and No --*/
+
+/* ----------- Address ----------*/
+.report-company-address{
+  margin:auto .75rem;
+}
+/* ----------- End address -----*/
+
+.required-warning{
+  color: red;
+  font-size: 0.7rem;
+  padding-inline: 0.7vw;
+}
+
+.filter{
+  display: grid;
+  grid-template-columns: 35% auto;
+}
+
+.report_filter{
+  width: 100%;
+  margin: 0rem;
+  border-right: solid .1rem gray;
+}
+
+#scroll-report{
+
+
+}
+
+
+
+/* -----------  line 1 -----------*/
+.v-line-1{
+  display: flex;
+  justify-content: space-around;
+  margin: .7rem auto;
+  padding:0rem;
+  height: 3 vh;
+}
+
+.v-line-1 .input-group{
+  align-items:center;
+  margin: auto .7rem
+}
+
+.input-group p{
+  align-items:center;
+}
+
+.v-line-2{
+  display: block;
+  margin: .7rem .5rem;
+  padding:0rem;
+  height: 3 vh;
+}
+
+.v-line-2 .input-group{
+  margin-top: .5rem;
+}
+
+.v-line-1 .input-group select{
+  width: .9vw;
+}
+
+.reportTotalAmount{
+  text-align: center;
+  font-weight: bold;
+}
+
+.transactionTitle{
+  margin: .2rem;
+  background-color: gainsboro;
+}
+
+.totalAmountTitle{
+  margin-left: 70%;
+  text-decoration: underline;
+}
+
+
+
+/* ----------- End  line 1 ------ */
+
+@media only screen and (max-width: 1600px) {
+  .filter{
+    font-size: .6rem;
+  }
+
+  .v-line-2 .input-group input{
+    font-size: 10px;
+  }
+
+  .v-line-2 .input-group span{
+    font-size: 10px;
+  }
+
+  .v-line-1 .input-group select{
+    font-size: 10px;
+  }
+
+  .v-line-1 .input-group span{
+    font-size: 10px;
+  }
+
+  .container{
+    width: 100%;
+    left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .v-line-1 .input-group{
+    margin: 0.2rem;
+  }
+}
+
+

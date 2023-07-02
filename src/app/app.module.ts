@@ -57,6 +57,8 @@ import { TenantlstComponent } from './home/home/reports/prints/tenantlst/tenantl
 import { PropertylstComponent } from './home/home/reports/prints/propertylst/propertylst.component';
 import { IncomestatementComponent } from './home/home/reports/prints/incomestatement/incomestatement.component';
 import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-exps.component';
+import { filterTFRPipe } from './home/home/pipes/filterTFRPipe.pipe';
+import { FrotherComponent } from './home/home/reports/prints/frother/frother/frother.component';
 
 /*leaflet map*/
 
@@ -81,6 +83,7 @@ import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-
     shortenPipe,
     currancyPipe,
     filterFRPipe,
+    filterTFRPipe,
     AddLandlordComponent,
     AddTenantComponent,
     AddPropertyComponent,
@@ -106,7 +109,8 @@ import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-
     TenantlstComponent,
     PropertylstComponent,
     IncomestatementComponent,
-    OtherExpsComponent
+    OtherExpsComponent,
+    FrotherComponent
   ],
   imports: [
     CommonModule,

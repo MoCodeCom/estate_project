@@ -1,28 +1,27 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name:'filterFRPipe'
+  name:'filterTFRPipe'
 })
-export class filterFRPipe implements PipeTransform{
-  transform( value: any, nameData:string, fromDate?:string, toDate?:string):any {
-
+export class filterTFRPipe implements PipeTransform{
+  transform( value:any, values: any, nameData:string, fromDate?:string, toDate?:string):any {
+    let totalReport = 0;
     if(nameData == undefined || fromDate == undefined || toDate == undefined){
-      return value;
+      return totalReport;
     }
-    let reportList = [];
+
     nameData = nameData.toLowerCase();
-    for(let item of value){
+    for(let item of values){
       let from = this.getDate(fromDate);
       let to = this.getDate(toDate);
       let filterDate = item['date'];
       let filterD = this.getDate(filterDate);
-
       if(nameData === '* all clients' && filterD <= to && filterD >= from ||
       item['name'] === nameData && filterD <= to && filterD >= from){
-        reportList.push(item);
+        totalReport += item['totalAmount'];
       }
     }
-    return reportList;
+    return totalReport;
   }
 
   getDate(date):any{

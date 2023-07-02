@@ -1,12 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { demo_data } from '../../../services/demo_data.service';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { demo_data } from 'src/app/home/home/services/demo_data.service';
 
 @Component({
-  selector: 'app-frlandlord',
-  templateUrl: './frlandlord.component.html',
-  styleUrls: ['./frlandlord.component.css']
+  selector: 'app-frother',
+  templateUrl: './frother.component.html',
+  styleUrls: ['./frother.component.css']
 })
-export class FrlandlordComponent implements OnInit,OnDestroy {
+export class FrotherComponent implements OnInit,OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
@@ -20,8 +20,8 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
   fromDATE:any;
   toDATE:any;
   name:any;
-  landlordName=[];
-  landlordData=[];
+  tenantName=[];
+  tenantData=[];
   ReportTotalAmont = 0;
 
   ngOnInit(): void {
@@ -31,7 +31,6 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
 
   onPrint(invoiceP:any){
     let printContent = document.getElementById(invoiceP).innerHTML;
-    //let originContents = document.body.innerHTML;
 
     document.body.innerHTML = printContent;
     window.print();
@@ -48,10 +47,10 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
   }
 
   getLandlordData(){
-    this.landlordData = this.dataService.moneyData();
-    for(let i of this.landlordData){
-      if(i['position'].toLowerCase() === 'landlord'){
-        this.landlordName.push(i.name);
+    this.tenantData = this.dataService.moneyData();
+    for(let i of this.tenantData){
+      if(i['position'].toLowerCase() === 'others'){
+        this.tenantName.push(i.name);
       }
     }
   }

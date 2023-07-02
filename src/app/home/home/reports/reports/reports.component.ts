@@ -18,11 +18,13 @@ export class ReportsComponent implements
   propertyDetail:boolean = false;
   incomeStatement:boolean = false;
   expensesStatement:boolean = false;
+  otherFinanceDetail:boolean = false;
   /* ------- End description reprot properties ------------*/
 
   /* ------- Allowing show pages ----------------------*/
   frlandlordAllow:boolean = false;
-
+  frtenantAllow:boolean = false;
+  frotherAllow:boolean = false;
   /* ------- End allowing show pages ----------------------*/
 
 
@@ -65,6 +67,14 @@ export class ReportsComponent implements
     this.tenantFinanceDetail = true;
   }
 
+  leaveFinanceOther(){
+    this.otherFinanceDetail = false;
+  }
+
+  overFinanceOther(){
+    this.otherFinanceDetail = true;
+  }
+
   leavePropertyStatus(){
     this.propertyDetail = false;
   }
@@ -103,8 +113,18 @@ export class ReportsComponent implements
     this.frlandlordAllow = true;
   }
 
+  openFrtenant(){
+    this.frtenantAllow = true;
+  }
+
+  openFrother(){
+    this.frotherAllow = true;
+  }
+
   onReloadPg(){
     this.frlandlordAllow = false;
+    this.frtenantAllow = false;
+    this.frotherAllow = false;
   }
 
 

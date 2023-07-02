@@ -5,6 +5,20 @@
         ></app-frlandlord>
 <!-- End finance report - landlord -->
 
+<!-- Finance report - tenant -->
+<app-frtenant
+        *ngIf="frtenantAllow"
+        (close)="onReloadPg()"
+        ></app-frtenant>
+<!-- End finance report - tenant -->
+
+<!-- Finance report - other -->
+<app-frother
+        *ngIf="frotherAllow"
+        (close)="onReloadPg()"
+        ></app-frother>
+<!-- End finance report - other -->
+
 
 <div class="container-sm">
   <div class="row">
@@ -39,11 +53,19 @@
             <button class="btn btn-outline-success"
               (mouseover)="overFinanceTenant()"
               (mouseleave)="leaveFinanceTenant()"
+              (click)="openFrtenant()"
             >Finance Report - tenant</button>
             <button class="btn btn-outline-success"
               (mouseover)="overTenantList()"
               (mouseleave)="leaveTenantList()"
             >Tenant List</button>
+            <hr>
+            <button
+            class="btn btn-outline-success"
+              (mouseover)="overFinanceOther()"
+              (mouseleave)="leaveFinanceOther()"
+              (click)="openFrother()"
+            >Finance Report - Other</button>
             <hr>
             <button class="btn btn-outline-success"
               (mouseover)="overPropertyStatus()"
@@ -71,17 +93,14 @@
               <p *ngIf="landlordFinanceDetail">A report showcasing financial transactions with landlords, organized based on their name, date, or property postcode. </p>
               <p *ngIf="tenantListDetail">A report display presenting a list of tenants organized by either name, date, or property postcode. </p>
               <p *ngIf="tenantFinanceDetail">A report showcasing financial transactions with tenants, organized based on their name, date, or property postcode. </p>
+              <p *ngIf="otherFinanceDetail">A report showcasing financial transactions with others, organized based on their name, date. </p>
               <p *ngIf="propertyListDetail">A report presenting a list of properties categorized by owner name or property postcode. </p>
               <p *ngIf="propertyDetail">A report displaying the financial status of properties based on owner name or property postcode. </p>
               <p *ngIf="incomeStatement">This report presents the income statement of the company based on a specific time period.</p>
               <p *ngIf="expensesStatement">This report presents the expenses statement of the company based on a specific time period.</p>
             </div>
           </div>
-
-
         </div>
-
-
       </div>
     </div>
   </div>

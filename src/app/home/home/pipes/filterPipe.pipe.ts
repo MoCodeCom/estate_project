@@ -20,7 +20,6 @@ export class filerPipe implements PipeTransform{
     const resultArray = [];
 
     for(const item of value){
-
       if(item[propfirstName] === filterString.toLowerCase() ||
          item[proplastName] === filterString.toLowerCase() ||
          item[propPostcode] === filterString.toLowerCase() ||
@@ -30,10 +29,7 @@ export class filerPipe implements PipeTransform{
          ){
         resultArray.push(item);
       }
-
-
     }
-
     return resultArray;
   }
 
