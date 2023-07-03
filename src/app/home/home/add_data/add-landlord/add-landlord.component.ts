@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, 
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { maping } from '../../services/maping.service';
+import { db } from '../../services/db.service';
+import { IlandlordProp } from '../../models/landlord';
 
 @Component({
   selector: 'app-add-landlord',
@@ -11,15 +13,27 @@ import { maping } from '../../services/maping.service';
 export class AddLandlordComponent implements OnInit,OnDestroy{
   constructor(
     private elementRef: ElementRef,
-    private mapingService:maping
+    private mapingService:maping,
+    private dbService:db
     ){}
   ngOnInit(): void {
 
   }
   @Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
+  //@ViewChild('postcode') postcodeRef:ElementRef;
+
+  /* --- Landlord data --- */
+  @ViewChild('firstname') firstnameRef:ElementRef;
+  @ViewChild('lastname') lastnameRef:ElementRef;
+  @ViewChild('address') addressRef:ElementRef;
   @ViewChild('postcode') postcodeRef:ElementRef;
+  @ViewChild('email') emailRef:ElementRef;
+  @ViewChild('phone') phoneRef:ElementRef;
+  @ViewChild('details') detailsRef:ElementRef;
+  /* --- End landlord data ---*/
   postcodeNotExist:boolean = false;
+  landlord:any;
 
 
 
@@ -43,7 +57,24 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
       this.postcodeRef.nativeElement.value = '';
       this.postcodeNotExist = true;
     }else{
-      console.log(boolPostcode);
+
+
+      this.landlord = {
+        firstname:this.firstnameRef.nativeElement.value,
+        lastname:this.lastnameRef.nativeElement.value,
+        address:this.postcodeRef.nativeElement.value,
+        postcode:this.postcodeRef.nativeElement.value,
+        email:this.emailRef.nativeElement.value,
+        phone:this.phoneRef.nativeElement.value,
+        detail:this.detailsRef.nativeElement.value
+      }
+      //console.log(this.landlord);
+      this.dbService.addLandlord(this.landlord).then(res =>{
+        console.log(res);
+      }).catch(err =>{
+        console.log(err);
+      });
+
       this.onClose();
     }
   }

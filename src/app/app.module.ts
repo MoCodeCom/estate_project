@@ -3,6 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { AngularFireStorageModule, USE_EMULATOR } from '@angular/fire/compat/storage';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+//import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home/home.component';
@@ -59,6 +70,8 @@ import { IncomestatementComponent } from './home/home/reports/prints/incomestate
 import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-exps.component';
 import { filterTFRPipe } from './home/home/pipes/filterTFRPipe.pipe';
 import { FrotherComponent } from './home/home/reports/prints/frother/frother/frother.component';
+import { ChartsComponent } from './home/home/charts/charts/charts.component';
+//import { AngularFireModule } from '@angular/fire/compat'
 
 /*leaflet map*/
 
@@ -110,7 +123,8 @@ import { FrotherComponent } from './home/home/reports/prints/frother/frother/fro
     PropertylstComponent,
     IncomestatementComponent,
     OtherExpsComponent,
-    FrotherComponent
+    FrotherComponent,
+    ChartsComponent
   ],
   imports: [
     CommonModule,
@@ -121,7 +135,17 @@ import { FrotherComponent } from './home/home/reports/prints/frother/frother/fro
     appRouteModule,
     RouterModule,
     BrowserAnimationsModule,
+    /* ------- Firebase ------*/
 
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    provideFirestore(()=>getFirestore()),
+    provideFirebaseApp(()=> initializeApp(environment.firebase)),
+
+
+    /* ------- End Firebase -----*/
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
