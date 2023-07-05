@@ -21,7 +21,6 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
   }
   @Input() closeForm:boolean;
   @Output() close = new EventEmitter<void>();
-  //@ViewChild('postcode') postcodeRef:ElementRef;
 
   /* --- Landlord data --- */
   @ViewChild('firstname') firstnameRef:ElementRef;
@@ -36,16 +35,6 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
   landlord:any;
 
 
-
-  onClose(){
-    this.ngOnDestroy();
-  }
-
-  ngOnDestroy(): void {
-    this.elementRef.nativeElement.remove();
-    this.close.emit()
-  }
-
   async onSubmit(form: NgForm){
 
     this.postcodeNotExist= false;
@@ -57,19 +46,17 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
       this.postcodeRef.nativeElement.value = '';
       this.postcodeNotExist = true;
     }else{
-
-
       this.landlord = {
-        firstname:this.firstnameRef.nativeElement.value,
-        lastname:this.lastnameRef.nativeElement.value,
-        address:this.postcodeRef.nativeElement.value,
-        postcode:this.postcodeRef.nativeElement.value,
-        email:this.emailRef.nativeElement.value,
-        phone:this.phoneRef.nativeElement.value,
-        detail:this.detailsRef.nativeElement.value
+        firstname:this.firstnameRef.nativeElement.value.toLowerCase(),
+        lastname:this.lastnameRef.nativeElement.value.toLowerCase(),
+        address:this.addressRef.nativeElement.value.toLowerCase(),
+        postcode:this.postcodeRef.nativeElement.value.toUpperCase(),
+        email:this.emailRef.nativeElement.value.toLowerCase(),
+        phone:this.phoneRef.nativeElement.value.toLowerCase(),
+        detail:this.detailsRef.nativeElement.value.toLowerCase()
       }
-      //console.log(this.landlord);
-      this.dbService.addLandlord(this.landlord).then(res =>{
+
+      this.dbService.addData(this.landlord,'landlordDb').then(res =>{
         console.log(res);
       }).catch(err =>{
         console.log(err);
@@ -77,5 +64,14 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
 
       this.onClose();
     }
+  }
+
+  onClose(){
+    this.ngOnDestroy();
+  }
+
+  ngOnDestroy(): void {
+    this.elementRef.nativeElement.remove();
+    this.close.emit()
   }
 }

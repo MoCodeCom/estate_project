@@ -2,6 +2,7 @@
 import { Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import { demo_data } from '../../services/demo_data.service';
 import { Router } from '@angular/router';
+import { db } from '../../services/db.service';
 
 @Component({
   selector: 'app-landlords',
@@ -12,7 +13,8 @@ export class LandlordsComponent implements OnInit{
   constructor(
     private dataService:demo_data,
     private router:Router,
-    private elementRef:ElementRef
+    private elementRef:ElementRef,
+    private dbService:db
     ){}
   ngOnInit(): void {
     this.onLandlordTableList();
@@ -22,13 +24,15 @@ export class LandlordsComponent implements OnInit{
   /* -------- props ---------*/
   lat =52.483397249897365;
   lng =-1.8842605687335423;
-  landlordTableList = [];
+  landlordTableList:any[] = [];
   filterString:string;
   addingLandlordAllowed:boolean=false;
   viewLandlordAllowed:boolean=false;
   deleteLandlordAllowed:boolean=false;
   editLandlordAllowed:boolean=false;
   selectdClient:any;
+  dbName = '';
+  loading:boolean = false;
   /* ------- end props ------- */
 
   onMarker(event){
@@ -36,8 +40,18 @@ export class LandlordsComponent implements OnInit{
     this.lng = event.coords.leg;
   }
 
-  onLandlordTableList(){
-    this.landlordTableList = this.dataService.landlordData()
+  async onLandlordTableList(){
+    this.loading = true;
+    await this.dbService.getData('landlordDb').then(
+      res =>{
+        this.landlordTableList  =[];
+        res.forEach(element =>{
+          this.landlordTableList.push(element.data());
+        });
+        this.loading = false;
+      }
+    );
+
   }
 
   add_landlord(){
@@ -57,6 +71,7 @@ export class LandlordsComponent implements OnInit{
   on_delete(data:any){
     this.deleteLandlordAllowed = true;
     this.selectdClient = data;
+    this.dbName = 'landlordDb';
   }
 
   onReloadPg(){
@@ -64,6 +79,8 @@ export class LandlordsComponent implements OnInit{
     this.viewLandlordAllowed = false;
     this.deleteLandlordAllowed = false;
     this.editLandlordAllowed = false;
+    this.ngOnInit();
+
   }
 
 

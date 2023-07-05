@@ -21,7 +21,7 @@
             <span class="input-group-text" >First name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.firstName}}
+                   placeholder={{selectedClient.firstname}}
                    name="firstname"
                    ngModel
                    id="firstname"
@@ -37,7 +37,7 @@
             <span class="input-group-text" >Last name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.lastName}}
+                   placeholder={{selectedClient.lastname}}
                    name="lastname"
                    ngModel
                    id="lastname"
@@ -80,6 +80,7 @@
                    >
               <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
 
           <div class="input-group">
             <span class="input-group-text" >@</span>
@@ -125,10 +126,11 @@
             <span class="input-group-text" >Details</span>
             <textarea type="textarea"
                    class="form-control"
-                   placeholder={{selectedClient.details}}
+                   placeholder={{selectedClient.detail}}
                    name="details"
                    ngModel
-                   id="detals"
+                   id="details"
+                   #details
                    ></textarea>
           </div>
 

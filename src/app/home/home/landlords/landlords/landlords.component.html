@@ -20,6 +20,7 @@
       *ngIf="deleteLandlordAllowed"
       [closeForm]="deleteLandlordAllowed"
       [selectedClient]="selectdClient"
+      [dbName]="dbName"
       (close)="onReloadPg()"
   ></app-warning-msg>
 
@@ -27,8 +28,8 @@
 
   <!-- Edit page -->
   <app-edit-landlord
-       *ngIf="editLandlordAllowed"
-       [closeForm]="editLandlordAllowed"
+      *ngIf="editLandlordAllowed"
+      [closeForm]="editLandlordAllowed"
       [selectedClient]="selectdClient"
       (close)="onReloadPg()"
   ></app-edit-landlord>
@@ -58,23 +59,6 @@
 
         </div>
       </div>
-       <!--end content and add button-->
-      <!--<div class="col-6 col-sm-6" id="map">
-
-        <agm-map [latitude]="lat"
-                 [longitude]="lng"
-                 (mapClick)="onMarker($event)"
-                 id="autoMap">
-          <agm-marker
-                  [latitude]="lat"
-                  [longitude]="lng"
-
-                  ></agm-marker>
-        </agm-map>
-
-      </div>-->
-
-
 
       <div class="col-12" id="c3">
         <!--search input-->
@@ -92,6 +76,10 @@
         </div>
         <!--end search input-->
 
+        <div *ngIf="loading">
+          <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 4vw; text-align: center;">
+        </div>
+
         <!--table-->
         <div id="table_scroll">
           <table class="table table-success table-striped" id="pg_table">
@@ -106,10 +94,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of landlordTableList | filter: filterString:'firstName':'lastName':'postcode':'phone'">
+              <tr *ngFor="let i of landlordTableList | filter: filterString:'firstname':'lastname':'postcode':'phone'">
                 <td scope="row">{{i.id}}</td>
-                <td>{{i.firstName |uppercase}}</td>
-                <td>{{i.lastName |uppercase}}</td>
+                <td>{{i.firstname |uppercase}}</td>
+                <td>{{i.lastname |uppercase}}</td>
                 <td>{{i.postcode}}</td>
                 <td>{{i.phone}}</td>
                 <td>

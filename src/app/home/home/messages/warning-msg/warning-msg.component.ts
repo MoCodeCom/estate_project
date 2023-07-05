@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { db } from '../../services/db.service';
 
 @Component({
   selector: 'app-warning-msg',
@@ -7,16 +8,17 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
 })
 export class WarningMsgComponent {
   @Input() closeForm:boolean;
+  @Input() dbName:string;
   @Input() selectedClient:any;
   @Output() close = new EventEmitter<void>();
   //client data
   ClientDetails:any;
 
   constructor(
-    private elementRef: ElementRef
-    ){
+    private elementRef: ElementRef,
+    private dbService:db
+    ){}
 
-    }
 
 
   ngOnInit(): void {
@@ -28,9 +30,10 @@ export class WarningMsgComponent {
   }
 
 
-
-
-
+  onDelete(){
+    this.dbService.deleteData(this.ClientDetails,this.dbName);
+    this.onClose();
+  }
 
   onClose(){
     this.ngOnDestroy();
