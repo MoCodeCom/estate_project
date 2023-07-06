@@ -21,6 +21,7 @@
       *ngIf="deletePropertyAllowed"
       [closeForm]="deletePropertyAllowed"
       [selectedClient]="selectdClient"
+      [dbName]="dbName"
       (close)="onReloadPg()"
   ></app-warning-msg>
 
@@ -56,7 +57,6 @@
                     class="btn btn-primary"
                     id="properties_add_btn"
                     (click)="add_property()">Add New Property</button>
-
         </div>
       </div>
        <!--end content and add button-->
@@ -82,6 +82,10 @@
         <img src="assets/images/locationIcon.gif">
         <!--end search input-->
 
+        <div *ngIf="loading">
+          <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 4vw; text-align: center;">
+        </div>
+
         <!--table-->
         <div id="table_scroll">
           <table class="table table-success table-striped" id="pg_table">
@@ -91,17 +95,19 @@
                 <th scope="col">Owner</th>
                 <th scope="col">Address</th>
                 <th scope="col">Postcode</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Date</th>
+                <th scope="col">Rent</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of PropertyTableList | filter: filterString:'firstName':'lastName':'Postcode':'Phone':'Owner':'Address'">
-                <td scope="row">{{i.Id}}</td>
-                <td>{{i.Owner |uppercase}}</td>
-                <td>{{i.Address |uppercase}}</td>
-                <td>{{i.Postcode |uppercase}}</td>
-                <td>{{i.Phone}}</td>
+              <tr *ngFor="let i of propertyTableList | filter: filterString:'firstname':'lastname':'postcode':'phone':'owner':'address'">
+                <td scope="row">{{i.id}}</td>
+                <td>{{i.owner |uppercase}}</td>
+                <td>{{i.address |uppercase}}</td>
+                <td>{{i.postcode |uppercase}}</td>
+                <td>{{i.date}}</td>
+                <td>£{{i.rent}}</td>
                 <td>
                   <button type="button"
                           class="btn btn-success"

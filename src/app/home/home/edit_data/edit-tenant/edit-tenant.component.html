@@ -26,7 +26,7 @@
             <span class="input-group-text" >First name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.firstName}}
+                   placeholder={{selectedClient.firstname}}
                    name="firstname"
                    ngModel
                    id="firstname"
@@ -42,7 +42,7 @@
             <span class="input-group-text" >Last name</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.lastName}}
+                   placeholder={{selectedClient.lastname}}
                    name="lastname"
                    ngModel
                    id="lastname"
@@ -58,11 +58,10 @@
             <span class="input-group-text">Previous Address</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.previousAddress}}
+                   placeholder={{selectedClient.preaddress}}
                    name="address"
                    ngModel
                    id="address"
-                   pattern="[A-Za-z0-9\w!@#$%?=*&.- ]{2,}"
                    maxlength="50"
                    required
                    #preaddress
@@ -74,7 +73,7 @@
             <span class="input-group-text">Previous Postcode</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.previousPostcode}}
+                   placeholder={{selectedClient.prepostcode}}
                    name="postcode"
                    ngModel
                    id="postcode"
@@ -85,6 +84,7 @@
                    >
               <div *ngIf="!prepostcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
 
           <div class="input-group">
             <span class="input-group-text" >@</span>
@@ -130,7 +130,6 @@
                       ngModel
                       id="curpostcode"
                       (change)="onSelected(curpostcode.value)"
-
               >
                 <option default>{{selectedClient.currentPostcode}}</option>
                 <option *ngFor="let i of propertyTableList"
@@ -143,13 +142,13 @@
             <div class="input-group">
               <span class="input-group-text">Current Address</span>
               <select class="comboBoxList"
-                            required
+
                             name="curaddress"
                             ngModel
                             id="curaddress"
                             #curaddress
               >
-                <option *ngIf="showDefault" default>{{selectedClient.currentAddress}}</option>
+                <option *ngIf="showDefault" default>{{selectedClient.curaddress}}</option>
                 <option *ngFor="let i of addressList">{{i}}</option>
               </select>
 
@@ -178,6 +177,7 @@
                    name="details"
                    ngModel
                    id="detals"
+                   #details
                    ></textarea>
           </div>
 

@@ -1,10 +1,12 @@
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import * as L from "leaflet";
 import { demo_data } from "./demo_data.service";
+import { db } from "./db.service";
 
 @Injectable({ providedIn:'root'})
 export class maping implements OnInit, OnDestroy{
-  constructor(private dataService:demo_data){
+  constructor(private dataService:demo_data,
+              private dbService:db ){
   }
 
   ngOnInit(): void {
@@ -31,14 +33,37 @@ export class maping implements OnInit, OnDestroy{
   lng = -1.891307;
   postcodeArrs=[];
 
+  /*async landlordListData(){
+    await this.dbService.getData('propertyDb').then(
+      res =>{
+        this.propertyData  =[];
+        res.forEach(element =>{
+          this.landlordList.push(element.data());
+        });
+      }
+    );
+  }*/
+
 
   /* function to send the let/lng for properties postcode*/
   async propertiesPostcodes(){
-    let propertyData = this.dataService.propertyData();
+    /* -- get data from property db --*/
+    let propertyData = [];
+    await this.dbService.getData('propertyDb').then(
+      res =>{
+        propertyData  =[];
+        res.forEach(element =>{
+          propertyData.push(element.data());
+        });
+      }
+    );
+    /* -- End get data form property db --*/
+
+
     for(let i of propertyData){
       let post:{latFunc:any, lngFunc:any}={latFunc:'',lngFunc:''};
       let d;
-      d = await this.getLatLng(i.Postcode);
+      d = await this.getLatLng(i.postcode);
       post['latFunc']=d.latitude;
       post['lngFunc']=d.longitude;
       this.postcodeArrs.push(post);
@@ -141,6 +166,8 @@ export class maping implements OnInit, OnDestroy{
 
       return obj;
   }
+
+
 
 
 

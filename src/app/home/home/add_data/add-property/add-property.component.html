@@ -21,20 +21,26 @@
             <p>Property details</p>
           </div>
           <!-- Owner name input-->
+          <div class="ownerDiv">
+            <div class="input-group">
+              <span class="input-group-text">Property Owner</span>
+              <select class="comboBoxList"
+                      ngModel
+                      required
+                      id="propertyOwner"
+                      name="propertyOwner"
+                      #comboBoxList
+                      >
+              <option *ngFor="let land of landlordList">{{land.firstname | uppercase}} {{land.lastname | uppercase}}</option>
+              </select>
+              <div *ngIf="!comboBoxList.value" class="required-warning"><p>*Required</p></div>
+            </div>
 
-          <div class="input-group">
-            <span class="input-group-text">Property Owner</span>
-            <select class="comboBoxList"
-                    ngModel
-                    required
-                    id="propertyOwner"
-                    name="propertyOwner"
-                    #comboBoxList
-                    >
-            <option *ngFor="let land of landlordList">{{land.firstName | uppercase}} {{land.lastName | uppercase}}</option>
-            </select>
-            <div *ngIf="!comboBoxList.value" class="required-warning"><p>*Required</p></div>
+            <div *ngIf="loading">
+              <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 3vw; text-align: center;">
+            </div>
           </div>
+
           <!--End owner name input-->
 
           <!-- Address input -->
@@ -181,6 +187,7 @@
                    name="details"
                    ngModel
                    id="detals"
+                   #details
                    ></textarea>
           </div>
           <!-- Details input-->

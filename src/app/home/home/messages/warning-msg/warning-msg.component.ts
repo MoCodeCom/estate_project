@@ -31,6 +31,7 @@ export class WarningMsgComponent {
 
 
   onDelete(){
+    console.log(this.dbName);
     this.dbService.deleteData(this.ClientDetails,this.dbName);
     this.onClose();
   }

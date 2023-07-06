@@ -11,8 +11,7 @@ import { db } from '../../services/db.service';
 })
 export class LandlordsComponent implements OnInit{
   constructor(
-    private dataService:demo_data,
-    private router:Router,
+
     private elementRef:ElementRef,
     private dbService:db
     ){}
@@ -22,8 +21,7 @@ export class LandlordsComponent implements OnInit{
   }
 
   /* -------- props ---------*/
-  lat =52.483397249897365;
-  lng =-1.8842605687335423;
+
   landlordTableList:any[] = [];
   filterString:string;
   addingLandlordAllowed:boolean=false;
@@ -35,10 +33,6 @@ export class LandlordsComponent implements OnInit{
   loading:boolean = false;
   /* ------- end props ------- */
 
-  onMarker(event){
-    this.lat = event.coords.lat;
-    this.lng = event.coords.leg;
-  }
 
   async onLandlordTableList(){
     this.loading = true;

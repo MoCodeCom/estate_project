@@ -3,6 +3,7 @@ import { demo_data } from '../../services/demo_data.service';
 import { Icon, Marker } from 'leaflet';
 import * as L from 'leaflet';
 import { maping } from '../../services/maping.service';
+import { db } from '../../services/db.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class PropertiesComponent implements OnInit, OnChanges{
   constructor(
     private dataService:demo_data,
     private elementRef:ElementRef,
-    private mapService:maping
+    private mapService:maping,
+    private dbService:db
     ){}
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -24,29 +26,37 @@ export class PropertiesComponent implements OnInit, OnChanges{
 
 
   ngOnInit(): void {
-
     this.onLandlordTableList();
     this.elementRef.nativeElement;
     this.mapService.initMainMap();
-
   }
 
   /* props*/
 
-  PropertyTableList = [];
+  propertyTableList = [];
   filterString:string;
   addingPropertyAllowed:boolean=false;
   viewPropertyAllowed:boolean=false;
   deletePropertyAllowed:boolean=false;
   editPropertyAllowed:boolean=false;
   selectdClient:any;
-
-
-  //markerPinUrl = "../";
+  dbName = '';
+  loading:boolean = false;
   /* end props */
 
-onLandlordTableList(){
-  this.PropertyTableList = this.dataService.propertyData();
+async onLandlordTableList(){
+  this.propertyTableList = this.dataService.propertyData();
+
+  this.loading = true;
+    await this.dbService.getData('propertyDb').then(
+      res =>{
+        this.propertyTableList  =[];
+        res.forEach(element =>{
+          this.propertyTableList.push(element.data());
+        });
+        this.loading = false;
+      }
+    );
 }
 
 add_property(){
@@ -69,6 +79,7 @@ on_view(data:any){
 on_delete(data:any){
   this.deletePropertyAllowed = true;
   this.selectdClient = data;
+  this.dbName = 'propertyDb';
 }
 
 onReloadPg(){
@@ -76,7 +87,7 @@ onReloadPg(){
   this.viewPropertyAllowed = false;
   this.deletePropertyAllowed = false;
   this.editPropertyAllowed = false;
-
+  this.ngOnInit();
 }
 
 

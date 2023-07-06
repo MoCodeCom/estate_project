@@ -110,3 +110,8 @@ input.ng-invalid.ng-touched{
 
 /*------------- End combo box -----------*/
 
+.ownerDiv{
+  display: flex;
+
+}
+

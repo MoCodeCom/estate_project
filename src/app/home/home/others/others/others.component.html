@@ -21,6 +21,7 @@
       *ngIf="deleteOtherAllowed"
       [closeForm]="deleteOtherAllowed"
       [selectedClient]="selectdClient"
+      [dbName]="dbName"
       (close)="onReloadPg()"
   ></app-warning-msg>
   <!-- End delete page -->
@@ -54,26 +55,11 @@
             <button type="button"
                     class="btn btn-primary"
                     id="landlords_add_btn"
-                    (click)="add_landlord()">Add New Other</button>
+                    (click)="add_other()">Add New Other</button>
 
         </div>
       </div>
        <!--end content and add button-->
-      <!--<div class="col-6 col-sm-6" id="map">
-
-        <agm-map [latitude]="lat"
-                 [longitude]="lng"
-                 (mapClick)="onMarker($event)"
-                 id="autoMap">
-          <agm-marker
-                  [latitude]="lat"
-                  [longitude]="lng"
-
-                  ></agm-marker>
-        </agm-map>
-
-      </div>-->
-
 
 
       <div class="col-12" id="c3">
@@ -91,6 +77,10 @@
                  >
         </div>
         <!--end search input-->
+
+        <div *ngIf="loading">
+          <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 4vw; text-align: center;">
+        </div>
 
         <!--table-->
         <div id="table_scroll">
@@ -117,7 +107,6 @@
                           class="btn btn-success"
                           id="view_btn"
                           (click)="on_view(i)"
-
                           >View</button>
                   <button type="button"
                           class="btn btn-danger"

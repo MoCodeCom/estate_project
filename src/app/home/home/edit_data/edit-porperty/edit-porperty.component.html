@@ -21,34 +21,41 @@
             <p >Property details</p>
           </div>
 
-          <div>
-            <div class="input-group">
-              <span class="input-group-text">Owner</span>
-              <select class="comboBoxList"
-                      required
-                      name="owner"
-                      id="owner"
-                      ngModel
-                      #owner
-              >
-                <option *ngFor="let i of ownerList"
-                        >{{i.Owner | uppercase}}
-                </option>
-              </select>
-              <div *ngIf="!owner.value" class="required-warning"><p>*Required</p></div>
+          <div class="ownerDiv">
+            <div>
+              <div class="input-group">
+                <span class="input-group-text">Owner</span>
+                <select class="comboBoxList"
+                        required
+                        name="owner"
+                        id="owner"
+                        ngModel
+                        #comboBoxList
+                >
+                  <option>{{selectedClient.owner | uppercase}}</option>
+                  <option *ngFor="let i of ownerList"
+                          >{{i.firstname | uppercase}} {{i.lastname | uppercase}}
+                  </option>
+                </select>
+                <div *ngIf="!comboBoxList.value" class="required-warning"><p>*Required</p></div>
+              </div>
+            </div>
+
+            <div *ngIf="loading">
+              <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 3vw; text-align: center;">
             </div>
           </div>
 
+          <!-- Address-->
 
           <div class="input-group">
             <span class="input-group-text" >Address</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.Address}}
+                   placeholder={{selectedClient.address}}
                    name="address"
                    ngModel
                    id="address"
-                   pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
                    #address
@@ -56,28 +63,35 @@
               <div *ngIf="!address.value" class="required-warning"><p>*Required</p></div>
           </div>
 
+          <!-- End Address-->
+
+          <!-- City -->
+
           <div class="input-group">
             <span class="input-group-text" >City</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.City}}
+                   placeholder={{selectedClient.city}}
                    name="city"
                    ngModel
                    id="city"
                    pattern="[A-Za-z]{2,}"
                    maxlength="20"
                    required
-                   #lastname
+                   #city
                    >
-              <div *ngIf="!lastname.value" class="required-warning"><p>*Required</p></div>
+              <div *ngIf="!city.value" class="required-warning"><p>*Required</p></div>
           </div>
 
+          <!-- End City -->
+
+          <!-- Postcode -->
 
           <div class="input-group">
             <span class="input-group-text" >Postcode</span>
             <input type="text"
                    class="form-control"
-                   placeholder={{selectedClient.Postcode}}
+                   placeholder={{selectedClient.postcode}}
                    name="postcode"
                    ngModel
                    id="postcode"
@@ -87,8 +101,26 @@
                    >
               <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
           </div>
+          <p *ngIf="postcodeNotExist" class="required-warning">This postcode is not exist!</p>
 
+          <!-- End Postcode -->
 
+          <!-- date input -->
+          <div class="input-group">
+
+            <span class="input-group-text">Date</span>
+            <input type="date"
+                   class="form-control"
+                   placeholder={{selectedClient.date}}
+                   name="date"
+                   ngModel
+                   id="date"
+                   required
+                   #date
+                   >
+              <div *ngIf="!postcode.value" class="required-warning"><p>*Required</p></div>
+          </div>
+          <!-- End date input -->
 
           <!--  ----------------------------porperty details --------------->
           <hr>
@@ -105,7 +137,7 @@
             <span class="input-group-text">0.00</span>
             <input type="number"
                    class="form-control"
-                   placeholder={{selectedClient.Rent}}
+                   placeholder={{selectedClient.rent}}
                    name="rent"
                    id="rent"
                    ngModel
@@ -123,7 +155,7 @@
             <span class="input-group-text">0.00</span>
             <input type="number"
                    class="form-control"
-                   placeholder={{selectedClient.ServiceCharge}}
+                   placeholder={{selectedClient.charge}}
                    name="serviceCharge"
                    id="serviceCharge"
                    ngModel
@@ -159,10 +191,11 @@
             <span class="input-group-text" >Details</span>
             <textarea type="textarea"
                    class="form-control"
-                   placeholder={{selectedClient.details}}
+                   placeholder={{selectedClient.detail}}
                    name="details"
                    ngModel
                    id="detals"
+                   #details
                    ></textarea>
           </div>
 

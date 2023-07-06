@@ -38,6 +38,7 @@ export class TenantsComponent {
 
 
   async onTenantTableList(){
+    this.loading = true;
 
     await this.dbService.getData('tenantDb').then(
       res =>{

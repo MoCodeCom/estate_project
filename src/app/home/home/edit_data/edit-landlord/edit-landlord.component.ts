@@ -19,7 +19,7 @@ export class EditLandlordComponent implements OnInit, OnDestroy {
     @Input() selectedClient:any; //from landlord page object data
     @Output() close = new EventEmitter<void>();
 
-    /* --- Landlord data --- */
+  /* --- Landlord data --- */
   @ViewChild('firstname') firstnameRef:ElementRef;
   @ViewChild('lastname') lastnameRef:ElementRef;
   @ViewChild('address') addressRef:ElementRef;
@@ -63,7 +63,6 @@ export class EditLandlordComponent implements OnInit, OnDestroy {
       console.log(this.newlandlord);
       console.log(this.landlord);
       this.dbService.updateData(this.landlord,this.newlandlord,'landlordDb');
-      //console.log(form.value);
 
       this.onClose();
     }
