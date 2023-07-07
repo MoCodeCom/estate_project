@@ -47,8 +47,6 @@ export class EditPorpertyComponent implements OnDestroy, OnInit{
   ngOnInit(): void {
     this.landlordListData();
     this.property = this.selectedClient;
-    console.log(this.property);
-    console.log(this.selectedClient);
   }
 
   async onSubmit(form: NgForm){

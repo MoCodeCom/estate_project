@@ -2,8 +2,10 @@ import { Injectable, OnInit } from "@angular/core";
 import {  Firestore, collection, collectionData, doc } from "@angular/fire/firestore";
 import { addDoc, deleteDoc, getDoc, getFirestore, query, updateDoc,
   where ,getDocs, CollectionReference, DocumentData, getDocFromServer,
-  onSnapshot, runTransaction, orderBy, limit, startAfter, startAt, getCountFromServer} from "firebase/firestore";
+  onSnapshot, runTransaction, orderBy, limit, startAfter, startAt, getCountFromServer, setDoc} from "firebase/firestore";
 import { IlandlordProp } from "../models/landlord";
+import { initializeApp } from "firebase/app";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn:'root'})
 export class db implements OnInit{
@@ -11,6 +13,21 @@ export class db implements OnInit{
   ngOnInit(): void {
     throw new Error("Method not implemented.");
   }
+
+  /** ---------------------------------- */
+  firebaseConfig = {
+    apiKey: "AIzaSyAOsw9i6F61js3aCbwPj5rsEFnApjQnlEQ",
+    authDomain: "estateagent-2da55.firebaseapp.com",
+    projectId: "estateagent-2da55",
+    storageBucket: "estateagent-2da55.appspot.com",
+    messagingSenderId: "791145182474",
+    appId: "1:791145182474:web:9dc937800c64e7ed2036f3",
+    measurementId: "G-F0XSWR6LGP"
+  };
+  app = initializeApp(this.firebaseConfig);
+  dbs = getFirestore(this.app);
+
+  /** ---------------------------------- */
 
   async addData(newData:any, dbName:string){
 
@@ -77,6 +94,38 @@ export class db implements OnInit{
     });
 
 
+  }
+
+  async addFieldData(){
+
+    /** to add data in test document and the doc id is LA */
+    /*
+    await setDoc(doc(this.dbs, 'test','TEST_1'),{
+      name:'mohammed alfadhel',
+      state:'CA',
+      country:'USA'
+    });*/
+
+    /** with adding {merage: true}, we can add data to the fs data documdent */
+    /*
+    const newData = await doc(this.dbs, 'test', 'BJ');
+    await setDoc(newData, {
+      name:'mohammed alfadhel',
+      state:'CA',
+      country:'USA'
+    },{ merge: true});
+    */
+
+    /** other way to adding data with auto id and call doc id. */
+    /*
+   const docRef = await addDoc(collection(this.dbs, 'test'),{
+    name:'mohammed',
+    job:'account'
+   });
+    console.log(docRef.id);*/
+
+    /** */
+    //console.log('data is added!');
   }
 
 }

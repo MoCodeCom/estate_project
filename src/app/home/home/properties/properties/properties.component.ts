@@ -11,19 +11,15 @@ import { db } from '../../services/db.service';
   templateUrl: './properties.component.html',
   styleUrls: ['./properties.component.css']
 })
-export class PropertiesComponent implements OnInit, OnChanges{
+export class PropertiesComponent implements OnInit{
 
   autocomplete:any;
   constructor(
-    private dataService:demo_data,
+    //private dataService:demo_data,
     private elementRef:ElementRef,
     private mapService:maping,
     private dbService:db
     ){}
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
-
 
   ngOnInit(): void {
     this.onLandlordTableList();
@@ -45,8 +41,6 @@ export class PropertiesComponent implements OnInit, OnChanges{
   /* end props */
 
 async onLandlordTableList(){
-  this.propertyTableList = this.dataService.propertyData();
-
   this.loading = true;
     await this.dbService.getData('propertyDb').then(
       res =>{

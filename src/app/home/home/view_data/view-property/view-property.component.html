@@ -18,22 +18,22 @@
           <div class="ContentDetails">
             <p >Property details</p>
           </div>
-          <label class="input-group-text" >Owner: {{ClientDetails.Owner | uppercase}}</label><br>
-          <label class="input-group-text" >Address: {{ClientDetails.Address}}</label><br>
-          <label class="input-group-text" >City: {{ClientDetails.City}}</label><br>
-          <label class="input-group-text" >Postcode: {{ClientDetails.Postcode | uppercase}}</label>
+          <label class="input-group-text" >Owner: {{ClientDetails.owner | uppercase}}</label><br>
+          <label class="input-group-text" >Address: {{ClientDetails.address}}</label><br>
+          <label class="input-group-text" >City: {{ClientDetails.city}}</label><br>
+          <label class="input-group-text" >Postcode: {{ClientDetails.postcode | uppercase}}</label>
           <hr>
           <div class="ContentDetails">
             <p >Financial details</p>
           </div>
-          <label class="input-group-text" >Rent: {{ClientDetails.Rent}}</label><br>
-          <label class="input-group-text" >Service Charge: {{ClientDetails.ServiceCharge}}</label>
+          <label class="input-group-text" >Rent: £{{ClientDetails.rent}}</label><br>
+          <label class="input-group-text" >Service Charge: £{{ClientDetails.charge}}</label>
           <hr>
           <div class="ContentDetails">
-            <p >details</p>
+            <p >Detail</p>
           </div>
           <textarea  wrap="hard"
-                     readonly>Current Postcode: {{ClientDetails.Details}}</textarea><br>
+                     readonly>{{ClientDetails.detail}}</textarea><br>
         </div>
         <div class="content_map">
           <!--map-->

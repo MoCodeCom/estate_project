@@ -21,6 +21,7 @@
       *ngIf="deleteVoucherAllowed"
       [closeForm]="deleteVoucherAllowed"
       [selectedClient]="selectdClient"
+      [dbName]="dbName"
       (close)="onReloadPg()"
   ></app-warning-msg>
   <!-- End delete page -->
@@ -79,6 +80,10 @@
         </div>
         <!--end search input-->
 
+        <div *ngIf="loading">
+          <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 4vw; text-align: center;">
+        </div>
+
         <!--table-->
         <div id="table_scroll">
           <table class="table table-success table-striped" id="pg_table">
@@ -95,14 +100,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of VoucherTableList | filter: filterString:'name':'sector':'services':'phone'">
+              <tr *ngFor="let i of moneyTableList | filter: filterString:'name':'position':'date':'about':'typeofpayment'">
                 <td scope="row">{{i.id}}</td>
                 <td>{{i.name |uppercase}}</td>
                 <td>{{i.position |uppercase}}</td>
                 <td>{{i.date}}</td>
                 <td>{{i.about}}</td>
-                <td>{{i.paymentType}}</td>
-                <td>{{i.totalAmount | currancy}}</td>
+                <td>{{i.typeofpayment}}</td>
+                <td>{{i.totalamount | currancy}}</td>
                 <td>
                   <button type="button"
                           class="btn btn-success"

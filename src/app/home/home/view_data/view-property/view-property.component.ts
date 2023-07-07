@@ -22,7 +22,7 @@ export class ViewPropertyComponent {
 
   ngOnInit(): void {
     this.onSelectedClient();
-    this.mapServcie.initMap(this.ClientDetails.Postcode);
+    this.mapServcie.initMap(this.ClientDetails.postcode);
   }
 
   onClose(){

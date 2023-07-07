@@ -15,7 +15,7 @@
       <!-- Delete warning page content -->
       <div class="content_delete">
         <div *ngIf="ClientDetails.position == null">
-          Are you sure to delete data for <span>{{ClientDetails.firstname}} {{ClientDetails.lastname}} {{ClientDetails.Owner}} {{ClientDetails.name}}</span>?
+          Are you sure to delete data for <span>{{ClientDetails.firstname}} {{ClientDetails.lastname}} {{ClientDetails.owner}} {{ClientDetails.name}}</span>?
         </div>
         <div *ngIf="ClientDetails.position != null">
           <p>Are you sure to delete invoce to <span>{{ClientDetails.name}}</span></p>

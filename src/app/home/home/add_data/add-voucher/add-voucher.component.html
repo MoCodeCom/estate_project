@@ -70,7 +70,7 @@
               >
                 <option
                         *ngFor="let iLandlord of landlordList"
-                        >{{iLandlord.firstName | uppercase}} {{iLandlord.lastName | uppercase}}</option>
+                        >{{iLandlord.firstname | uppercase}} {{iLandlord.lastname | uppercase}}</option>
               </select>
               <!-- End landlord name -->
 
@@ -85,8 +85,8 @@
               >
 
                 <option
-                        *ngFor="let iTenant of tenantsList"
-                        >{{iTenant.firstName | uppercase}} {{iTenant.lastName | uppercase}}</option>
+                        *ngFor="let iTenant of tenantList"
+                        >{{iTenant.firstname | uppercase}} {{iTenant.lastname | uppercase}}</option>
               </select>
 
               <!-- End tenant name-->
@@ -100,13 +100,15 @@
                       *ngIf="position.value === 'Other'"
                       #nameOther
               >
-
                 <option
                         *ngFor="let iOther of otherList"
-                        >{{iOther.firstName | uppercase}} {{iOther.lastName | uppercase}}</option>
+                        >{{iOther.name | uppercase}}</option>
               </select>
 
               <!-- End other name-->
+            </div>
+            <div *ngIf="loading">
+              <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 3vw; text-align: center;">
             </div>
 
 
