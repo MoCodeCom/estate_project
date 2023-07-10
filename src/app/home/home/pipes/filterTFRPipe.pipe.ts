@@ -18,9 +18,10 @@ export class filterTFRPipe implements PipeTransform{
       let filterD = this.getDate(filterDate);
       if(nameData === '* all clients' && filterD <= to && filterD >= from ||
       item['name'] === nameData && filterD <= to && filterD >= from){
-        totalReport += item['totalAmount'];
+        totalReport += parseInt(item['totalamount'],10);
       }
     }
+
     return totalReport;
   }
 

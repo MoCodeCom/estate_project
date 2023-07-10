@@ -102,11 +102,11 @@
             <tbody>
               <tr *ngFor="let i of moneyTableList | filter: filterString:'name':'position':'date':'about':'typeofpayment'">
                 <td scope="row">{{i.id}}</td>
-                <td>{{i.name |uppercase}}</td>
-                <td>{{i.position |uppercase}}</td>
+                <td>{{i.name |upperFirst}}</td>
+                <td>{{i.position |upperFirst}}</td>
                 <td>{{i.date}}</td>
-                <td>{{i.about}}</td>
-                <td>{{i.typeofpayment}}</td>
+                <td>{{i.about | upperFirst}}</td>
+                <td>{{i.typeofpayment | upperFirst}}</td>
                 <td>{{i.totalamount | currancy}}</td>
                 <td>
                   <button type="button"
@@ -120,11 +120,11 @@
                           id="delete_btn"
                           (click)="on_delete(i)"
                           >Delete</button>
-                  <button type="button"
+                  <!--<button type="button"
                           class="btn btn-warning"
                           id="edit_btn"
                           (click)="on_edit(i)"
-                          >Edit</button>
+                          >Edit</button>-->
                 </td>
               </tr>
 

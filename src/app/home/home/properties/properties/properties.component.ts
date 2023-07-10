@@ -1,9 +1,11 @@
 import { AfterContentInit, AfterViewChecked, Component, ElementRef, OnChanges, OnInit, SimpleChanges, getNgModuleById } from '@angular/core';
-import { demo_data } from '../../services/demo_data.service';
-import { Icon, Marker } from 'leaflet';
-import * as L from 'leaflet';
+//import { demo_data } from '../../services/demo_data.service';
+//import { Icon, Marker } from 'leaflet';
+//import * as L from 'leaflet';
 import { maping } from '../../services/maping.service';
 import { db } from '../../services/db.service';
+//import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+//import { pipe } from 'rxjs';
 
 
 @Component({
@@ -15,21 +17,22 @@ export class PropertiesComponent implements OnInit{
 
   autocomplete:any;
   constructor(
-    //private dataService:demo_data,
     private elementRef:ElementRef,
     private mapService:maping,
     private dbService:db
     ){}
 
   ngOnInit(): void {
+    this.propertyTableList = [];
     this.onLandlordTableList();
     this.elementRef.nativeElement;
     this.mapService.initMainMap();
+
   }
 
   /* props*/
 
-  propertyTableList = [];
+  propertyTableList:any[] = [];
   filterString:string;
   addingPropertyAllowed:boolean=false;
   viewPropertyAllowed:boolean=false;
@@ -38,20 +41,41 @@ export class PropertiesComponent implements OnInit{
   selectdClient:any;
   dbName = '';
   loading:boolean = false;
+  imagePath:string;
   /* end props */
 
 async onLandlordTableList(){
   this.loading = true;
-    await this.dbService.getData('propertyDb').then(
-      res =>{
-        this.propertyTableList  =[];
-        res.forEach(element =>{
+  await this.dbService.getData('propertyDb').then(
+    res =>{
+      res.forEach(element =>{
+        /*
+        if(element.data()['image']){
+          this.dbService.getStorageData(element.data()['image']).then(res =>{
+            let pathEle = element.data();
+            pathEle['image'] = res.toString();
+            this.propertyTableList.push(pathEle);
+          }).catch(err => console.log(err));
+        }else{
           this.propertyTableList.push(element.data());
-        });
-        this.loading = false;
-      }
-    );
+        }*/
+        //console.log(element.data());
+        //this.propertyTableList.push(element.data());
+
+
+        this.dbService.getStorageData(element.data()['image']).then(res =>{
+          let pathEle = element.data();
+          pathEle['image'] = res.toString();
+          this.propertyTableList.push(pathEle);
+        }).catch(err => console.log(err));
+      });
+      console.log(this.propertyTableList);
+
+      this.loading = false;
+    }
+  );
 }
+
 
 add_property(){
   this.addingPropertyAllowed = true;
@@ -83,11 +107,5 @@ onReloadPg(){
   this.editPropertyAllowed = false;
   this.ngOnInit();
 }
-
-
-
-
-
-
 
 }

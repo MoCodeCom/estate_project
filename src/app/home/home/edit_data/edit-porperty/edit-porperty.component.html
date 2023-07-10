@@ -184,6 +184,7 @@
                    name="upload"
                    ngModel
                    id="upload"
+                   (change)="uploadFile($event)"
                    >
           </div>
 
@@ -198,11 +199,6 @@
                    #details
                    ></textarea>
           </div>
-
-
-
-
-
 
           <!--  ------------------------End porperty details --------------->
 

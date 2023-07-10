@@ -70,7 +70,7 @@
               >
                 <option
                         *ngFor="let iLandlord of landlordList"
-                        >{{iLandlord.firstname | uppercase}} {{iLandlord.lastname | uppercase}}</option>
+                        >{{iLandlord.firstname | upperFirst}} {{iLandlord.lastname | upperFirst}}</option>
               </select>
               <!-- End landlord name -->
 
@@ -86,7 +86,7 @@
 
                 <option
                         *ngFor="let iTenant of tenantList"
-                        >{{iTenant.firstname | uppercase}} {{iTenant.lastname | uppercase}}</option>
+                        >{{iTenant.firstname | upperFirst}} {{iTenant.lastname | upperFirst}}</option>
               </select>
 
               <!-- End tenant name-->
@@ -102,7 +102,7 @@
               >
                 <option
                         *ngFor="let iOther of otherList"
-                        >{{iOther.name | uppercase}}</option>
+                        >{{iOther.name | upperFirst}}</option>
               </select>
 
               <!-- End other name-->
@@ -288,7 +288,7 @@
           <!-- End transection table -->
 
 
-          <!--  ------------------------End porperty details --------------->
+          <!--  ------------------------End details --------------->
           <hr>
           <div class="btns">
             <button

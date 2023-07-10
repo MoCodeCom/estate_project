@@ -3,9 +3,11 @@ import {  Firestore, collection, collectionData, doc } from "@angular/fire/fires
 import { addDoc, deleteDoc, getDoc, getFirestore, query, updateDoc,
   where ,getDocs, CollectionReference, DocumentData, getDocFromServer,
   onSnapshot, runTransaction, orderBy, limit, startAfter, startAt, getCountFromServer, setDoc} from "firebase/firestore";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { IlandlordProp } from "../models/landlord";
 import { initializeApp } from "firebase/app";
 import { environment } from "src/environments/environment";
+
 
 @Injectable({ providedIn:'root'})
 export class db implements OnInit{
@@ -26,6 +28,8 @@ export class db implements OnInit{
   };
   app = initializeApp(this.firebaseConfig);
   dbs = getFirestore(this.app);
+
+
 
   /** ---------------------------------- */
 
@@ -126,6 +130,19 @@ export class db implements OnInit{
 
     /** */
     //console.log('data is added!');
+  }
+
+  async storageData(filePath:any, file:any){
+
+    const storage = getStorage(this.app);
+    const storageRef = ref(storage,filePath);
+    uploadBytes(storageRef, file).then(res => console.log('Upload file.'));
+  }
+
+  getStorageData(filePath){
+    const storage = getStorage(this.app);
+    const storageRef = ref(storage, filePath)
+    return getDownloadURL(storageRef);
   }
 
 }

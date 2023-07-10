@@ -5,6 +5,8 @@ import { maping } from '../../services/maping.service';
 import { __asyncValues, __values } from 'tslib';
 import { lastValueFrom } from 'rxjs';
 import { db } from '../../services/db.service';
+import { getStorage } from 'firebase/storage';
+
 
 @Component({
   selector: 'app-add-property',
@@ -41,6 +43,8 @@ export class AddPropertyComponent implements OnDestroy{
   postcodeNotExist:boolean = false;
   property:any;
   loading:boolean = false;
+  propertyId:any;
+  filePath:any;
 
 
 
@@ -68,11 +72,12 @@ export class AddPropertyComponent implements OnDestroy{
         date:this.dateRef.nativeElement.value.toLowerCase(),
         rent:this.rentRef.nativeElement.value.toLowerCase(),
         charge:this.chargeRef.nativeElement.value.toLowerCase(),
-        detail:this.detailsRef.nativeElement.value.toLowerCase()
+        detail:this.detailsRef.nativeElement.value.toLowerCase(),
+        image:this.filePath
       }
 
       this.dbService.addData(this.property,'propertyDb').then(res =>{
-        console.log(res);
+        console.log(res.id);
       }).catch(err =>{
         console.log(err);
       });
@@ -92,6 +97,14 @@ export class AddPropertyComponent implements OnDestroy{
         this.loading = false;
       }
     );
+  }
+
+  uploadFile(event:any){
+    const file:File = event.target.files[0];
+    let dateStr = new Date().toString();
+    let postcodeStr= this.postcodeRef.nativeElement.value;
+    this.filePath = `estateImage/${postcodeStr.replace(/\s/g,'')+dateStr.replace(/\s/g,'')}`;
+    this.dbService.storageData(this.filePath, file);
   }
 
   onClose(){

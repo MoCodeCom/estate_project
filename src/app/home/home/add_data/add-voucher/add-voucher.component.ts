@@ -91,6 +91,7 @@ export class AddVoucherComponent implements OnDestroy, OnInit{
       about:this.aboutRef.nativeElement.value.toLowerCase(),
       totalamount:this.totalamountRef.nativeElement.value.toUpperCase(),
       typeofpayment:this.typeofpaymentRef.nativeElement.value.toLowerCase(),
+      invoiceno:this.invoiceNo,
       trans:this.transactionList
     }
 

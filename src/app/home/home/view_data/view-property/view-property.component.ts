@@ -12,7 +12,7 @@ export class ViewPropertyComponent {
   @Input() selectedClient:any;
   @Output() close = new EventEmitter<void>();
   ClientDetails:any;
-  map:L.Map;
+  //map:L.Map;
 
   constructor(
     private elementRef: ElementRef,
@@ -22,15 +22,16 @@ export class ViewPropertyComponent {
 
   ngOnInit(): void {
     this.onSelectedClient();
-    this.mapServcie.initMap(this.ClientDetails.postcode);
-  }
-
-  onClose(){
-    this.ngOnDestroy();
+    this.mapServcie.initMap(this.selectedClient.postcode);
   }
 
   onSelectedClient(){
     this.ClientDetails = this.selectedClient;
+
+  }
+
+  onClose(){
+    this.ngOnDestroy();
   }
 
   ngOnDestroy(): void {

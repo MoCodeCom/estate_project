@@ -1,5 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { demo_data } from '../../../services/demo_data.service';
+import { db } from '../../../services/db.service';
+import { isExists } from 'date-fns';
+
 
 @Component({
   selector: 'app-frlandlord',
@@ -10,7 +13,7 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    private dataService:demo_data,
+    private dbService:db
     ){}
 
   @Input() closeForm:boolean;
@@ -20,26 +23,22 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
   fromDATE:any;
   toDATE:any;
   name:any;
-  landlordName=[];
+
   landlordData=[];
   ReportTotalAmont = 0;
+  loading:boolean = false;
+  landlordList = [];
 
   ngOnInit(): void {
-    this.getLandlordData();
-
+    this.getLandlord();
   }
 
   onPrint(invoiceP:any){
     let printContent = document.getElementById(invoiceP).innerHTML;
-    //let originContents = document.body.innerHTML;
-
     document.body.innerHTML = printContent;
     window.print();
   }
 
-  printEle(ele:ElementRef){
-    console.log(ele.nativeElement.value);
-  }
 
   resetReport(){
     this.fromDATE = null;
@@ -47,13 +46,24 @@ export class FrlandlordComponent implements OnInit,OnDestroy {
     this.name = null;
   }
 
-  getLandlordData(){
-    this.landlordData = this.dataService.moneyData();
-    for(let i of this.landlordData){
-      if(i['position'].toLowerCase() === 'landlord'){
-        this.landlordName.push(i.name);
-      }
-    }
+  async getLandlord(){
+    this.loading = true;
+    this.landlordData = [];
+    await this.dbService.getData('moneyDb')
+    .then(res =>{
+      res.forEach(element => {
+
+        if(element.data()['position'] === 'landlord'){
+          this.landlordData.push(element.data());
+
+          if(this.landlordList.includes(element.data()['name'])){
+            return;
+          }else{
+            this.landlordList.push(element.data()['name']);
+          }
+        }
+      });
+    });
   }
 
   onClose(){

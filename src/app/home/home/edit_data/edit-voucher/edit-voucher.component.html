@@ -23,38 +23,44 @@
           </div>
 
           <div class="v-line-1">
+            <!-- position -->
             <div class="input-group">
               <span class="input-group-text">To</span>
-              <select class="form-select" aria-label="Default select example"
+              <select class="form-select"
+                      aria-label="Default select example"
                       name="position"
                       id="position"
                       ngModel
                       #position
               >
-                <option default></option>
+                <option selected="" hidden="hidden" value="">{{selectedClient.position | upperFirst}}</option>
+                <option></option>
                 <option>Landlord</option>
                 <option>Other</option>
                 <option>Tenant</option>
               </select>
-
             </div>
+            <!-- End position -->
 
+            <!-- End date -->
             <div class="input-group">
               <span class="input-group-text" >Date</span>
               <input type="date"
                      class="form-control"
-                     placeholder="Date"
                      name="date"
                      ngModel
                      id="date"
                      required
+                     value={{selectedClient.date}}
                      #date
                      >
                 <div *ngIf="!date.value" class="required-warning"><p>*Required</p></div>
             </div>
+            <!-- End date -->
           </div>
 
           <div class="v-line-1">
+            <!-- Name-->
             <div class="input-group" *ngIf="position.value != ''">
               <span class="input-group-text">Name</span>
               <!-- Landlord name -->
@@ -81,7 +87,6 @@
                       *ngIf="position.value === 'Tenant'"
                       #nameTenant
               >
-
                 <option
                         *ngFor="let iTenant of tenantsList"
                         >{{iTenant.firstName | uppercase}} {{iTenant.lastName | uppercase}}</option>
@@ -109,21 +114,25 @@
 
 
             <!-- Any name-->
-            <div class="input-group" *ngIf="position.value == ''">
+            <div class="input-group" *ngIf="!position.value">
               <span class="input-group-text" >Name</span>
-              <input type="text"
+              <input defaultValue="{{selectedClient.name}}"
+                     type="text"
                      class="form-control"
-                     placeholder="Name"
                      name="name"
-                     ngModel
                      id="name"
+                     ngModel
                      required
                      #name
                      >
                 <div *ngIf="!name.value" class="required-warning"><p>*Required</p></div>
             </div>
 
+
+
             <!-- End any name-->
+
+            <!-- End name-->
 
             <!-- About input -->
             <div class="input-group">
@@ -135,14 +144,14 @@
                         required
                         #about
                 >
-
-                  <option>Adjustment</option>
+                  <option selected="" hidden="hidden" value="" #defaultabout>{{selectedClient.about | upperFirst}}</option>
+                  <option >Adjustment</option>
                   <option>Receive Rent</option>
                   <option>Pay Rent</option>
                   <option>Services</option>
-                  <option >Other</option>
+                  <option>Other</option>
                 </select>
-              <div *ngIf="!about.value" class="required-warning"><p>*Required</p></div>
+              <div *ngIf="!about.value && defaultabout.value" class="required-warning"><p>*Required</p></div>
             </div>
             <!-- End about input -->
           </div>
@@ -181,10 +190,11 @@
                         required
                         #typeOfPayment
                 >
+                  <option selected="" hidden="hidden" value="" #defaultypeOfPayment>{{selectedClient.typeofpayment | upperFirst}}</option>
                   <option>Cash</option>
                   <option>Bank</option>
                 </select>
-              <div *ngIf="!typeOfPayment.value" class="required-warning"><p>*Required</p></div>
+              <div *ngIf="!typeOfPayment.value && defaultypeOfPayment.value" class="required-warning"><p>*Required</p></div>
             </div>
             <!-- End type of payment input -->
           </div>
@@ -254,9 +264,37 @@
             </form>
 
           </div>
+
+
+                    <!-- Transaction table -->
+                    <hr>
+                    <div id="table_scroll" >
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Type of transaction</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount £</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                          <tr *ngFor="let i of selectedClient.trans">
+                            <td>{{i.typeOfTransaction}}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.amount | currancy}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- End transection table -->
+
+
+
           <!-- End transaction details -->
 
-          <button
+          <hr>
+          <div class="btns">
+            <button
             type="submit"
             class="btn btn-outline-success"
             [disabled]="!f.valid"
@@ -266,6 +304,8 @@
             type="button"
             class="btn btn-outline-danger"
             (click)="onClose()">Cancel</button>
+          </div>
+
 
       </form>
 

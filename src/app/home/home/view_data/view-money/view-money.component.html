@@ -21,18 +21,23 @@
           <p>INVOICE</p>
         </div>
        <!-- End invoice title --->
+       <!-- loading -->
+       <div *ngIf="date == null || undefined">
+        <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 3vw; text-align: center;">
+      </div>
+       <!-- End loading -->
 
         <!-- Invoice date and No --->
         <div class="invoice-title-info">
-          <p>Date: {{ClientDetails.date |date}}</p>
-          <p>Invoice No: {{ClientDetails.invoice}}</p>
+          <p #date>Date: {{ClientDetails.date | date}}</p>
+          <p>Invoice No: {{ClientDetails.invoiceno}}</p>
         </div>
         <!-- End invoice date and No --->
 
         <!-- Invoice to -->
         <div class="invoice-title-info">
-          <p>To : {{ClientDetails.name}}</p>
-          <p>{{ClientDetails.position}}</p>
+          <p>To : {{ClientDetails.name | upperFirst}}</p>
+          <p>{{ClientDetails.position | upperFirst}}</p>
 
         </div>
         <!-- End invoice to -->
@@ -54,16 +59,16 @@
               <th>Description</th>
               <th style="width: 30%;">£Amount</th>
             </tr>
-            <tr *ngFor="let i of ClientDetails.transaction, let count=index">
+            <tr *ngFor="let i of ClientDetails.trans, let count=index">
               <td>{{count+1}}</td>
               <td>{{i.description}}</td>
-              <td *ngIf="i.type == 'pay'">( {{i.amount}} )</td>
-              <td *ngIf="i.type == 'receive'">{{i.amount}}</td>
+              <td *ngIf="i.typeOfTransaction == 'Pay'">( {{i.amount}} )</td>
+              <td *ngIf="i.typeOfTransaction == 'Receive'">{{i.amount}}</td>
             </tr>
             <tr class="totalTable">
               <td></td>
               <td>Total amount</td>
-              <td>{{totalAmount | currancy}}</td>
+              <td>{{ClientDetails.totalamount | currancy}}</td>
             </tr>
           </table>
         </div>

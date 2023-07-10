@@ -42,6 +42,7 @@ export class EditPorpertyComponent implements OnDestroy, OnInit{
     newproperty:any;
     postcodeNotExist:boolean = false;
     loading:boolean = false;
+    filePath:any;
     /**------- */
 
   ngOnInit(): void {
@@ -67,11 +68,12 @@ export class EditPorpertyComponent implements OnDestroy, OnInit{
         date:this.dateRef.nativeElement.value.toLowerCase(),
         rent:this.rentRef.nativeElement.value.toLowerCase(),
         charge:this.chargeRef.nativeElement.value.toLowerCase(),
-        detail:this.detailsRef.nativeElement.value.toLowerCase()
+        detail:this.detailsRef.nativeElement.value.toLowerCase(),
+        image:this.filePath
       }
 
       console.log(this.newproperty);
-      console.log(this.property);
+      //console.log(this.property);
 
       this.dbService.updateData(this.property,this.newproperty,'propertyDb');
       this.onClose();
@@ -90,6 +92,14 @@ export class EditPorpertyComponent implements OnDestroy, OnInit{
         this.loading = false;
       }
     );
+  }
+
+  uploadFile(event:any){
+    const file:File = event.target.files[0];
+    let dateStr = new Date().toString();
+    let postcodeStr= this.postcodeRef.nativeElement.value;
+    this.filePath = `estateImage/${postcodeStr.replace(/\s/g,'')+dateStr.replace(/\s/g,'')}`;
+    this.dbService.storageData(this.filePath, file);
   }
 
   onClose(){

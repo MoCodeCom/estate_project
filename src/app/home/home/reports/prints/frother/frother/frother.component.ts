@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { db } from 'src/app/home/home/services/db.service';
 import { demo_data } from 'src/app/home/home/services/demo_data.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class FrotherComponent implements OnInit,OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    private dataService:demo_data,
+    private dbService:db
     ){}
 
   @Input() closeForm:boolean;
@@ -20,13 +21,14 @@ export class FrotherComponent implements OnInit,OnDestroy {
   fromDATE:any;
   toDATE:any;
   name:any;
-  tenantName=[];
-  tenantData=[];
+  otherData=[];
   ReportTotalAmont = 0;
+  loading:boolean = false;
+  otherList = [];
 
   ngOnInit(): void {
-    this.getLandlordData();
 
+    this.getOther();
   }
 
   onPrint(invoiceP:any){
@@ -36,23 +38,31 @@ export class FrotherComponent implements OnInit,OnDestroy {
     window.print();
   }
 
-  printEle(ele:ElementRef){
-    console.log(ele.nativeElement.value);
-  }
-
   resetReport(){
     this.fromDATE = null;
     this.toDATE = null;
     this.name = null;
   }
 
-  getLandlordData(){
-    this.tenantData = this.dataService.moneyData();
-    for(let i of this.tenantData){
-      if(i['position'].toLowerCase() === 'others'){
-        this.tenantName.push(i.name);
-      }
-    }
+
+  async getOther(){
+    this.loading = true;
+    this.otherData = [];
+    await this.dbService.getData('moneyDb')
+    .then(res =>{
+      res.forEach(element => {
+
+        if(element.data()['position'] === 'other'){
+          this.otherData.push(element.data());
+
+          if(this.otherList.includes(element.data()['name'])){
+            return;
+          }else{
+            this.otherList.push(element.data()['name']);
+          }
+        }
+      });
+    });
   }
 
   onClose(){

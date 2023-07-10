@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { demo_data } from '../../../services/demo_data.service';
+import { db } from '../../../services/db.service';
 
 @Component({
   selector: 'app-frtenant',
@@ -10,7 +11,7 @@ export class FrtenantComponent implements OnInit,OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    private dataService:demo_data,
+    private dbService:db
     ){}
 
   @Input() closeForm:boolean;
@@ -20,25 +21,20 @@ export class FrtenantComponent implements OnInit,OnDestroy {
   fromDATE:any;
   toDATE:any;
   name:any;
-  tenantName=[];
+
   tenantData=[];
   ReportTotalAmont = 0;
+  loading:boolean = false;
+  tenantList = [];
 
   ngOnInit(): void {
-    this.getLandlordData();
-
+    this.getTenant();
   }
 
   onPrint(invoiceP:any){
     let printContent = document.getElementById(invoiceP).innerHTML;
-    //let originContents = document.body.innerHTML;
-
     document.body.innerHTML = printContent;
     window.print();
-  }
-
-  printEle(ele:ElementRef){
-    console.log(ele.nativeElement.value);
   }
 
   resetReport(){
@@ -47,13 +43,25 @@ export class FrtenantComponent implements OnInit,OnDestroy {
     this.name = null;
   }
 
-  getLandlordData(){
-    this.tenantData = this.dataService.moneyData();
-    for(let i of this.tenantData){
-      if(i['position'].toLowerCase() === 'tenant'){
-        this.tenantName.push(i.name);
-      }
-    }
+
+  async getTenant(){
+    this.loading = true;
+    this.tenantData = [];
+    await this.dbService.getData('moneyDb')
+    .then(res =>{
+      res.forEach(element => {
+
+        if(element.data()['position'] === 'tenant'){
+          this.tenantData.push(element.data());
+
+          if(this.tenantList.includes(element.data()['name'])){
+            return;
+          }else{
+            this.tenantList.push(element.data()['name']);
+          }
+        }
+      });
+    });
   }
 
   onClose(){

@@ -63,13 +63,13 @@
                       name="name"
                       id="name"
                       [(ngModel)]="name"
-                      #nameLandlord
+                      #nameOther
               >
                 <option>* All Clients</option>
-                <option *ngFor="let i of tenantName">{{i | uppercase}}</option>
+                <option *ngFor="let i of otherList">{{i | upperFirst}}</option>
               </select>
             </div>
-            <div *ngIf="!nameLandlord.value" class="required-warning"><p>*Required</p></div>
+            <div *ngIf="!nameOther.value" class="required-warning"><p>*Required</p></div>
             <!-- End landlord name -->
            </div>
           <!-- button -->
@@ -116,7 +116,7 @@
             <!-- End company details-->
 
               <div class="content_view"
-                   *ngFor="let i of tenantData | filterFRPipe:name:fromDATE:toDATE"
+                   *ngFor="let i of otherData | filterFRPipe:name:fromDATE:toDATE"
                    >
                 <table>
                   <tr>
@@ -129,29 +129,29 @@
                   </tr>
                   <tr class="totalTable">
                     <td>{{i.id}}</td>
-                    <td >{{i.invoice}}</td>
+                    <td >{{i.invoiceno}}</td>
                     <td>{{i.date}}</td>
                     <td>{{i.name}}</td>
                     <td>{{i.about}}</td>
-                    <td>{{i.paymentType}}</td>
+                    <td>{{i.typeofpayment}}</td>
                   </tr>
                 </table>
                 <p class="transactionTitle">Transaction</p>
-                <div *ngFor="let t of i.transaction">
-                  <p >Type: {{t.type}} <span style="margin-left: 8rem;"></span>
+                <div *ngFor="let t of i.trans">
+                  <p >Type: {{t.typeOfTransaction}} <span style="margin-left: 8rem;"></span>
                       Description: {{t.description}} <span style="margin-left: 8rem;"></span>
                       Amount: {{t.amount | currancy }}</p>
                 </div>
 
                 <hr>
                 <p class="totalAmountTitle">
-                  Total amount: <span >{{i.totalAmount | currancy}}</span>
+                  Total amount: <span >{{i.totalamount | currancy}}</span>
                 </p>
               </div>
               <hr>
                 <p class="reportTotalAmount"
                 *ngIf="name !== undefined"
-                >Total amount in the report: {{ 0.00 | filterTFRPipe:tenantData:name:fromDATE:toDATE | currancy}}</p>
+                >Total amount in the report: {{ 0.00 | filterTFRPipe:otherData:name:fromDATE:toDATE | currancy}}</p>
               <hr>
             <!-- End report content -->
           </div>

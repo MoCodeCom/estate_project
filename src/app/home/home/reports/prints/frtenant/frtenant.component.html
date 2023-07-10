@@ -66,7 +66,7 @@
                       #nameLandlord
               >
                 <option>* All Clients</option>
-                <option *ngFor="let i of tenantName">{{i | uppercase}}</option>
+                <option *ngFor="let i of tenantList">{{i | upperFirst}}</option>
               </select>
             </div>
             <div *ngIf="!nameLandlord.value" class="required-warning"><p>*Required</p></div>
@@ -129,23 +129,23 @@
                   </tr>
                   <tr class="totalTable">
                     <td>{{i.id}}</td>
-                    <td >{{i.invoice}}</td>
+                    <td >{{i.invoiceno}}</td>
                     <td>{{i.date}}</td>
-                    <td>{{i.name}}</td>
+                    <td>{{i.name | upperFirst}}</td>
                     <td>{{i.about}}</td>
-                    <td>{{i.paymentType}}</td>
+                    <td>{{i.typeofpayment}}</td>
                   </tr>
                 </table>
                 <p class="transactionTitle">Transaction</p>
-                <div *ngFor="let t of i.transaction">
-                  <p >Type: {{t.type}} <span style="margin-left: 8rem;"></span>
+                <div *ngFor="let t of i.trans">
+                  <p >Type: {{t.typeOfTransaction}} <span style="margin-left: 8rem;"></span>
                       Description: {{t.description}} <span style="margin-left: 8rem;"></span>
                       Amount: {{t.amount | currancy }}</p>
                 </div>
 
                 <hr>
                 <p class="totalAmountTitle">
-                  Total amount: <span >{{i.totalAmount | currancy}}</span>
+                  Total amount: <span >{{i.totalamount | currancy}}</span>
                 </p>
               </div>
               <hr>

@@ -2,6 +2,7 @@ import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import * as L from "leaflet";
 import { demo_data } from "./demo_data.service";
 import { db } from "./db.service";
+import { collectionSnapshots } from "@angular/fire/firestore";
 
 @Injectable({ providedIn:'root'})
 export class maping implements OnInit, OnDestroy{
@@ -61,26 +62,35 @@ export class maping implements OnInit, OnDestroy{
 
 
     for(let i of propertyData){
-      let post:{latFunc:any, lngFunc:any}={latFunc:'',lngFunc:''};
+      let post:{latFunc:any, lngFunc:any, postcode:string, url:string}={latFunc:'',lngFunc:'', postcode:'', url:''};
       let d;
-      d = await this.getLatLng(i.postcode);
+      if(i.postcode){d = await this.getLatLng(i.postcode);}
       post['latFunc']=d.latitude;
       post['lngFunc']=d.longitude;
+      post['postcode']=i.postcode;
+
+      if(i['image']){
+        await this.dbService.getStorageData(i['image']).then(res =>{
+          let pathEle = i;
+          pathEle['image'] = res.toString();
+          post['url']=pathEle['image'];
+        }).catch(err => console.log(err));
+      }else{
+        post['url']='assets/images/mohammedAlfadhel.png';
+      }
       this.postcodeArrs.push(post);
     }
 
+
+
   }
 
-  async initMap(postcode:string) {
-
-    await this.getLatLng(postcode);
-
+  async initMap(postcode:string='B12 0YL') {
+    if(postcode){await this.getLatLng(postcode);}
     if(this.map){
       this.map.remove();
     }
-
     this.map = L.map('map').setView([this.lat, this.lng],15);
-
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       minZoom: 10,
@@ -98,8 +108,7 @@ export class maping implements OnInit, OnDestroy{
 
     /* ---- marker layer ----*/
     var lmarker = L.marker([this.lat, this.lng], {icon: licon}).addTo(this.map);
-    lmarker.bindPopup("Mohammed alfadhel<br><img style='width:50px;' src='assets/images/mohammedAlfadhel.png'>").openPopup();
-
+    lmarker.bindPopup(postcode).openPopup();
     await tiles.addTo(this.map);
 
   }
@@ -110,7 +119,6 @@ export class maping implements OnInit, OnDestroy{
       this.mapMain.remove();
     }
     this.mapMain = L.map('map').setView([this.lat, this.lng], 10);
-
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 17,
       minZoom: 5,
@@ -125,15 +133,12 @@ export class maping implements OnInit, OnDestroy{
       //shadowAnchor: [4, 62],  // the same for the shadow
       popupAnchor:  [-1, -35] // point from which the popup should open relative to the iconAnchor
     });
-
     /* ---- marker layer Main----*/
 
-    for(let i of  this.postcodeArrs){
-      var lmarker = L.marker([i.latFunc, i.lngFunc], {icon: licon}).addTo(this.mapMain);
-      lmarker.bindPopup("Mohammed alfadhel<br><img style='width:50px;' src='assets/images/mohammedAlfadhel.png'>").openPopup();
-
+    for(let i of this.postcodeArrs){
+      var lmarker = L.marker([i.latFunc, i.lngFunc, i.postcode], {icon: licon}).addTo(this.mapMain);
+      lmarker.bindPopup( i.postcode +"<br><img style='width:50px;' src='"+ i.url +"'>").openPopup();
     }
-
     await tiles.addTo(this.mapMain);
   }
 
@@ -167,12 +172,9 @@ export class maping implements OnInit, OnDestroy{
       return obj;
   }
 
-
-
-
-
   ngOnDestroy(): void {
     this.map.remove();
+    this.mapMain.remove();
   }
 
 

@@ -98,8 +98,8 @@
             <tbody>
               <tr *ngFor="let i of otherTableList | filter: filterString:'name':'sector':'services':'phone'">
                 <td scope="row">{{i.id}}</td>
-                <td>{{i.name |uppercase}}</td>
-                <td>{{i.sector |uppercase}}</td>
+                <td>{{i.name |upperFirst}}</td>
+                <td>{{i.sector |upperFirst}}</td>
                 <td>{{i.services | shorten:10}}</td>
                 <td>{{i.phone}}</td>
                 <td>

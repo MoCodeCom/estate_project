@@ -16,7 +16,7 @@
   position: fixed;
   top: 3vh;
   left: 15vw;
-  width: 70vw;
+  width:fit-content;
   height:fit-content;
   padding: 0px;
   border-radius:10px;
@@ -89,9 +89,16 @@ textarea{
 
 #map{
   border: .5px solid rgb(0, 181, 42);
-  width: 35vw;
+  width: 25vw;
   height: 50vh;
-  z-index: 0;
+  /*z-index: 0;*/
+}
+
+#image{
+  border: .5px solid rgb(0, 181, 42);
+  width: 25vw;
+  height: 50vh;
+  /*z-index: 0;*/
 }
 /*----------- End map test --------*/
 

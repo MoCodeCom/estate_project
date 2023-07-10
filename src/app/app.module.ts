@@ -71,6 +71,7 @@ import { OtherExpsComponent } from './home/home/reports/prints/other-exps/other-
 import { filterTFRPipe } from './home/home/pipes/filterTFRPipe.pipe';
 import { FrotherComponent } from './home/home/reports/prints/frother/frother/frother.component';
 import { ChartsComponent } from './home/home/charts/charts/charts.component';
+import { upperFirstPipe } from './home/home/pipes/upperFirst.pipe';
 //import { AngularFireModule } from '@angular/fire/compat'
 
 /*leaflet map*/
@@ -92,11 +93,14 @@ import { ChartsComponent } from './home/home/charts/charts/charts.component';
     ReportsComponent,
     NotFoundComponent,
     CalendarComponent,
+
     filerPipe,
     shortenPipe,
     currancyPipe,
     filterFRPipe,
     filterTFRPipe,
+    upperFirstPipe,
+
     AddLandlordComponent,
     AddTenantComponent,
     AddPropertyComponent,
