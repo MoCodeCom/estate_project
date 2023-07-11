@@ -77,15 +77,20 @@ export class AddPropertyComponent implements OnInit, OnDestroy{
         image:this.filePath
       }
 
-      this.dbService.addData(this.property,'propertyDb').then(res =>{
-
-      }).catch(err =>{
-        console.log(err);
+      this.dbService.storageData(this.filePath, this.fileUpload).then(()=>{
+        this.dbService.addData(this.property,'propertyDb').then(res =>{
+        }).catch(err =>{
+          console.log(err);
+        });
+      }).catch((err)=>{
+        alert(err + 'Image not uploaded.');
       });
+
+
       this.onClose();
     }
 
-    this.dbService.storageData(this.filePath, this.fileUpload);
+
 
   }
 
