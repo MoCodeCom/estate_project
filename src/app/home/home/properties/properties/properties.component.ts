@@ -20,19 +20,18 @@ export class PropertiesComponent implements OnInit{
     private elementRef:ElementRef,
     private mapService:maping,
     private dbService:db
-    ){}
+    ){
+      this.onLandlordTableList();
+    }
 
   ngOnInit(): void {
-    this.propertyTableList = [];
-    this.onLandlordTableList();
-    this.elementRef.nativeElement;
-    this.mapService.initMainMap();
-
+    //this.elementRef.nativeElement;
   }
 
   /* props*/
 
   propertyTableList:any[] = [];
+  deletePropertyList:any[] = [];
   filterString:string;
   addingPropertyAllowed:boolean=false;
   viewPropertyAllowed:boolean=false;
@@ -46,22 +45,11 @@ export class PropertiesComponent implements OnInit{
 
 async onLandlordTableList(){
   this.loading = true;
+  this.propertyTableList = [];
   await this.dbService.getData('propertyDb').then(
     res =>{
       res.forEach(element =>{
-        /*
-        if(element.data()['image']){
-          this.dbService.getStorageData(element.data()['image']).then(res =>{
-            let pathEle = element.data();
-            pathEle['image'] = res.toString();
-            this.propertyTableList.push(pathEle);
-          }).catch(err => console.log(err));
-        }else{
-          this.propertyTableList.push(element.data());
-        }*/
-        //console.log(element.data());
-        //this.propertyTableList.push(element.data());
-
+        this.deletePropertyList.push(element.data());
 
         this.dbService.getStorageData(element.data()['image']).then(res =>{
           let pathEle = element.data();
@@ -69,8 +57,7 @@ async onLandlordTableList(){
           this.propertyTableList.push(pathEle);
         }).catch(err => console.log(err));
       });
-      console.log(this.propertyTableList);
-
+      this.mapService.initMainMap();
       this.loading = false;
     }
   );
@@ -96,16 +83,20 @@ on_view(data:any){
 
 on_delete(data:any){
   this.deletePropertyAllowed = true;
-  this.selectdClient = data;
+  this.deletePropertyList.forEach(res=>{
+    if(res['postcode'] === data['postcode'] && res['id'] === data['id'] && res['landlordId'] === data['landlordId']){
+      this.selectdClient = res;
+    }
+  })
   this.dbName = 'propertyDb';
 }
 
 onReloadPg(){
+  this.ngOnInit();
   this.addingPropertyAllowed = false;
   this.viewPropertyAllowed = false;
   this.deletePropertyAllowed = false;
   this.editPropertyAllowed = false;
-  this.ngOnInit();
 }
 
 }

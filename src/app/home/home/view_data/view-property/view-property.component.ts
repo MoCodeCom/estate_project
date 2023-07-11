@@ -35,7 +35,7 @@ export class ViewPropertyComponent {
   }
 
   ngOnDestroy(): void {
-    this.elementRef.nativeElement.remove();
     this.close.emit()
+    this.elementRef.nativeElement.remove();
   }
 }

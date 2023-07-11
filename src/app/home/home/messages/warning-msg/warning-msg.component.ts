@@ -33,6 +33,7 @@ export class WarningMsgComponent {
   onDelete(){
     console.log(this.dbName);
     this.dbService.deleteData(this.ClientDetails,this.dbName);
+    this.dbService.deleteStorageData(this.ClientDetails['image']);
     this.onClose();
   }
 

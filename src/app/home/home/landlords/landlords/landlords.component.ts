@@ -1,7 +1,7 @@
 //import { google } from '@agm/core/services/google-maps-types';
 import { Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
-import { demo_data } from '../../services/demo_data.service';
-import { Router } from '@angular/router';
+//import { demo_data } from '../../services/demo_data.service';
+//import { Router } from '@angular/router';
 import { db } from '../../services/db.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { db } from '../../services/db.service';
 })
 export class LandlordsComponent implements OnInit{
   constructor(
-
     private elementRef:ElementRef,
     private dbService:db
     ){}

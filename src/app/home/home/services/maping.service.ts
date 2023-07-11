@@ -11,8 +11,14 @@ export class maping implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
+    this.postcodeArrs = [];
+    this.propertiesPostcodes();
     if(this.map){
       this.map = this.map.remove();
+    }
+
+    if(this.mapMain){
+      this.mapMain = this.mapMain.remove();
     }
     this.initMap('b120yl');
   }

@@ -119,7 +119,7 @@ export class EditPorpertyComponent implements OnDestroy, OnInit{
   }*/
 
   ngOnDestroy(): void {
+    this.close.emit();
     this.elementRef.nativeElement.remove();
-    this.close.emit()
   }
 }

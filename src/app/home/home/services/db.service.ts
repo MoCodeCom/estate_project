@@ -3,7 +3,7 @@ import {  Firestore, collection, collectionData, doc } from "@angular/fire/fires
 import { addDoc, deleteDoc, getDoc, getFirestore, query, updateDoc,
   where ,getDocs, CollectionReference, DocumentData, getDocFromServer,
   onSnapshot, runTransaction, orderBy, limit, startAfter, startAt, getCountFromServer, setDoc} from "firebase/firestore";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { IlandlordProp } from "../models/landlord";
 import { initializeApp } from "firebase/app";
 import { environment } from "src/environments/environment";
@@ -51,7 +51,6 @@ export class db implements OnInit{
     let docId:string;
     //getFirestore();
     let c = collection(this.fdb,dbName);
-
     let qureyData = query(c, where("landlordId","==",deleteData.landlordId));
     const snap = onSnapshot(qureyData, snap=>{
       snap.docs.forEach(element =>{
@@ -70,11 +69,15 @@ export class db implements OnInit{
       }
     });
 
+    this
+
     return snap;
   }
 
   async getData(dbName:string){
-    let c = await collection(this.fdb,dbName);
+
+    let c:any;
+    c = await collection(this.fdb,dbName);
     const qry = query(
       c, orderBy('id', 'asc')
     );
@@ -136,13 +139,21 @@ export class db implements OnInit{
 
     const storage = getStorage(this.app);
     const storageRef = ref(storage,filePath);
-    uploadBytes(storageRef, file).then(res => console.log('Upload file.'));
+    await uploadBytes(storageRef, file).then(res => alert('File is uploaded.'));
   }
 
-  getStorageData(filePath){
+  async getStorageData(filePath){
     const storage = getStorage(this.app);
     const storageRef = ref(storage, filePath)
-    return getDownloadURL(storageRef);
+    return await getDownloadURL(storageRef);
+  }
+
+  async deleteStorageData(image:string){
+    const storage = getStorage(this.app);
+    const storageRef = ref(storage, image);
+    await deleteObject(storageRef)
+    .then(() => alert('The item is deleted.'))
+    .catch(err => alert(err));
   }
 
 }

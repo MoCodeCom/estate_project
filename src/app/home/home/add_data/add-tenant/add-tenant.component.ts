@@ -41,7 +41,7 @@ export class AddTenantComponent implements OnDestroy, OnInit{
     }
 
   ngOnInit(): void {
-    this.addressList;
+    //this.addressList;
   }
 
 

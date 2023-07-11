@@ -1,11 +1,11 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { demo_data } from '../../services/demo_data.service';
+//import { demo_data } from '../../services/demo_data.service';
 import { maping } from '../../services/maping.service';
-import { __asyncValues, __values } from 'tslib';
-import { lastValueFrom } from 'rxjs';
+//import { __asyncValues, __values } from 'tslib';
+//import { lastValueFrom } from 'rxjs';
 import { db } from '../../services/db.service';
-import { getStorage } from 'firebase/storage';
+//import { getStorage } from 'firebase/storage';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { getStorage } from 'firebase/storage';
   templateUrl: './add-property.component.html',
   styleUrls: ['./add-property.component.css']
 })
-export class AddPropertyComponent implements OnDestroy{
+export class AddPropertyComponent implements OnInit, OnDestroy{
 
   constructor(
     private elementRef: ElementRef,
@@ -45,6 +45,7 @@ export class AddPropertyComponent implements OnDestroy{
   loading:boolean = false;
   propertyId:any;
   filePath:any;
+  fileUpload:any;
 
 
 
@@ -77,20 +78,22 @@ export class AddPropertyComponent implements OnDestroy{
       }
 
       this.dbService.addData(this.property,'propertyDb').then(res =>{
-        console.log(res.id);
+
       }).catch(err =>{
         console.log(err);
       });
       this.onClose();
     }
 
+    this.dbService.storageData(this.filePath, this.fileUpload);
+
   }
 
   async landlordListData(){
     this.loading = true;
+    this.landlordList  =[];
     await this.dbService.getData('landlordDb').then(
       res =>{
-        this.landlordList  =[];
         res.forEach(element =>{
           this.landlordList.push(element.data());
         });
@@ -101,10 +104,15 @@ export class AddPropertyComponent implements OnDestroy{
 
   uploadFile(event:any){
     const file:File = event.target.files[0];
+    this.fileUpload = file;
+
+
+    /*---------------- */
     let dateStr = new Date().toString();
     let postcodeStr= this.postcodeRef.nativeElement.value;
     this.filePath = `estateImage/${postcodeStr.replace(/\s/g,'')+dateStr.replace(/\s/g,'')}`;
-    this.dbService.storageData(this.filePath, file);
+
+    /*---------------- */
   }
 
   onClose(){
@@ -112,8 +120,9 @@ export class AddPropertyComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
+    this.close.emit();
     this.elementRef.nativeElement.remove();
-    this.close.emit()
+
   }
 
 
