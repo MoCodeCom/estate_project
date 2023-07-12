@@ -28,9 +28,6 @@ export class db implements OnInit{
   };
   app = initializeApp(this.firebaseConfig);
   dbs = getFirestore(this.app);
-
-
-
   /** ---------------------------------- */
 
   async addData(newData:any, dbName:string){

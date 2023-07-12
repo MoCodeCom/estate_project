@@ -1,5 +1,5 @@
 //import { google } from '@agm/core/services/google-maps-types';
-import { Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 //import { demo_data } from '../../services/demo_data.service';
 //import { Router } from '@angular/router';
 import { db } from '../../services/db.service';
@@ -10,10 +10,12 @@ import { db } from '../../services/db.service';
   styleUrls: ['./landlords.component.css']
 })
 export class LandlordsComponent implements OnInit{
+  @Output() landlordListCount = new EventEmitter<number>();
   constructor(
     private elementRef:ElementRef,
     private dbService:db
     ){}
+
   ngOnInit(): void {
     this.onLandlordTableList();
     this.elementRef.nativeElement;
@@ -30,6 +32,7 @@ export class LandlordsComponent implements OnInit{
   selectdClient:any;
   dbName = '';
   loading:boolean = false;
+  landlordCount:number = 0;
   /* ------- end props ------- */
 
 
@@ -40,11 +43,13 @@ export class LandlordsComponent implements OnInit{
         this.landlordTableList  =[];
         res.forEach(element =>{
           this.landlordTableList.push(element.data());
+          this.landlordCount += 1;
         });
         this.loading = false;
       }
     );
-
+    //console.log(this.landlordCount);
+    this.landlordListCount.emit(this.landlordCount);
   }
 
   add_landlord(){

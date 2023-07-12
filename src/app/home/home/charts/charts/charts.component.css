@@ -1,5 +1,11 @@
-.divChart{
+#divChart{
   display: block;
   width: 400px;
+  height: 400px;
+}
+
+#divLineChart{
+  display: block;
+  width: 1000px;
   height: 400px;
 }
