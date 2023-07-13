@@ -1,0 +1,25 @@
+#divLineChart{
+  display: block;
+  width: 35vw;
+  height: 100%;
+  text-align: center;
+  padding-left: 5rem;
+}
+
+#LineChart{
+  display: block;
+  width: 60vw;
+  height: 300px;
+
+}
+
+@media only screen and (max-width: 1500px) {
+  #divLineChart{
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 900px) {
+  #divLineChart{
+    display: none;
+  }
+}

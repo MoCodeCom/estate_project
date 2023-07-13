@@ -72,6 +72,8 @@ import { filterTFRPipe } from './home/home/pipes/filterTFRPipe.pipe';
 import { FrotherComponent } from './home/home/reports/prints/frother/frother/frother.component';
 import { ChartsComponent } from './home/home/charts/charts/charts.component';
 import { upperFirstPipe } from './home/home/pipes/upperFirst.pipe';
+import { ChartMoneyComponent } from './home/home/charts/chart-money/chart-money.component';
+import { ChartLTOPComponent } from './home/home/charts/chart-ltop/chart-ltop.component';
 //import { AngularFireModule } from '@angular/fire/compat'
 
 /*leaflet map*/
@@ -128,7 +130,9 @@ import { upperFirstPipe } from './home/home/pipes/upperFirst.pipe';
     IncomestatementComponent,
     OtherExpsComponent,
     FrotherComponent,
-    ChartsComponent
+    ChartsComponent,
+    ChartMoneyComponent,
+    ChartLTOPComponent
   ],
   imports: [
     CommonModule,

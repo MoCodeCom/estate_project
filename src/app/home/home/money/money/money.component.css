@@ -1,10 +1,18 @@
 /* ------------------ content --------------*/
 #pg_content{
   height: 100%;
+  width: 500px;
 }
 
 #card_add_content{
+  width: 100%;
   position: relative;
+  display: flex;
+}
+
+
+#chart{
+
 }
 /*-------------------- map ------------------*/
 

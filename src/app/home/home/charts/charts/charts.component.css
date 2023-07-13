@@ -1,11 +1,23 @@
 #divChart{
-  display: block;
-  width: 400px;
-  height: 400px;
+  display: block; width: 400px; height: 400px;
 }
 
 #divLineChart{
   display: block;
   width: 1000px;
   height: 400px;
+}
+
+#divLineChart div{
+  display: block;
+  width: 1000px;
+  height: 300px;
+}
+
+#year{
+  width: 20vw;
+}
+
+#lineChartBtn{
+  width: 20vw;
 }

@@ -36,14 +36,11 @@ export class chartService implements OnInit{
     .then(res => {
         res.forEach(ele =>{
           datas.push(ele.data());
-          //console.log(ele.data());
         })
       }
     ).catch(err =>{
       console.log(err)
     });
-
-    //console.log(datas);
     return datas;
   }
 

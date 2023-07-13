@@ -96,12 +96,12 @@ export class AddVoucherComponent implements OnDestroy, OnInit{
     }
 
     this.dbService.addData(this.money,'moneyDb').then(res =>{
-      console.log(res);
+      //console.log(res);
     }).catch(err =>{
       console.log(err);
     });
 
-    console.log(this.money);
+    //console.log(this.money);
     //console.log(this.transactionList);
 
     this.onClose();

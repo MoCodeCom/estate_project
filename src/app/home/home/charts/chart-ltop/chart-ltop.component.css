@@ -1,0 +1,11 @@
+#divChart{
+  display: block; width: 40vw; height: 400px;
+
+}
+
+@media only screen and (max-width: 1000px) {
+  #divChart{
+    display: block; width: 60vw; height: 400px;
+
+  }
+}
