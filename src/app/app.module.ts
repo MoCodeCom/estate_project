@@ -12,6 +12,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 //import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -143,6 +144,7 @@ import { ChartLTOPComponent } from './home/home/charts/chart-ltop/chart-ltop.com
     appRouteModule,
     RouterModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     /* ------- Firebase ------*/
 
     AngularFireModule.initializeApp(environment.firebase),

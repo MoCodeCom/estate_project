@@ -9,36 +9,44 @@ import { notificationService } from './services/notification.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private noteService:notificationService){}
-  arr :any =[];
-  date = new Date();
-  ngOnInit():void{
-    this.getPorpNotificaion();
-  }
-
-  getPorpNotificaion(){
-    console.log(this.date);
-    let year = this.date.getUTCFullYear();
-    let month = this.date.getUTCMonth() + 1;
-    let day = this.date.getUTCDate();
-
-    //let dateStr = new Date(year +'-'+ month +'-'+ day);
-    //console.log(dateStr);
-    this.arr = this.noteService.getPropertyData().then(res =>{
+  constructor(private noteService:notificationService){
+    this.arrProp = this.noteService.getPorpNotificaion();
+    this.arrProp.then(res =>{
       res.forEach(element => {
 
-        let dateRent = new Date(element.data()['date']);
-        //console.log(dateRent.toDateString());
-        if(this.date < dateRent){
-          console.log(element.data());
-        }
-
+        this.arrs.push(element);
       });
     });
 
+    this.arrTenant = this.noteService.getTenantToNotification();
+    this.arrTenant.then(res =>{
+      res.forEach(element =>{
+
+        this.arrs.push(element);
+      })
+    });
+  }
+  arrProp :any;
+  arrTenant:any;
+  arrs:any =[];
+
+  //date = new Date();
+  ngOnInit():void{
+    //console.log(this.arrs)
   }
 
+  postDATA(){
+    let dateNow = new Date();
+    this.noteService.postData({fname:'ahmed', lname:'alfadhel', date:dateNow});
+  }
 
+  async fetchDATA(){
+    await this.noteService.fetchData().then(res =>{
+      //console.log(res);
+    }).catch(err =>{
+      //console.log(err);
+    });
 
+  }
 
 }
