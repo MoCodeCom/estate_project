@@ -22,6 +22,7 @@ export class PropertiesComponent implements OnInit{
     private dbService:db
     ){
       this.onLandlordTableList();
+      //console.log(this.propertyTableList);
     }
 
   ngOnInit(): void {

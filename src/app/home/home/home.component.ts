@@ -10,34 +10,27 @@ import { notificationService } from './services/notification.service';
 })
 export class HomeComponent implements OnInit {
   constructor(private noteService:notificationService){
-    this.arrProp = this.noteService.getPorpNotificaion();
-    this.arrProp.then(res =>{
+    this.noteService.getTenantNote();
+    //this.fetchDATA();
+
+    //console.log(this.arrs);
+    /*this.arrs.then(res =>{
       res.forEach(element => {
-
-        this.arrs.push(element);
+        console.log(element.data());
       });
-    });
-
-    this.arrTenant = this.noteService.getTenantToNotification();
-    this.arrTenant.then(res =>{
-      res.forEach(element =>{
-
-        this.arrs.push(element);
-      })
-    });
+    });*/
   }
+
+
   arrProp :any;
   arrTenant:any;
   arrs:any =[];
-
-  //date = new Date();
   ngOnInit():void{
-    //console.log(this.arrs)
+    //console.log(this.arrs);
   }
 
   postDATA(){
-    let dateNow = new Date();
-    this.noteService.postData({fname:'ahmed', lname:'alfadhel', date:dateNow});
+    this.noteService.deleteData();
   }
 
   async fetchDATA(){

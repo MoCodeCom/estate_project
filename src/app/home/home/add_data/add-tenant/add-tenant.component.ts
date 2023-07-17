@@ -37,7 +37,12 @@ export class AddTenantComponent implements OnDestroy, OnInit{
     private mapingService: maping,
     private dbService:db
     ){
-      this.propertyTableList = this.dataService.propertyData();
+      //get property data
+      let arr = this.dbService.getData('propertyDb').then(res =>{
+        res.forEach(ele =>{
+          this.propertyTableList.push(ele.data());
+        })
+      });
     }
 
   ngOnInit(): void {
@@ -48,8 +53,8 @@ export class AddTenantComponent implements OnDestroy, OnInit{
   onSelected(data){
     this.addressList = [];
     this.propertyTableList.forEach(element => {
-      if(element.Postcode === data){
-        this.addressList.push(element.Address);
+      if(element.postcode === data){
+        this.addressList.push(element.address);
       }
     });
   }
