@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from "@angular/core";
 import { db } from "./db.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { getDatabase } from "firebase/database";
+import { getDatabase, orderByKey } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { elementAt } from "rxjs";
 import { isEqual } from "date-fns/esm";
@@ -11,11 +11,10 @@ export class notificationService implements OnInit{
   constructor(
     private dbService:db,
     private http:HttpClient){
-    //this.fetchData();
-    //this.getTenantNote();
+      //this.getTenantToNotification();
   }
   date = new Date();
-  arr =[];
+  getDataArr =[];
 
   ngOnInit(): void {}
 
@@ -62,10 +61,12 @@ export class notificationService implements OnInit{
         arrs.push(element.data());
       });
     });
+
   return await arrs;
   }
 
   async getTenantNote():Promise<any>{
+    this.deleteData();
 
     let propArr = [];
     this.tenantArr =[];
@@ -107,6 +108,7 @@ export class notificationService implements OnInit{
           let noteDate = new Date();
           //console.log(noteDate);
           this.postData(this.tenantArr);
+
       });
 
     });
@@ -123,6 +125,8 @@ export class notificationService implements OnInit{
     //console.log(names);
     await this.http.get('https://estateagent-2da55-default-rtdb.europe-west1.firebasedatabase.app/posts.json').subscribe(res=>{
       let checkData:boolean = false;
+
+      // if no data in db
       if(res === null){
         checkData = true;
         names.forEach(element => {
@@ -134,7 +138,7 @@ export class notificationService implements OnInit{
                 });
         })
       }else{
-        //console.log(res);
+        //when there is data db check to add data just one time on day.
         let dataArr = Object.values(res);
         let day = new Date().getUTCDate();
         let month = new Date().getUTCMonth();
@@ -144,25 +148,15 @@ export class notificationService implements OnInit{
         for(let i =0;i<dataArr.length;i++){
 
           if(dataArr[i]['currentDayDate'] == day && dataArr[i]['currentMonthDate'] == month && dataArr[i]['currentYearDate'] == year){
-            //console.log(bool);
             bool = false;
             break;
           }else{
             bool = true;
           }
         }
-        console.log(bool);
 
-        /*
-        dataArr.forEach(res =>{
-          if(res['currentDayDate'] == day && res['currentMonthDate'] == month && res['currentYearDate'] == year){
-            //console.log(bool);
-            return;
-          }else{
-            bool = true;
-            console.log(bool);
-          }
-        });*/
+
+        //if true add data to db else none
         if(bool){
           names.forEach(element => {
             this.http
@@ -179,38 +173,34 @@ export class notificationService implements OnInit{
 
   }
 
-  async fetchData(num:number=4){
+  async fetchData(num:number=10){
     await this.http.get('https://estateagent-2da55-default-rtdb.europe-west1.firebasedatabase.app/posts.json').subscribe(res=>{
 
-      this.arr.push(res);
+      this.getDataArr.push(res);
 
       // to delete data over num automatically
-      if(Object.keys(this.arr[0]).length > num){
+      if(Object.keys(this.getDataArr[0]).length > num){
 
-        let oldDate:any = null;
-        let newDate:any = null;
-        let deletedName:string = null;
+        //get object from arr about data
+        let initialObjects = this.getDataArr[0];
+        //convert object to arr
+        let getArr= Object.values(this.getDataArr[0]);
 
-        for(let i in this.arr[0]){
-          if(oldDate == null){
-            oldDate = this.arr[0][i]['date'];
-            deletedName = i;
+        // sort data according to date item in databse
+        getArr.sort((a,b) => Date.parse(b['date']) - Date.parse(a['date']));
+        let dataAfterSlice = getArr.slice(0,num);
 
-          }else{
-            newDate = null;
-            newDate = this.arr[0][i]['date'];
-            let oldDateAsDate = Date.parse(oldDate);
-            let newDateAsDate = Date.parse(newDate);
-            if(oldDateAsDate < newDateAsDate ){
-              this.deleteData(deletedName);
-            }
-          }
-        }
+        // filter initial object to delete data over num or 10
+        Object.fromEntries(
+          Object.entries(initialObjects).filter(key =>
+            {
+              if(!Object.values(dataAfterSlice).includes(Object.values(key)[1])){
+                this.deleteData(key[0]);
+              }
+            })
+        );
       }
     });
-
-
-
   }
 
   async deleteData(itemName?){

@@ -11,10 +11,7 @@
             <a href="#" class="btn btn-primary">More info</a>
           </div>
         </div>
-        <div>
-          <button (click)="postDATA()">add data</button>
-          <button (click)="fetchDATA()">get data</button>
-        </div>
+
         <div id="calender">
           <app-calendar></app-calendar>
         </div>
@@ -22,7 +19,19 @@
       <hr>
       <div id="container_2">
         <div id="chart"><app-chart-ltop></app-chart-ltop></div>
-        <div id="notification"><p>notification</p></div>
+        <div id="notification" >
+          <ul>
+            <li *ngFor="let i of arrs[0]">
+              <div class="card" id="notificationCard">
+                <div class="card-header">
+                  <p>{{i | checkNoteDatePipe}}</p>
+                  <p>Rent Notification</p>
+                </div>
+                <p style="font-size: 14px;">Today is the due date for your rent payment for the property located at <a routerLink="/properties">{{i['postcode']}}</a>. The rent is collected form <a routerLink="/tenants">{{i['tfn'] | upperFirst}} {{i['tln'] | upperFirst}}</a> , with amount {{i['rent']}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PlotlyService } from 'angular-plotly.js';
 import { PlotlyService_1 } from './services/main_Chart.service';
 import { notificationService } from './services/notification.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +10,27 @@ import { notificationService } from './services/notification.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private noteService:notificationService){
+  constructor(private noteService:notificationService,private http:HttpClient){
+
+    // to post data in database.
     this.noteService.getTenantNote();
-    //this.fetchDATA();
 
-    //console.log(this.arrs);
-    /*this.arrs.then(res =>{
-      res.forEach(element => {
-        console.log(element.data());
-      });
-    });*/
+    //to filter and sort data in database when refresh page.
+    this.noteService.fetchData();
+
+    //Get data form noteficaion database;
+    this.fatchDataNoFilter();
+
   }
 
+  arrs:any = [];/*
+  dayDate = new Date().getUTCDate();
+  monthDate = new Date().getUTCMonth();*/
 
-  arrProp :any;
-  arrTenant:any;
-  arrs:any =[];
   ngOnInit():void{
-    //console.log(this.arrs);
   }
+
+
 
   postDATA(){
     this.noteService.deleteData();
@@ -39,6 +42,14 @@ export class HomeComponent implements OnInit {
     }).catch(err =>{
       //console.log(err);
     });
+
+  }
+
+  async fatchDataNoFilter(){
+    return await this.http.get('https://estateagent-2da55-default-rtdb.europe-west1.firebasedatabase.app/posts.json').subscribe(res =>{
+      this.arrs.push(Object.values(res));
+    });
+
 
   }
 
