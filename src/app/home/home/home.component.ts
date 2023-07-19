@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-  arrs:any = [];/*
+  arrs:any = [];
+  count:number = 0;
+  /*
   dayDate = new Date().getUTCDate();
   monthDate = new Date().getUTCMonth();*/
 

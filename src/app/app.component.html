@@ -9,12 +9,18 @@
           <span class="fs-4 d-none d-sm-inline">Company Name</span>
         </a>
         <ul class="nav nav-pills flex-column mt-4">
-          <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="home">
+          <li class="nav-item py-2 py-sm-0" id="i_home">
+
+            <a href="#" class="nav-link text-white" routerLink="home" >
+
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/homeIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Home</span>
+              </i>
+              <span class="fs-6 ms-3 d-none d-sm-inline">Home  </span>
+              <div class="fs-6 ms-3 d-none d-sm-inline" id="notificationCount" *ngIf="count > 0">{{count}}</div>
             </a>
+
+
           </li>
 
           <li class="nav-item py-2 py-sm-0">

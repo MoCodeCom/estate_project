@@ -12,15 +12,18 @@ export class notificationService implements OnInit{
     private dbService:db,
     private http:HttpClient){
       //this.getTenantToNotification();
+
   }
   date = new Date();
   getDataArr =[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   proparr:any;
   tenantarr:any;
-  tenantArr:any[]=[]
+  //tenantArr:any[]=[]
 /*----------- 1 -------------*/
   // To get date from database..
   async getPropertyData():Promise<any>{
@@ -62,29 +65,31 @@ export class notificationService implements OnInit{
       });
     });
 
+
   return await arrs;
   }
 
   async getTenantNote():Promise<any>{
-    this.deleteData();
-
+    //this.deleteData();
     let propArr = [];
-    this.tenantArr =[];
-    await this.getPorpToNotificaion().then(pres =>{
+    let tenantArr = [];
+    let initialArr:any[] = [];
 
+    //Data for properties ...
+    await this.getPorpToNotificaion().then(pres =>{
       pres.forEach(elementProp=>{
         propArr.push(elementProp);
 
         //Data here..
-
+        /*
         this.getTenantToNotification().then(tres =>{
-          this.tenantArr = [];
+          tenantArr = [];
           //let noteData:any = null;
           tres.forEach(elementTenant => {
 
             if(elementTenant['curpostcode'].toString().includes(elementProp['postcode'].toString())){
               //console.log(elementTenant['firstname']);
-              this.tenantArr.push({
+              tenantArr.push({
               //noteData ={
                 currentDayDate:new Date().getUTCDate(),
                 currentMonthDate:new Date().getUTCMonth(),
@@ -99,22 +104,62 @@ export class notificationService implements OnInit{
                 date:elementProp['date']
               //}
               });
-              //this.postData(noteData);
             }else{
               return null;
             }
-
           });
-          let noteDate = new Date();
-          //console.log(noteDate);
-          this.postData(this.tenantArr);
 
-      });
+          //console.log(tenantArr);
+
+          this.deleteData();
+          this.postData(tenantArr);
+
+      });*/
+
 
     });
 
     });
+
+    //Data here.. for tenant
+
+    await this.getTenantToNotification().then(tres =>{
+
+      tres.forEach(ele => initialArr.push(ele))
+      tenantArr = [];
+      //let noteData:any = null;
+      //console.log(tenantArr);
+    });
+
+    for(let n of initialArr){
+      for(let i of propArr){
+
+        if(n['curpostcode'].toString() === i['postcode'].toString()){
+          tenantArr.push({
+          //noteData ={
+            currentDayDate:new Date().getUTCDate(),
+            currentMonthDate:new Date().getUTCMonth(),
+            currentYearDate:new Date().getUTCFullYear(),
+            tfn:n['firstname'],
+            tln:n['lastname'],
+
+            postcode:i['postcode'],
+            rent:i['rent'],
+            schrent:i['charge'],
+            owner:i['owner'],
+            date:i['date']
+          //}
+          });
+
+
+        }
+      }
     }
+
+
+  this.postData(tenantArr);
+
+}
 
 
 /*---------- End 2 ---------*/
@@ -122,7 +167,7 @@ export class notificationService implements OnInit{
 
 // get , post and delete date to notification data in database.
   async postData(names:any){
-    //console.log(names);
+
     await this.http.get('https://estateagent-2da55-default-rtdb.europe-west1.firebasedatabase.app/posts.json').subscribe(res=>{
       let checkData:boolean = false;
 

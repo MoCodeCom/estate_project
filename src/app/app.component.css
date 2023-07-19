@@ -6,4 +6,13 @@
   width: 75%
 }
 
+#notificationCount{
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding:.20rem .50rem .20rem .50rem;
+  border-radius: 60%;
+  z-index: 100;
+}
+
 
