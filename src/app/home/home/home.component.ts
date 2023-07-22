@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
 
     //Get data form noteficaion database;
     this.fatchDataNoFilter();
-
   }
 
   arrs:any = [];
@@ -56,3 +55,18 @@ export class HomeComponent implements OnInit {
   }
 
 }
+
+/*
+"budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+*/

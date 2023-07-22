@@ -72,6 +72,6 @@ export class AddLandlordComponent implements OnInit,OnDestroy{
 
   ngOnDestroy(): void {
     this.elementRef.nativeElement.remove();
-    this.close.emit()
+    this.close.emit();
   }
 }
