@@ -1,15 +1,5 @@
 
-
-
-<app-main></app-main>
-
-<!--
-
-<app-login-auth></app-login-auth>
-
-
-
-<div class="container-fluid" *ngIf="login">
+<div class="container-fluid">
   <div class="row flex-nowrap">
     <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-between"
          id="sidebar"
@@ -105,95 +95,25 @@
             </a>
           </li>
 
-          <li class="nav-item py-2 py-sm-0">
-            <a class="nav-link text-white" (click)="onlogout()">
-              <i class="fs-5 fa fa-table-list">
-                <img src="assets/images/loginIcon.png" style="width: 25px;"
-                >
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Logout</span>
-            </a>
+          <li class="nav-item py-2 py-sm-0" >
+            <div (click)="onlogout()" id="logout">
+              <a class="nav-link text-white" >
+                <i class="fs-5 fa fa-table-list" >
+                  <img src="assets/images/loginIcon.png" style="width: 25px;"
+                  >
+                </i><span class="fs-6 ms-3 d-none d-sm-inline">Logout</span>
+              </a>
+            </div>
           </li>
-
         </ul>
       </div>
-
     </div>
 
-
+    <!--content-->
   <div class="p-3" id="content">
-
     <router-outlet></router-outlet>
   </div>
 
   </div>
 
 </div>
-<div class="container-fluid" *ngIf="!login">
-  <div class="row flex-nowrap" id="login_row">
-    <div class="col col-md-6" *ngIf="!login">
-      <div>
-        <img class="backgroundImg" alt="Background_img" src="/assets/images/background.png">
-      </div>
-
-      <div class="alert alert-danger" *ngIf="errorText" id="errorText">
-        <p>{{errorText}}</p>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <p>Please sign in</p>
-        </div>
-        <div class="card-body">
-          <div *ngIf="loading">
-            <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 30px; text-align: center;">
-          </div>
-          <form accept-charset="UTF-8"
-                role="form"
-                #authform="ngForm"
-                (ngSubmit)="onLogin(authform)"
-                >
-            <fieldset>
-              <div class="form-group">
-                <input class="form-control"
-                       placeholder="E-mail"
-                       name="email"
-                       type="email"
-                       ngModel
-                       email
-                       required>
-              </div>
-              <div class="form-group">
-                <input class="form-control"
-                       placeholder="Password"
-                       name="password"
-                       type="password"
-                       id="password"
-                       password
-                       ngModel
-                       required>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input name="remember"
-                         type="checkbox"
-                         value="Remember Me"> Remember Me
-                </label>
-              </div>
-
-           </fieldset>
-           <button class="btn btn-lg btn-success btn-block"
-                   type="submit"
-                   id="login_btn"
-                   [disabled]="!authform.valid">Login</button>
-
-          </form>
-        </div>
-
-
-    </div>
-    </div>
-  </div>
-</div>
-
--->
-

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row" >
+    <div class="col" >
+      <div>
+        <img class="backgroundImg" >
+      </div>
+
+      <div class="alert alert-danger" *ngIf="errorText" id="errorText">
+        <p>{{errorText}}</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <p>Please sign in</p>
+        </div>
+        <div class="card-body">
+          <div *ngIf="loading">
+            <img alt="spinner loading" src="assets/images/Rolling.gif" style="width: 30px; text-align: center;">
+          </div>
+          <form accept-charset="UTF-8"
+                role="form"
+                #authform="ngForm"
+                (ngSubmit)="onLogin(authform)"
+                >
+            <fieldset>
+              <div class="form-group">
+                <input class="form-control"
+                       placeholder="E-mail"
+                       name="email"
+                       type="email"
+                       ngModel
+                       email
+                       required>
+              </div>
+              <div class="form-group">
+                <input class="form-control"
+                       placeholder="Password"
+                       name="password"
+                       type="password"
+                       id="password"
+                       password
+                       ngModel
+                       required>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input name="remember"
+                         type="checkbox"
+                         value="Remember Me"> Remember Me
+                </label>
+              </div>
+
+           </fieldset>
+           <button class="btn btn-lg btn-success btn-block"
+                   type="submit"
+                   id="login_btn"
+                   [disabled]="!authform.valid">Login</button>
+          </form>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

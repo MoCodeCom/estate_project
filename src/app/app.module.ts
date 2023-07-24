@@ -76,6 +76,10 @@ import { upperFirstPipe } from './home/home/pipes/upperFirst.pipe';
 import { checkNoteDatePipe } from './home/home/pipes/checkNoteDate.pipe';
 import { ChartMoneyComponent } from './home/home/charts/chart-money/chart-money.component';
 import { ChartLTOPComponent } from './home/home/charts/chart-ltop/chart-ltop.component';
+import { MainComponent } from './main/main.component';
+import { LoginAuthComponent } from './login-auth/login-auth.component';
+import { AuthGuard } from './login-auth/login-auth.guard';
+import { authService } from './home/home/services/auth.service';
 //import { AngularFireModule } from '@angular/fire/compat'
 
 /*leaflet map*/
@@ -136,7 +140,9 @@ import { ChartLTOPComponent } from './home/home/charts/chart-ltop/chart-ltop.com
     FrotherComponent,
     ChartsComponent,
     ChartMoneyComponent,
-    ChartLTOPComponent
+    ChartLTOPComponent,
+    MainComponent,
+    LoginAuthComponent
   ],
   imports: [
     CommonModule,
@@ -166,7 +172,7 @@ import { ChartLTOPComponent } from './home/home/charts/chart-ltop/chart-ltop.com
 
     AgmCoreModule.forRoot({apiKey:'AIzaSyBWDl4DyscEGeARJgm1MQmaxCj0WwB_cYM'})
   ],
-  providers: [],
+  providers: [authService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
