@@ -1,23 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { authriService } from '../../../services/authri.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit{
-  ngOnInit(): void {}
-  authAllowed = false;
+  constructor(
+    private authriService:authriService
+  ){}
+  ngOnInit(): void {
+    this.userDetails();
+  }
 
-  onReloadPg(){
-    this.authAllowed = false;
+  userDetail:any = {};
+
+  userDetails(){
+    let user = this.authriService.userDetails().then(res =>{
+      if(this.userDetail){
+        this.userDetail = res;
+      }
+
+    });
 
   }
 
 
-  onAddNewUser(){
-    this.ngOnInit();
-    this.authAllowed = true;
-  }
+
+
+
 
 }

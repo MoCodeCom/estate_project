@@ -61,4 +61,5 @@ export class AppComponent implements OnInit{
   onlogout(){
     this.authService.logout();
   }*/
+  ///*"lint": "eslint --ext .js,.ts .",*/ from functions package.json
 }

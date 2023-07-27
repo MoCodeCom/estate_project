@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { authriService } from '../../services/authri.service';
 
 @Component({
   selector: 'app-setting',
@@ -7,15 +8,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit{
-  constructor(private http:HttpClient){}
+  constructor(
+    private authriService:authriService
+  ){}
 
-  //zooplaData:any = "https://api.zoopla.co.uk/api/v1/area_value_graphs.js?area=w12&output_type=outcode&api_key=home_values_graph_url";
+  authAllowed = false;
+  usersArr:any = [];
+  deleteUserAllowed:boolean=false;
+  selectdClient:any;
+  dbName = '';
+
 
   ngOnInit(): void {
-    /*
-    let data = this.http.get(this.zooplaData);
-    data.subscribe((res)=>{
-      console.log(res);
-    });*/
+    this.usersList();
+  }
+
+
+
+
+
+
+  onReloadPg(){
+
+    this.deleteUserAllowed = false;
+    this.authAllowed = false;
+    this.ngOnInit();
+
+  }
+
+  // to get users list and show in the dom.
+  async usersList(){
+    this.usersArr = await this.authriService.usersList();
+  }
+
+  onDeleteUser(data:any){
+    this.deleteUserAllowed = true;
+    this.selectdClient = data;
+    this.dbName = 'usersDb';
+  }
+
+
+  onAddNewUser(){
+    this.ngOnInit();
+    this.authAllowed = true;
   }
 }

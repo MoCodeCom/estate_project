@@ -28,6 +28,7 @@ import { ProfileComponent } from './home/home/auth/profile/profile/profile.compo
 import { ReportsComponent } from './home/home/reports/reports/reports.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
 import { appRouteModule } from './home/home/modules/appRouteModule.module';
+import { NewuserComponent } from './home/home/setting/newuser/newuser.component';
 
 
 //calendar
@@ -80,6 +81,8 @@ import { MainComponent } from './main/main.component';
 import { LoginAuthComponent } from './login-auth/login-auth.component';
 import { AuthGuard } from './login-auth/login-auth.guard';
 import { authService } from './home/home/services/auth.service';
+import { SettingComponent } from './home/home/setting/setting/setting.component';
+
 //import { AngularFireModule } from '@angular/fire/compat'
 
 /*leaflet map*/
@@ -101,6 +104,8 @@ import { authService } from './home/home/services/auth.service';
     ReportsComponent,
     NotFoundComponent,
     CalendarComponent,
+    NewuserComponent,
+    SettingComponent,
 
     filerPipe,
     shortenPipe,
@@ -142,7 +147,8 @@ import { authService } from './home/home/services/auth.service';
     ChartMoneyComponent,
     ChartLTOPComponent,
     MainComponent,
-    LoginAuthComponent
+    LoginAuthComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,

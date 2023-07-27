@@ -1,19 +1,31 @@
+
 <div>
-  <app-auth
-  (close)="onReloadPg()"
-  *ngIf="authAllowed"
-  ></app-auth>
+
   <div class="container">
     <div class="row">
       <div class="cor-sm-6">
-        <div></div>
+        <div>
+          <div class="card">
+            <div class="card text-center">
+              <div class="card-header">
+                <p>User Details</p>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">{{userDetail.username}}</h4>
+
+                <p class="card-text">{{userDetail.phonenumber}}</p>
+                <p class="card-text">{{userDetail.email}}</p>
+                <p class="card-text">{{userDetail.status}}</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div></div>
         <hr>
         <div></div>
         <div>
-          <button class="btn btn-outline-success"
-                  (click)="onAddNewUser()"
-          >Add New User</button>
+
         </div>
       </div>
     </div>

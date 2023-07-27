@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { db } from '../../services/db.service';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-warning-msg',
@@ -13,7 +14,7 @@ export class WarningMsgComponent {
   @Output() close = new EventEmitter<void>();
   //client data
   ClientDetails:any;
-
+  _userData:any;
   constructor(
     private elementRef: ElementRef,
     private dbService:db
@@ -27,13 +28,15 @@ export class WarningMsgComponent {
 
   onSelectedClient(){
     this.ClientDetails = this.selectedClient;
+
   }
 
 
   onDelete(){
-    console.log(this.dbName);
-    this.dbService.deleteData(this.ClientDetails,this.dbName);
-    this.dbService.deleteStorageData(this.ClientDetails['image']);
+
+    //this.dbService.deleteData(this.ClientDetails,this.dbName);
+    //this.dbService.deleteStorageData(this.ClientDetails['image']);
+    this.userDataDetails();
     this.onClose();
   }
 
@@ -46,4 +49,22 @@ export class WarningMsgComponent {
     this.elementRef.nativeElement.remove();
     this.close.emit()
   }
+
+
+  userDataDetails(){
+
+    if(localStorage.getItem('userData') !== null ){
+      this._userData = JSON.parse(localStorage.getItem('userData'));
+      if(this._userData){
+        let jwt = jwt_decode(this._userData);
+        console.log(jwt);
+        //this.emailSignIn = jwt['email'];
+        //this.emailSignIn = this._userData.email;
+        //this.reload();
+      }else{
+        //this.emailSignIn = '';
+      }
+    }
+
+    }
 }

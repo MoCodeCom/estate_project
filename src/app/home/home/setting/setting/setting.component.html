@@ -1,7 +1,68 @@
 
-<a href="https://www.zoopla.co.uk/" target="_blank">
-  <img src="https://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla-150x73.png" width="150" height="73" title="Property information powered by Zoopla" alt="Property information powered by Zoopla" border="0">
-</a>
+<app-newuser
+(close)="onReloadPg()"
+  *ngIf="authAllowed"
+></app-newuser>
+
+<app-warning-msg
+*ngIf="deleteUserAllowed"
+[closeForm]="deleteUserAllowed"
+[selectedClient]="selectdClient"
+[dbName]="dbName"
+(close)="onReloadPg()"
+></app-warning-msg>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <h6 class="card-title">Users</h6>
+          </div>
+          <div class="card-body">
+            <div>
+              <button class="btn btn-outline-success"
+                      (click)="onAddNewUser()"
+              >Add New User</button>
+            </div>
+
+            <div class="userlist">
+
+              <table class="table table table-striped" id="pg_table">
+                <thead>
+                  <th>User name</th>
+                  <th>Phone number</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of usersArr">
+                    <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['username'] | upperFirst}}</td>
+                    <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['phonenumber']}}</td>
+                    <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['email']}}</td>
+                    <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['position']}}</td>
+                    <td>
+                      <button type="button"
+                              class="btn btn-outline-danger"
+                              id="view_btn"
+                              (click)="onDeleteUser(i)"
+                              >Delete</button>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 

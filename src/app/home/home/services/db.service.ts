@@ -37,7 +37,7 @@ export class db implements OnInit{
     let id = countDb.data().count + 1;
     const data = doc(collection(this.fdb,'id')).id;
 
-    newData.landlordId = data;
+    newData.Id = data;
     newData.id = id;
     //newLandlord.landlordPath = landlordPath;
 
@@ -152,5 +152,7 @@ export class db implements OnInit{
     .then(() => alert('The item is deleted.'))
     .catch(err => alert(err));
   }
+
+
 
 }
