@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter,  OnInit, Output } from '@angular/core';
 import { authriService } from '../../services/authri.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { authriService } from '../../services/authri.service';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit{
+
   constructor(
     private authriService:authriService
   ){}
@@ -17,16 +18,12 @@ export class SettingComponent implements OnInit{
   deleteUserAllowed:boolean=false;
   selectdClient:any;
   dbName = '';
+  btnClick:boolean;
 
 
   ngOnInit(): void {
     this.usersList();
   }
-
-
-
-
-
 
   onReloadPg(){
 
@@ -41,10 +38,18 @@ export class SettingComponent implements OnInit{
     this.usersArr = await this.authriService.usersList();
   }
 
-  onDeleteUser(data:any){
+  onUpdateActivation(data:any){
     this.deleteUserAllowed = true;
     this.selectdClient = data;
     this.dbName = 'usersDb';
+    this.btnClick = true;
+  }
+
+  onUpdateAuthorization(data:any){
+    this.deleteUserAllowed = true;
+    this.selectdClient = data;
+    this.dbName = 'usersDb';
+    this.btnClick = false;
   }
 
 

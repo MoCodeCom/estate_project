@@ -4,18 +4,21 @@
   *ngIf="authAllowed"
 ></app-newuser>
 
-<app-warning-msg
+<app-update-user
 *ngIf="deleteUserAllowed"
 [closeForm]="deleteUserAllowed"
 [selectedClient]="selectdClient"
 [dbName]="dbName"
 (close)="onReloadPg()"
-></app-warning-msg>
+[btn]="btnClick"
+></app-update-user>
 
 <div class="container">
   <div class="row">
     <div class="col">
       <div>
+
+
         <div class="card">
           <div class="card-header">
             <h6 class="card-title">Users</h6>
@@ -34,7 +37,9 @@
                   <th>User name</th>
                   <th>Phone number</th>
                   <th>Email</th>
+                  <th>Position</th>
                   <th>Status</th>
+                  <th>Authorization</th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let i of usersArr">
@@ -42,21 +47,30 @@
                     <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['phonenumber']}}</td>
                     <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['email']}}</td>
                     <td [ngStyle]="{'color':i['position'] =='Admin'?'red':null}">{{i['position']}}</td>
+
                     <td>
                       <button type="button"
-                              class="btn btn-outline-danger"
+                              class="btn btn-outline-success"
                               id="view_btn"
-                              (click)="onDeleteUser(i)"
-                              >Delete</button>
+                              (click)="onUpdateActivation(i)"
+                              [ngStyle]="{'backgroundColor':i['status']=='active'?'green':'gray'}"
+                              style="color: white;"
+                              >{{i['status'] | upperFirst}}</button></td>
+                    <td>
+                      <button type="button"
+                              class="btn btn-outline-success"
+                              id="view_btn"
+                              (click)="onUpdateAuthorization(i)"
+                              [ngStyle]="{'backgroundColor':i['authori']=='yes'?'green':'gray'}"
+                              style="color: white;"
+                              >{{i['authori'] | upperFirst}}</button></td>
+
                   </tr>
                 </tbody>
               </table>
-
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

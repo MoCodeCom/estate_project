@@ -1,0 +1,47 @@
+<div class="dropback" (click)="onClose()"></div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- title of view page-->
+      <div class="title_pg">
+        <p>Update User</p>
+        <a (click)="onClose()">
+          <img alt="closeIcon" src="assets/images/closeIcon.png" style="width: 25px;"/>
+        </a>
+      </div>
+      <!-- End title page -->
+
+
+      <!-- Delete warning page content -->
+      <div class="content_delete">
+
+        <div>
+          <p>Are you sure to update User to <span>{{ClientDetails.username}}</span></p>
+        </div>
+
+      </div>
+      <!-- End delete warning page content -->
+
+
+      <!-- button -->
+      <div class="button">
+        <button type="button" class="btn btn-outline-success"
+               (click)="onUpdateActivation()"
+               *ngIf="btn">Yes, Update Activate</button>
+        <button type="button" class="btn btn-outline-success"
+               (click)="onUpdateAuthorization()"
+               *ngIf="!btn">Yes, Update Authorization</button>
+        <button
+              type="button"
+              class="btn btn-outline-danger"
+              (click)="onClose()">Close</button>
+      </div>
+
+      <!-- End button -->
+
+    </div>
+  </div>
+</div>
+
+
+

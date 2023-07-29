@@ -23,7 +23,7 @@ export class NewuserComponent implements OnDestroy{
     user:any;
 
 
-  onSubmit(data:NgForm){
+  async onSubmit(data:NgForm){
     if(!data.valid){
       return;
     }
@@ -35,14 +35,47 @@ export class NewuserComponent implements OnDestroy{
       const position = data.value.userPosition;
       const username = data.value.username;
       const phonenumber = data.value.phonenumber;
+      //let idToken:any = '';
+
+      // adding user auth in auth database.
+      await this.authService.signupAuth(email, password).then(res =>{
+         let _uid = res.user.uid;
+         res.user.getIdToken().then(tok =>{
+          let auth = '';
+          if(position == 'Admin'){
+            auth = 'yes';
+          }else{
+            auth = 'none';
+          }
+
+          this.user = {
+            email:email,
+            password:password,
+            username:username,
+            phonenumber:phonenumber,
+            position:position,
+            idToken:tok,
+            uid:_uid,
+            status:'active',
+            authori:auth
+          }
+
+
+          this.userDbService.addData(this.user, 'usersDb');
+        });
+      });
+      /*
+
+      console.log(idToken);
 
       this.user = {
         email:email,
         password:password,
         username:username,
         phonenumber:phonenumber,
-        position:position
-      }
+        position:position,
+        idToken:idToken
+      }*/
 
       /*
       this.authService.signup(email, password, displayname).subscribe(res =>{
@@ -51,14 +84,10 @@ export class NewuserComponent implements OnDestroy{
         console.log(err);
       });*/
 
-      // adding user auth in auth database.
-      this.authService.signupAuth(email, password).then(res =>{
-        //console.log(res);
 
-      });
 
       // adding users details in firebase store databaser.
-      this.userDbService.addData(this.user, 'usersDb');
+      //this.userDbService.addData(this.user, 'usersDb');
       this.onClose();
     }else{
       this.passwordNotMatch = true;
