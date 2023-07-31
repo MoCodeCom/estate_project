@@ -1,9 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { elements } from 'chart.js';
-import { authService } from '../../services/auth.service';
-import { db } from '../../services/db.service';
-import { getAuth } from 'firebase/auth';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-auth',
@@ -11,7 +7,6 @@ import { getAuth } from 'firebase/auth';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-
 
   constructor(){}
 

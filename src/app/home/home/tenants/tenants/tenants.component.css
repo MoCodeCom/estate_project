@@ -74,3 +74,96 @@ tbody{
 @media only screen and (max-width: 1500px) {
 
 }
+
+@media only screen and (max-width:650px){
+  #card_add_content{
+    width: 100%;
+  }
+
+  #tenants_add_btn{
+    margin-top: 20px;
+  }
+
+  #table_scroll{
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    display:inline-block;
+
+  }
+
+  #pg_table{
+    display: none;
+  }
+
+  #pg_table_mobile{
+    display:block;
+    width: 100%;
+  }
+
+  #card_table{
+    width: 80vw;
+  }
+
+  #card_header{
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .list_card{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid rgb(182, 182, 182);
+    text-align: center;
+    font-weight: bold;
+    color: rgb(155, 155, 155);
+    cursor: pointer;
+  }
+
+  .list_card_option{
+    position:absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    left:auto;
+    right: 10px;
+    top: 40px;
+    background-color: white;
+    display: none;
+    z-index: 90;
+  }
+
+  .list_card_option ul{
+    list-style: none;
+    padding: 0px;
+  }
+
+  .list_card_option ul li{
+    margin-top: 8px;
+    text-align: center;
+
+  }
+
+  .list_card_option ul li:hover{
+    background-color: rgb(191, 191, 191);
+  }
+
+  /*-----------back page ------*/
+.dropback{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 50;
+  display: none;
+}
+/* ----------- End back page ------*/
+
+
+
+}

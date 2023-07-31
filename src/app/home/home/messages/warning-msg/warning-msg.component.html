@@ -18,13 +18,9 @@
           Are you sure to delete data for <span>{{ClientDetails.firstname}} {{ClientDetails.lastname}} {{ClientDetails.owner}} {{ClientDetails.name}}</span>?
         </div>
 
-        <div *ngIf="ClientDetails.position == 'Admin' || ClientDetails.sposition == 'User'">
-          <p>Are you sure to delete User to <span>{{ClientDetails.username}}</span></p>
-        </div>
-        <!--
-        <div *ngIf=" ClientDetails.position != null && ClientDetails.position != 'Admin' || ClientDetails.position != 'User'">
+        <div *ngIf=" ClientDetails.position != null">
           <p>Are you sure to delete invoce to <span>{{ClientDetails.name}}</span></p>
-        </div>-->
+        </div>
 
 
       </div>

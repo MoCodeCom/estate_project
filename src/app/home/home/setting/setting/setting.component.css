@@ -4,3 +4,51 @@
   margin-right: auto;
 
 }
+
+.card{
+font-size: .8rem;
+
+}
+
+#pg_table_mobile{
+  display:none;
+}
+
+
+@media only screen and (max-width:650px){
+  #card_add_content{
+    width: 100%;
+  }
+
+  button{
+    width: 60px;
+    font-size: 9px;
+  }
+
+  #pg_table{
+    display: none;
+  }
+
+  #pg_table_mobile{
+    display:inline-table;
+  }
+
+  #addUser_btn{
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .btns_active{
+    display: block;
+  }
+
+  .btns_active div{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+

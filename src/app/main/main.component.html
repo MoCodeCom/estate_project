@@ -1,83 +1,109 @@
-
+<div id="nav_top">
+  <div class="burger" id="burgerIcon" #burger>
+    <a (click)="onShowsidebar()" >
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </a>
+  </div>
+</div>
+<div class="dropback" (click)="onCloseShowsidebar()" #dropback></div>
 <div class="container-fluid">
   <div class="row flex-nowrap">
-    <div class="bg-dark col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-between"
+    <div class="bg-dark col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify-content-between"
          id="sidebar"
+         #sidebar
     >
-      <div class="bg-dark p-2">
+
+      <div class="bg-dark p-1">
         <a class="d-flex text-decoration-none mt-1 align-items-center text-white" routerLink="not-found">
-          <span class="fs-4 d-none d-sm-inline">Company Name</span>
+          <span class="fs-4 d-none d-sm-inline" id="company_title"><p>Company Name</p></span>
         </a>
         <ul class="nav nav-pills flex-column mt-4">
           <li class="nav-item py-2 py-sm-0" id="i_home">
 
-            <a href="#" class="nav-link text-white" routerLink="home" >
+            <a href="#" class="nav-link text-white" routerLink="home" id="nav_a"
+            (click)="onNav()">
 
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/homeIcon.png" style="width: 25px;">
               </i>
-              <span class="fs-6 ms-3 d-none d-sm-inline">Home  </span>
+              <span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Home  </span>
               <div class="fs-6 ms-3 d-none d-sm-inline" id="notificationCount" *ngIf="count > 0">{{count}}</div>
             </a>
           </li>
 
+
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="landlords">
+            <a class="nav-link text-white"
+              routerLink="landlords"
+              id="nav_a"
+              (click)="onNav()"
+               >
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/landlordIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Landlodrd</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Landlord</span>
             </a>
           </li>
 
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="tenants">
+            <a href="#" class="nav-link text-white" routerLink="tenants" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/tenantIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Tenant</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Tenant</span>
             </a>
           </li>
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="properties">
+            <a href="#" class="nav-link text-white" routerLink="properties" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/propertyIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Property</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Property</span>
             </a>
           </li>
 
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="others">
+            <a href="#" class="nav-link text-white" routerLink="others" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/otherIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Other</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Other</span>
             </a>
           </li>
 
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="money">
+            <a href="#" class="nav-link text-white" routerLink="money" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/moneyIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Money</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Money</span>
             </a>
           </li>
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="reports">
+            <a href="#" class="nav-link text-white" routerLink="reports" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/reportIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Report</span>
+              </i><span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Report</span>
             </a>
           </li>
           <li class="nav-item py-2 py-sm-0">
-            <a href="#" class="nav-link text-white" routerLink="charts">
+            <a href="#" class="nav-link text-white" routerLink="charts" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/chartIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Charts</span>
+              </i>
+              <span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title">Charts</span>
             </a>
           </li>
           <li class="nav-item py-2 py-sm-0" *ngIf="_isAdmin">
-            <a href="#" class="nav-link text-white" routerLink="setting">
+            <a href="#" class="nav-link text-white" routerLink="setting" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/settingIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Setting</span>
+              </i>
+              <span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title"><p>Setting</p></span>
             </a>
           </li>
           <li>
@@ -88,20 +114,24 @@
       <div class="dropdown bg-dark p-3">
         <ul class="nav nav-pills flex-column mt-4">
           <li class="nav-item py-2 py-sm-0">
-            <a class="nav-link text-white" routerLink="profile">
+            <a class="nav-link text-white" routerLink="profile" id="nav_a"
+            (click)="onNav()">
               <i class="fs-5 fa fa-table-list">
                 <img src="assets/images/userIcon.png" style="width: 25px;">
-              </i><span class="fs-6 ms-3 d-none d-sm-inline">Profile</span>
+              </i>
+              <span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title"><p>Profile</p></span>
             </a>
           </li>
 
           <li class="nav-item py-2 py-sm-0" >
             <div (click)="onlogout()" id="logout">
-              <a class="nav-link text-white" >
+              <a class="nav-link text-white" id="nav_a"
+              (click)="onNav()">
                 <i class="fs-5 fa fa-table-list" >
                   <img src="assets/images/loginIcon.png" style="width: 25px;"
                   >
-                </i><span class="fs-6 ms-3 d-none d-sm-inline">Logout</span>
+                </i>
+                <span class="fs-6 ms-3 d-none d-sm-inline" id="nav_title"><p>Logout</p></span>
               </a>
             </div>
           </li>
@@ -110,10 +140,10 @@
     </div>
 
     <!--content-->
-  <div class="p-3" id="content">
-    <router-outlet></router-outlet>
+    <div class="p-3" id="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
-  </div>
 
 </div>

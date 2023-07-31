@@ -79,4 +79,30 @@ textarea{
 }
 /* ------------ End textarea -------*/
 
+/*--------responsive -------------------*/
 
+@media only screen and (max-width:650px){
+  .container{
+    top: 2vh;
+    left: 4vw;
+    width: 90%;
+
+  }
+
+  .title_pg{
+    font-size: 14px;
+  }
+
+  .content_view label{
+    font-size: 13px;
+  }
+
+  .content_view{
+    font-size: 13px;
+
+  }
+
+  .button button{
+    font-size: 13px;
+  }
+}

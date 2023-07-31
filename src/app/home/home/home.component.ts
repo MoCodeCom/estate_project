@@ -1,6 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { PlotlyService } from 'angular-plotly.js';
-import { PlotlyService_1 } from './services/main_Chart.service';
+import { Component, OnInit} from '@angular/core';
 import { notificationService } from './services/notification.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   constructor(private noteService:notificationService,private http:HttpClient){
 
     // to post data in database.

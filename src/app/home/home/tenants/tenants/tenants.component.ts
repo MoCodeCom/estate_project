@@ -2,6 +2,7 @@ import { Component, ElementRef, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { demo_data } from '../../services/demo_data.service';
 import { db } from '../../services/db.service';
+import { routeService } from '../../services/route.service';
 
 @Component({
   selector: 'app-tenants',
@@ -10,17 +11,17 @@ import { db } from '../../services/db.service';
 })
 export class TenantsComponent {
 
-
-
   constructor(
     private dataService:demo_data,
     private router:Router,
     private elementRef:ElementRef,
-    private dbService:db
+    private dbService:db,
+    private routeService:routeService
     ){}
   ngOnInit(): void {
     this.onTenantTableList();
     this.elementRef.nativeElement;
+    this._authri = this.routeService.RouteEdit;
   }
 
   /* -----  props  -----*/
@@ -34,7 +35,11 @@ export class TenantsComponent {
   selectdClient:any;
   dbName = '';
   loading:boolean = false;
-  /* -----  end props   -----*/
+  _authri:string;
+  private eleId = '';
+  /* ------- end props ------- */
+  set setId (eleId){this.eleId = eleId}
+  get setId (){return this.eleId}
 
 
   async onTenantTableList(){
@@ -56,26 +61,52 @@ export class TenantsComponent {
   }
 
   on_edit(data:any){
+    this.onClose();
     this.editTenantAllowed = true;
     this.selectdClient = data;
   }
 
   on_view(data:any){
+    this.onClose();
     this.viewTenantAllowed = true;
     this.selectdClient = data;
   }
 
   on_delete(data:any){
+    this.onClose();
+
     this.deleteTenantAllowed = true;
     this.selectdClient = data;
     this.dbName = 'tenantDb';
   }
 
   onReloadPg(){
+
     this.addingTenantAllowed = false;
     this.viewTenantAllowed = false;
     this.deleteTenantAllowed = false;
     this.editTenantAllowed = false;
     this.ngOnInit();
+  }
+
+  onCard_option(data:any){
+    this.eleId = data.landlordId;
+
+    let childList = document.getElementById(data.landlordId);
+    let dropback = document.getElementById('dropback');
+    this.tenantTableList.forEach(ele =>{
+      if(ele.landlordId == data.landlordId){
+        dropback.style.display = 'inline';
+        childList.style.display = 'inline';
+
+      }
+    });
+  }
+
+  onClose(){
+    let dropback = document.getElementById('dropback');
+    let childList = document.getElementById(this.eleId);
+    dropback.style.display = 'none';
+    childList.style.display = 'none';
   }
 }

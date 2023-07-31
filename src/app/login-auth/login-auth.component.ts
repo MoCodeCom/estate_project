@@ -23,14 +23,36 @@ export class LoginAuthComponent implements OnDestroy{
   loading = false;
   errorText = null;
 
-
   async onLogin(data?:NgForm){
     if(data){
-
       const email = data.value.email;
       const password = data.value.password;
       this.loading = true;
       let checkEmail = '';
+
+      // chect wheather the user is active or not
+      await this.dbService.getData('usersDb').then(
+        res =>{
+          res.forEach(ele =>{
+            if(ele.data()['email'] == data.value.email &&
+               ele.data()['password'] == data.value.password &&
+               ele.data()['status'] == 'active')
+               {
+              this.authService.signin(email, password).subscribe(res =>{
+                this.emailSignIn = res.email;
+                checkEmail = res.email;
+                this.loading = false;
+              }, err =>{
+                this.errorText = err;
+                this.loading = false;
+              });
+            }else{
+              this.errorText = 'This account is unactivated.';
+              this.loading = false;
+            }
+          })
+        }
+      );
 
       //console.log(email +' --  '+ password);
 
@@ -48,32 +70,7 @@ export class LoginAuthComponent implements OnDestroy{
 
       /** login with API */
 
-      await this.authService.signin(email, password).subscribe(res =>{
 
-        this.emailSignIn = res.email;
-        checkEmail = res.email;
-        this.loading = false;
-
-        /*
-        this.dbService.getData('usersDb').then(res =>{
-          res.forEach(ele =>{
-            if(ele.data()['email'] == checkEmail && ele.data()['position'] == 'Admin'){
-              //console.log('true');
-
-              //console.log(token);
-              //let decode = jwt_decode(token);
-              //console.log(decode);
-              //localStorage.setItem('position',JSON.stringify(ele.data()['position']));
-
-            }else{
-              //console.log('false');
-              //localStorage.setItem('position',JSON.stringify(ele.data()['position']));
-            }
-          })})*/
-      }, err =>{
-        this.errorText = err;
-        this.loading = false;
-      });
 
     }else{
       return;
@@ -85,7 +82,7 @@ export class LoginAuthComponent implements OnDestroy{
     //to reload page after one min to get admin user...
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 100);
 
   }
 }

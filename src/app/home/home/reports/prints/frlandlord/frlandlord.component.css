@@ -235,4 +235,27 @@ textarea{
   }
 }
 
+@media only screen and (max-width:650px){
+  .container{
+    top: 10vh;
+    left: 4vw;
+    width: 90%;
+
+  }
+
+  .filter{
+    display: block;
+  }
+
+  .button button{
+    font-size: 13px;
+  }
+
+  .scroll-report{
+    border-top:1px solid gray;
+  }
+
+
+}
+
 

@@ -29,4 +29,20 @@
   text-decoration: underline;
 }
 
+/*--------------------------------*/
+
+@media only screen and (max-width:650px){
+  #card_add_content{
+    width: 100%;
+  }
+
+  .report-pg{
+    width: 100%;
+  }
+
+  .report-detail{
+    display: none;
+  }
+}
+
 

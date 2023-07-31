@@ -1,0 +1,66 @@
+[debug] [2023-07-29T20:40:17.053Z] ----------------------------------------------------------------------
+[debug] [2023-07-29T20:40:17.055Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init hosting
+[debug] [2023-07-29T20:40:17.055Z] CLI Version:   12.4.6
+[debug] [2023-07-29T20:40:17.055Z] Platform:      darwin
+[debug] [2023-07-29T20:40:17.055Z] Node Version:  v18.16.1
+[debug] [2023-07-29T20:40:17.056Z] Time:          Sat Jul 29 2023 21:40:17 GMT+0100 (British Summer Time)
+[debug] [2023-07-29T20:40:17.056Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-29T20:40:17.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-29T20:40:17.112Z] > authorizing via signed-in user (mohammed.alfadhel.com@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/mohammedalfadhel/Desktop/VS/Estate/estate
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-07-29T20:40:17.119Z] Using project from CLI flag: estateagent-2da55
+[debug] [2023-07-29T20:40:17.121Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/estateagent-2da55 [none]
+[debug] [2023-07-29T20:40:17.475Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/estateagent-2da55 200
+[debug] [2023-07-29T20:40:17.475Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/estateagent-2da55 {"projectId":"estateagent-2da55","projectNumber":"791145182474","displayName":"EstateAgent","name":"projects/estateagent-2da55","resources":{"hostingSite":"estateagent-2da55","realtimeDatabaseInstance":"estateagent-2da55-default-rtdb","storageBucket":"estateagent-2da55.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_7e20e863-906d-4b47-89d5-b27ee044ce0e"}
+[info] i  Using project estateagent-2da55 (EstateAgent) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2023-07-29T20:40:48.616Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2023-07-29T20:40:48.777Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2023-07-29T20:40:48.777Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"10.1.0","browserURL":"https://www.gstatic.com/firebasejs/10.1.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/10.1.0/firebase.tgz"},"live":{"version":"10.1","browserURL":"https://www.gstatic.com/firebasejs/live/10.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/10.1/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/10.1.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/10.1.0/firebase-auth/cordova.js","functions":"https://www.gstatic.com/firebasejs/10.1.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/10.1.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/10.1.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/10.1.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.memory.js"}}
+[info] ✔  Wrote dist/estate/index.html 
+[info] 
+[info] i  Detected a .git folder at /Users/mohammedalfadhel/Desktop/VS/Estate/estate 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=991462711&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-07-29T20:40:54.598Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2023-07-29T20:40:54.598Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2023-07-29T20:40:54.908Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2023-07-29T20:40:54.908Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2023-07-29T20:40:54.912Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2023-07-29T20:40:55.267Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2023-07-29T20:40:55.267Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"MoCodeCom","id":107611499,"node_id":"U_kgDOBmoFaw","avatar_url":"https://avatars.githubusercontent.com/u/107611499?v=4","gravatar_id":"","url":"https://api.github.com/users/MoCodeCom","html_url":"https://github.com/MoCodeCom","followers_url":"https://api.github.com/users/MoCodeCom/followers","following_url":"https://api.github.com/users/MoCodeCom/following{/other_user}","gists_url":"https://api.github.com/users/MoCodeCom/gists{/gist_id}","starred_url":"https://api.github.com/users/MoCodeCom/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/MoCodeCom/subscriptions","organizations_url":"https://api.github.com/users/MoCodeCom/orgs","repos_url":"https://api.github.com/users/MoCodeCom/repos","events_url":"https://api.github.com/users/MoCodeCom/events{/privacy}","received_events_url":"https://api.github.com/users/MoCodeCom/received_events","type":"User","site_admin":false,"name":"Mohammed Alfadhel","company":"private","blog":"https://mocodecom.github.io/myWebsite/","location":"Birmingham","email":null,"hireable":null,"bio":"Web and Apps developer.\r\n#Angular\r\n#.net and c#\r\n#MAUI","twitter_username":"Mohamme74079360","public_repos":34,"public_gists":0,"followers":1,"following":2,"created_at":"2022-06-16T07:44:40Z","updated_at":"2023-07-29T20:18:31Z","private_gists":0,"total_private_repos":16,"owned_private_repos":16,"disk_usage":658634,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] ✔  Success! Logged into GitHub as MoCodeCom 
+[info] 

@@ -1,26 +1,39 @@
-<div id="divChart">
-  <canvas id="myChart"></canvas>
-</div>
 
-<div id="divLineChart" #divLineChart>
-  <div #divLineChartCanvas>
-    <canvas id="LineChart" #lineChart ></canvas>
+<div class="container-sm">
+
+  <div class="row">
+    <div class="col-6">
+
+      <div id="divChart">
+        <canvas id="myChart"></canvas>
+      </div>
+
+      <div id="divLineChart" #divLineChart>
+        <div #divLineChartCanvas>
+          <canvas id="LineChart" #lineChart ></canvas>
+        </div>
+
+        <input type="text"
+               class="form-control"
+               id="year"
+               pattern="[0-9]"
+               maxlength="4"
+               minlength="4"
+               placeholder="Please enter selected year."
+               #year
+        >
+        <button
+          (click)="onChart_2()"
+          class="btn btn-outline-success"
+          id="lineChartBtn"
+          >Choose Year</button>
+      </div>
+
+    </div>
   </div>
-
-  <input type="text"
-         class="form-control"
-         id="year"
-         pattern="[0-9]"
-         maxlength="4"
-         minlength="4"
-         placeholder="Please enter selected year."
-         #year
-  >
-  <button
-    (click)="onChart_2()"
-    class="btn btn-outline-success"
-    id="lineChartBtn"
-    >Choose Year</button>
 </div>
+
+
+
 
 

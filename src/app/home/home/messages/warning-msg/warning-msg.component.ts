@@ -1,6 +1,10 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { db } from '../../services/db.service';
 import jwt_decode from "jwt-decode";
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { getAuth } from 'firebase/auth';
+import { authService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-warning-msg',
@@ -17,7 +21,9 @@ export class WarningMsgComponent {
   _userData:any;
   constructor(
     private elementRef: ElementRef,
-    private dbService:db
+    private dbService:db,
+    private ngAuth:AngularFireAuth,
+    private authService:authService
     ){}
 
 
@@ -34,9 +40,8 @@ export class WarningMsgComponent {
 
   onDelete(){
 
-    //this.dbService.deleteData(this.ClientDetails,this.dbName);
-    //this.dbService.deleteStorageData(this.ClientDetails['image']);
-    this.userDataDetails();
+    this.dbService.deleteData(this.ClientDetails,this.dbName);
+    this.dbService.deleteStorageData(this.ClientDetails['image']);
     this.onClose();
   }
 
@@ -51,20 +56,4 @@ export class WarningMsgComponent {
   }
 
 
-  userDataDetails(){
-
-    if(localStorage.getItem('userData') !== null ){
-      this._userData = JSON.parse(localStorage.getItem('userData'));
-      if(this._userData){
-        let jwt = jwt_decode(this._userData);
-        console.log(jwt);
-        //this.emailSignIn = jwt['email'];
-        //this.emailSignIn = this._userData.email;
-        //this.reload();
-      }else{
-        //this.emailSignIn = '';
-      }
-    }
-
-    }
 }

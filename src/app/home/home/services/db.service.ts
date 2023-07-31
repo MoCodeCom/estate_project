@@ -7,11 +7,16 @@ import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "fire
 import { IlandlordProp } from "../models/landlord";
 import { initializeApp } from "firebase/app";
 import { environment } from "src/environments/environment";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 
 @Injectable({ providedIn:'root'})
 export class db implements OnInit{
-  constructor(private fdb:Firestore){}
+  constructor(
+    private fdb:Firestore,
+    private ngFb:AngularFirestore
+
+    ){}
   ngOnInit(): void {
     throw new Error("Method not implemented.");
   }
@@ -152,6 +157,50 @@ export class db implements OnInit{
     .then(() => alert('The item is deleted.'))
     .catch(err => alert(err));
   }
+
+  async updateFieldStatus(collectionName:string,email:string,_status:string){
+    let docId:string = '';
+    let c = collection(this.fdb, collectionName);
+    let qry = await query(c, where('email', '==', email))
+    onSnapshot(qry,(res)=>{
+      //to get id document in the collection accourding to the email.
+      docId = res.docs[0].id.toString();
+
+      //to update data
+      this.ngFb.collection(collectionName)
+      .doc('/'+docId)
+      .update({status:_status})
+      .then(()=>{
+      console.log('done')
+      }).catch(err =>{
+        console.log('Error writing document: '+err)
+      });
+
+    });
+  }
+
+  async updateFieldAuthorization(collectionName:string,email:string,_status:string){
+    let docId:string = '';
+    let c = collection(this.fdb, collectionName);
+    let qry = await query(c, where('email', '==', email))
+    onSnapshot(qry,(res)=>{
+      //to get id document in the collection accourding to the email.
+      docId = res.docs[0].id.toString();
+
+      //to update data
+      this.ngFb.collection(collectionName)
+      .doc('/'+docId)
+      .update({authori:_status})
+      .then(()=>{
+      console.log('done')
+      }).catch(err =>{
+        console.log('Error writing document: '+err)
+      });
+
+    });
+  }
+
+
 
 
 

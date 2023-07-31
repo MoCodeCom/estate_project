@@ -4,6 +4,7 @@ import { AfterContentInit, AfterViewChecked, Component, ElementRef, OnChanges, O
 //import * as L from 'leaflet';
 import { maping } from '../../services/maping.service';
 import { db } from '../../services/db.service';
+import { routeService } from '../../services/route.service';
 //import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 //import { pipe } from 'rxjs';
 
@@ -19,7 +20,8 @@ export class PropertiesComponent implements OnInit{
   constructor(
     private elementRef:ElementRef,
     private mapService:maping,
-    private dbService:db
+    private dbService:db,
+    private routeService:routeService
     ){
       this.onLandlordTableList();
       //console.log(this.propertyTableList);
@@ -27,6 +29,7 @@ export class PropertiesComponent implements OnInit{
 
   ngOnInit(): void {
     //this.elementRef.nativeElement;
+    this._authri = this.routeService.RouteEdit;
   }
 
   /* props*/
@@ -42,6 +45,11 @@ export class PropertiesComponent implements OnInit{
   dbName = '';
   loading:boolean = false;
   imagePath:string;
+  _authri:string;
+  private eleId = '';
+  /* ------- end props ------- */
+  set setId (eleId){this.eleId = eleId}
+  get setId (){return this.eleId}
   /* end props */
 
 async onLandlordTableList(){
@@ -70,11 +78,13 @@ add_property(){
 }
 
 on_edit(data:any){
+  this.onClose();
   this.editPropertyAllowed = true;
   this.selectdClient = data;
 }
 
 on_view(data:any){
+  this.onClose();
   this.viewPropertyAllowed = true;
   this.selectdClient = data;
   let str = this.selectdClient.Postcode;
@@ -83,6 +93,7 @@ on_view(data:any){
 }
 
 on_delete(data:any){
+  this.onClose();
   this.deletePropertyAllowed = true;
   this.deletePropertyList.forEach(res=>{
     if(res['postcode'] === data['postcode'] && res['id'] === data['id'] && res['landlordId'] === data['landlordId']){
@@ -98,6 +109,28 @@ onReloadPg(){
   this.viewPropertyAllowed = false;
   this.deletePropertyAllowed = false;
   this.editPropertyAllowed = false;
+}
+
+onCard_option(data:any){
+  console.log(data);
+  this.eleId = data.landlordId;
+    let childList = document.getElementById(data.landlordId);
+    let dropback = document.getElementById('dropback');
+    this.propertyTableList.forEach(ele =>{
+      if(ele.landlordId == data.landlordId){
+        dropback.style.display = 'inline';
+        childList.style.display = 'inline';
+
+      }
+    });
+
+}
+
+onClose(){
+  let dropback = document.getElementById('dropback');
+    let childList = document.getElementById(this.eleId);
+    dropback.style.display = 'none';
+    childList.style.display = 'none';
 }
 
 }

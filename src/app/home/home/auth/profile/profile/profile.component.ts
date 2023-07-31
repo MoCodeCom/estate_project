@@ -7,6 +7,7 @@ import { authriService } from '../../../services/authri.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit{
+
   constructor(
     private authriService:authriService
   ){}

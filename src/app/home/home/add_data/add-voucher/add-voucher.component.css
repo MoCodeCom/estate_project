@@ -87,7 +87,6 @@ input.ng-invalid.ng-touched{
 .input_block button{
   width: 100%;
   margin-top: 10px;
-
 }
 
 /* ----------- End buttons --------------*/
@@ -153,3 +152,59 @@ input.ng-invalid.ng-touched{
   justify-content: center;
 }
 /* -------- End transaction table -----------*/
+/*--------responsive -------------------*/
+
+@media only screen and (max-width:650px){
+  .container{
+    top: 2vh;
+    left: 4vw;
+    width: 90%;
+  }
+
+  .input-group select{
+    font-size: 13px;
+  }
+
+  #addTransactionbtn{
+    width: 80%;
+  }
+
+  #table_scroll{
+    display: none;
+  }
+
+  .v-line-1{
+    display: block;
+    width: 90%;
+  }
+
+  .title_pg{
+    font-size: 14px;
+  }
+
+  .input-group span{
+    font-size: 13px;
+  }
+
+  .input-group input{
+    font-size: 13px;
+  }
+
+  .input-group textarea{
+    font-size: 13px;
+  }
+
+  .required-warning{
+    font-size: 9px;
+  }
+
+  .btns button{
+    font-size: 13px;
+  }
+
+  .btns{
+    width: 100%;
+  }
+
+
+}

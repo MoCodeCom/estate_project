@@ -1,16 +1,21 @@
 #divChart{
-  display: block; width: 400px; height: 400px;
+  display: block;
+  width: 400px;
+  height: 300px;
+  margin-bottom: 10px;
+  padding:0px;
 }
 
 #divLineChart{
   display: block;
-  width: 1000px;
+  width: 100%;
   height: 400px;
+  margin-top: 10px;
 }
 
 #divLineChart div{
   display: block;
-  width: 1000px;
+  width: 100%;
   height: 300px;
 }
 
@@ -19,5 +24,35 @@
 }
 
 #lineChartBtn{
-  width: 20vw;
+  width: 30vw;
+}
+
+@media only screen and (max-width:650px){
+  .container{
+    top: 10vh;
+    left: 4vw;
+    width: 90%;
+
+  }
+
+  #divLineChart{
+    width:90vw;
+  }
+
+  #divChart{
+    height: 200px;
+    border-bottom: .5px solid rgb(198, 198, 198);
+  }
+
+  #year{
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  #lineChartBtn{
+    margin-top: 30px;
+    width: 100%;
+  }
+
+
 }

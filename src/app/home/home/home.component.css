@@ -53,9 +53,6 @@
 
 
 
-
-
-
 @media only screen and (max-width: 1000px) {
   #container_1{
     display:block;
@@ -72,4 +69,29 @@
   #calender{
     display: none;
   }
+
+  .card-img-top{
+    display: none;
+  }
+
+  .card{
+    width: 100%;
+  }
+
+  #container_1{
+    display:flex;
+
+  }
+
+  #chart{
+    display: none;
+  }
+
+  #card_add_content{
+    width: 100%;
+  }
+
+
+
+
 }

@@ -178,11 +178,25 @@ export class authService implements OnInit{
     return user;
   }
 
-  deleteAuth(data:any){
-    return this.http.post("https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyAOsw9i6F61js3aCbwPj5rsEFnApjQnlEQ",
+  async deleteAuth(data:string){
+    //console.log(data)
+    /*
+    return await this.http.post("https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyAOsw9i6F61js3aCbwPj5rsEFnApjQnlEQ",
     {
       idToken:data
+    }).subscribe(res =>{
+      console.log(res)
+    });*/
+
+    //let deleteUser = this.authfb.authState.subscribe(res => console.log(res));
+
+
+    /*
+    await this.signin(email, password).subscribe(res =>{
+      console.log(res['idToken']);
     });
+    */
+
   }
 
 

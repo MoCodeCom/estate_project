@@ -101,3 +101,48 @@ input.ng-invalid.ng-touched{
   padding:0rem;
   height: 3 vh;
 }
+
+/*--------responsive -------------------*/
+
+@media only screen and (max-width:650px){
+  .container{
+    top: 10vh;
+    left: 4vw;
+    width: 90%;
+
+  }
+
+  .input-group select{
+    font-size: 13px;
+  }
+
+  #table_scroll{
+    display: none;
+  }
+
+  .v-line-1{
+    display: block;
+    width: 90%;
+  }
+
+  .title_pg{
+    font-size: 14px;
+  }
+
+  .input_block button{
+    font-size: 13px;
+  }
+
+  .input-group input{
+    font-size: 13px;
+  }
+
+  .input-group span{
+    font-size: 13px;
+  }
+
+  .required-warning{
+    font-size: 10px;
+
+  }
+}

@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef,  OnInit } from '@angular/core';
 import { demo_data } from '../../services/demo_data.service';
 import { Router } from '@angular/router';
 import { db } from '../../services/db.service';
+import { routeService } from '../../services/route.service';
 
 @Component({
   selector: 'app-others',
@@ -9,20 +10,20 @@ import { db } from '../../services/db.service';
   styleUrls: ['./others.component.css']
 })
 export class OthersComponent implements OnInit{
-  constructor(
-    //private dataService:demo_data,
 
+  constructor(
     private elementRef:ElementRef,
-    private dbService:db
+    private dbService:db,
+    private routeService:routeService
     ){}
   ngOnInit(): void {
     this.onOtherTableList();
     this.elementRef.nativeElement;
+    this._authri = this.routeService.RouteEdit;
 
   }
 
   /* props*/
-
   otherTableList = [];
   filterString:string;
   addingOtherAllowed:boolean=false;
@@ -32,6 +33,11 @@ export class OthersComponent implements OnInit{
   selectdClient:any;
   dbName = '';
   loading:boolean = false;
+  _authri:string;
+  private eleId = '';
+  /* ------- end props ------- */
+  set setId (eleId){this.eleId = eleId}
+  get setId (){return this.eleId}
   /* end props */
 
 
@@ -49,20 +55,24 @@ export class OthersComponent implements OnInit{
   }
 
   add_other(){
+
     this.addingOtherAllowed = true;
   }
 
   on_edit(data:any){
+    this.onClose();
     this.editOtherAllowed = true;
     this.selectdClient = data;
   }
 
   on_view(data:any){
+    this.onClose();
     this.viewOtherAllowed = true;
     this.selectdClient = data;
   }
 
   on_delete(data:any){
+    this.onClose();
     this.deleteOtherAllowed = true;
     this.selectdClient = data;
     this.dbName = 'otherDb';
@@ -74,6 +84,29 @@ export class OthersComponent implements OnInit{
     this.deleteOtherAllowed = false;
     this.editOtherAllowed = false;
     this.ngOnInit();
+  }
+
+  onClose(){
+    let dropback = document.getElementById('dropback');
+    let childList = document.getElementById(this.eleId);
+    dropback.style.display = 'none';
+    childList.style.display = 'none';
+
+  }
+
+  onCard_option(data:any){
+    this.eleId = data.landlordId;
+
+    let childList = document.getElementById(data.landlordId);
+    let dropback = document.getElementById('dropback');
+    this.otherTableList.forEach(ele =>{
+      if(ele.landlordId == data.landlordId){
+        dropback.style.display = 'inline';
+        childList.style.display = 'inline';
+
+      }
+    });
+
   }
 
 

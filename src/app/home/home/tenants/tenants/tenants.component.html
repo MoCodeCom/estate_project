@@ -36,6 +36,9 @@
   ></app-edit-tenant>
   <!-- End edit page -->
 
+  <!-- dropback for sub list -->
+  <div class="dropback" id="dropback" (click)="onClose()"></div>
+
   <div class="container-sm">
     <div class="row">
       <!--content and add button-->
@@ -111,6 +114,7 @@
                           class="btn btn-danger"
                           id="delete_btn"
                           (click)="on_delete(i)"
+                          *ngIf="_authri == 'yes'"
                           >Delete</button>
                   <button type="button"
                           class="btn btn-warning"
@@ -122,6 +126,43 @@
 
             </tbody>
           </table>
+
+
+                    <!--mobile table-->
+
+                    <table class="table table-white" id="pg_table_mobile">
+                      <tbody id="tbody">
+                        <tr *ngFor="let i of tenantTableList | filter: filterString:'firstname':'lastname':'postcode':'phone'">
+                          <td id="td_table">
+                            <div class="card" id="card_table">
+                              <div class="card-header" id="card_header">
+                                <p>{{i.firstname | upperFirst}} {{i.lastname | upperFirst}}</p>
+                                <div class="list_card" (click)="onCard_option(i)">
+                                  <p>. . .</p>
+                                </div>
+                                <div class="list_card_option"
+                                     #lco
+                                     id={{i.landlordId}}
+                                     >
+                                  <ul>
+                                    <li (click)="on_view(i)"><a>View</a></li>
+                                    <li (click)="on_delete(i)"><a>Delete</a></li>
+                                    <li (click)="on_edit(i)"><a>Edit</a></li>
+                                  </ul>
+                                </div>
+                              </div>
+
+                              <div class="card-body">
+                                <p>Address: {{i.address}}</p>
+                                <p>Postcode: {{i.postcode}}</p>
+                                <p>Phone: {{i.phone}}</p>
+                                <p>Email: {{i.email}}</p>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
         </div>
 
 

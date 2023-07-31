@@ -9,6 +9,7 @@ Chart.register(...registerables);
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
+
   constructor(private chartService:chartService){}
   @ViewChild('year',{static:true}) inputYear:ElementRef;
   @ViewChild('lineChart',{static:true}) lineChart:ElementRef;

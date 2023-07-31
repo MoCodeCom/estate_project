@@ -82,6 +82,7 @@ import { LoginAuthComponent } from './login-auth/login-auth.component';
 import { AuthGuard } from './login-auth/login-auth.guard';
 import { authService } from './home/home/services/auth.service';
 import { SettingComponent } from './home/home/setting/setting/setting.component';
+import { UpdateUserComponent } from './home/home/setting/update-user/update-user.component';
 
 //import { AngularFireModule } from '@angular/fire/compat'
 
@@ -148,7 +149,8 @@ import { SettingComponent } from './home/home/setting/setting/setting.component'
     ChartLTOPComponent,
     MainComponent,
     LoginAuthComponent,
-    AuthComponent
+    AuthComponent,
+    UpdateUserComponent
   ],
   imports: [
     CommonModule,
