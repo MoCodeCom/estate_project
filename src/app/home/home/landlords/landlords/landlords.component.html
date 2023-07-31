@@ -144,7 +144,7 @@
                            >
                         <ul>
                           <li (click)="on_view(i)"><a>View</a></li>
-                          <li (click)="on_delete(i)"><a>Delete</a></li>
+                          <li (click)="on_delete(i)" *ngIf="_authri == 'yes'"><a>Delete</a></li>
                           <li (click)="on_edit(i)"><a>Edit</a></li>
                         </ul>
                       </div>

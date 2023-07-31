@@ -104,9 +104,6 @@
     left: 20%;
   }
 
-
-
-
 }
 
 @media only screen and (max-width:650px){
@@ -121,6 +118,7 @@
     transition:left .3s ease;
     z-index: 90;
   }
+
 
   #content{
     width: 100%;

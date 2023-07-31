@@ -84,3 +84,43 @@ input{
   font-size: 0.7rem;
   padding-inline: 0.7vw;
 }
+
+/*--------responsive -------------------*/
+
+@media only screen and (max-width:650px){
+  .container{
+    top: 10vh;
+    left: 4vw;
+    width: 90%;
+  }
+
+  .title_pg{
+    font-size: 14px;
+  }
+
+  .input-group span{
+    font-size: 13px;
+  }
+
+  .input-group input{
+    font-size: 13px;
+  }
+
+  .input-group textarea{
+    font-size: 13px;
+  }
+
+  .required-warning{
+    font-size: 9px;
+  }
+
+  .btns button{
+    font-size: 13px;
+  }
+
+  .btns{
+    width: 100%;
+  }
+
+
+}
